@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Перенаправление...</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMT7JD949"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HMMT7JD949');
+</script>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+    text-align: center;
+  }
+  .container {
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  p {
+    margin: 10px 0 0;
+    font-size: 1.1em;
+  }
+  a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103848088', 'ym');
+
+    ym(103848088, 'init', {
+        ssr:true,
+        webvisor:true,
+        clickmap:true,
+        ecommerce:"dataLayer",
+        accurateTrackBounce:true,
+        trackLinks:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103848088" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // --- НАЧАЛО ЛОГИКИ FIREBASE ---
+
+  // Ваши ключи для подключения к Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDP4w8D1Ko_kHG5ETy6mfEHUJrJnDDgv8o",
+    authDomain: "ecomaps-e25f7.firebaseapp.com",
+    databaseURL: "https://ecomaps-e25f7-default-rtdb.firebaseio.com",
+    projectId: "ecomaps-e25f7",
+    storageBucket: "ecomaps-e25f7.firebasestorage.app",
+    messagingSenderId: "729833139279",
+    appId: "1:729833139279:web:63718ffdbdd8076f32ce3a"
+  };
+
+  // Инициализация Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  const counterRef = database.ref('counter');
+
+  const numbers = [
+    "https://wa.me/77064299895", // для четных
+    "https://wa.me/77762979276"  // для нечетных
+  ];
+  
+  const fallbackUrl = numbers[0]; // Номер по умолчанию в случае ошибки
+
+  // Используем транзакцию, чтобы безопасно получить и увеличить счетчик
+  counterRef.transaction(function(currentValue) {
+    // Если счетчик еще не создан, начинаем с 0
+    if (currentValue === null) {
+      return 0;
+    }
+    return currentValue + 1;
+  }).then(function(transactionResult) {
+    if (transactionResult.committed) {
+      const newCount = transactionResult.snapshot.val(); // Это значение для СЛЕДУЮЩЕГО пользователя
+      const currentCount = newCount > 0 ? newCount - 1 : 0; // А это значение для ТЕКУЩЕГО пользователя
+      
+      // Выбираем номер на основе четности ТЕКУЩЕГО значения счетчика
+      const url = numbers[currentCount % numbers.length];
+      performRedirect(url);
+    } else {
+      // Транзакция не удалась, используем номер по умолчанию
+      performRedirect(fallbackUrl);
+    }
+  }).catch(function(error) {
+    console.error("Firebase transaction failed: ", error);
+    // В случае ошибки используем номер по умолчанию
+    performRedirect(fallbackUrl);
+  });
+
+  function performRedirect(url) {
+    // Обновляем ссылку для ручного перехода
+    const fallbackLink = document.getElementById('fallback');
+    if (fallbackLink) {
+      fallbackLink.href = url;
+    }
+
+    // Отправляем цели в Метрику и Google Analytics
+    try {
+      // Яндекс.Метрика
+      if (typeof ym === 'function') {
+        ym(103848088, 'reachGoal', 'redirect', { to: url });
+      }
+      // Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('event', 'redirect', {
+          'redirect_url': url
+        });
+      }
+    } catch (e) {
+      console.error('Yandex.Metrika error:', e);
+    }
+
+    // Задержка и перенаправление
+    setTimeout(function () {
+      window.location.href = url;
+    }, 10); // 0.01 секунды
+  }
+
+  // --- КОНЕЦ ЛОГИКИ FIREBASE ---
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="loader"></div>
+  <p>Перенаправляем вас...</p>
+  <p><small>Если ничего не произошло, <a href="https://wa.me/77064299895" id="fallback" rel="nofollow noopener noreferrer">нажмите сюда</a>.</small></p>
+</div>
+
+</body>
+</html>
