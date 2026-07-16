@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Перенаправление...</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMT7JD949"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HMMT7JD949');
+</script>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+    text-align: center;
+  }
+  .container {
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  p {
+    margin: 10px 0 0;
+    font-size: 1.1em;
+  }
+  a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103848088', 'ym');
+
+    ym(103848088, 'init', {
+        ssr:true,
+        webvisor:true,
+        clickmap:true,
+        ecommerce:"dataLayer",
+        accurateTrackBounce:true,
+        trackLinks:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103848088" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ВАЖНО: порядок номеров менять нельзя — сохраненный у посетителя индекс
+  // указывает на позицию в этом массиве. Номер можно заменить на месте или
+  // добавить в конец; перестановка переназначит всех существующих клиентов.
+  const numbers = [
+    "https://wa.me/77064299895",
+    "https://wa.me/77068385000"
+  ];
+
+  const STORAGE_KEY = 'ecomaps_wa_route';
+  const SCHEMA_VERSION = 1;
+  // Окно неактивности: назначение забывается через 400 дней БЕЗ визитов (см. restore).
+  // 400 дней — максимум, который принимает Chrome; браузер вправе урезать срок cookie
+  // и делает это (Brave — до 180 дней, Safari/iOS — до 7). Повлиять на это со
+  // статической страницы нельзя, поэтому localStorage служит второй опорой.
+  const MAX_AGE_MS = 400 * 24 * 60 * 60 * 1000;
+  const FIREBASE_TIMEOUT_MS = 3000;
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDP4w8D1Ko_kHG5ETy6mfEHUJrJnDDgv8o",
+    authDomain: "ecomaps-e25f7.firebaseapp.com",
+    databaseURL: "https://ecomaps-e25f7-default-rtdb.firebaseio.com",
+    projectId: "ecomaps-e25f7",
+    storageBucket: "ecomaps-e25f7.firebasestorage.app",
+    messagingSenderId: "729833139279",
+    appId: "1:729833139279:web:63718ffdbdd8076f32ce3a"
+  };
+
+  const FIREBASE_SDK = [
+    "https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js",
+    "https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"
+  ];
+
+  // --- Хранилище назначенного номера ---------------------------------------
+  // Пишем в localStorage и cookie одновременно: браузеры очищают их по разным
+  // правилам, поэтому два хранилища переживают случаи, которые не переживет одно.
+
+  function decode(raw) {
+    if (!raw) return null;
+    try {
+      const data = JSON.parse(raw);
+      if (data.v !== SCHEMA_VERSION) return null;
+      if (!Number.isInteger(data.i) || data.i < 0 || data.i >= numbers.length) return null;
+      if (typeof data.t !== 'number' || Date.now() - data.t > MAX_AGE_MS) return null;
+      return data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function readLocalStorage() {
+    try {
+      return decode(localStorage.getItem(STORAGE_KEY));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function readCookie() {
+    const match = document.cookie.match(new RegExp('(?:^|; )' + STORAGE_KEY + '=([^;]*)'));
+    if (!match) return null;
+    try {
+      return decode(decodeURIComponent(match[1]));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeLocalStorage(data) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      // Приватный режим или переполнение — cookie остается запасным вариантом.
+    }
+  }
+
+  function writeCookie(data) {
+    const value = encodeURIComponent(JSON.stringify(data));
+    const maxAge = Math.floor(MAX_AGE_MS / 1000);
+    const secure = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = STORAGE_KEY + '=' + value + '; path=/; max-age=' + maxAge + '; SameSite=Lax' + secure;
+  }
+
+  function save(index) {
+    const data = { v: SCHEMA_VERSION, i: index, t: Date.now() };
+    writeLocalStorage(data);
+    writeCookie(data);
+    return data;
+  }
+
+  // Возвращает сохраненное назначение. Перезапись обеих копий при каждом визите
+  // решает две задачи: восстанавливает копию, которую браузер успел удалить, и
+  // сдвигает срок жизни — закрепление истекает через MAX_AGE_MS БЕЗДЕЙСТВИЯ,
+  // а не через MAX_AGE_MS после первого назначения. Иначе постоянный клиент
+  // потерял бы своего менеджера, даже если писал каждый месяц.
+  function restore() {
+    const data = readLocalStorage() || readCookie();
+    if (!data) return null;
+    return save(data.i);
+  }
+
+  // --- Назначение номера ----------------------------------------------------
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = function () { reject(new Error('Failed to load ' + src)); };
+      document.head.appendChild(script);
+    });
+  }
+
+  function withTimeout(promise, ms) {
+    return Promise.race([
+      promise,
+      new Promise(function (_, reject) {
+        setTimeout(function () { reject(new Error('Firebase timed out')); }, ms);
+      })
+    ]);
+  }
+
+  // Общий счетчик в Firebase обеспечивает строгое чередование между номерами.
+  function assignFromCounter() {
+    return loadScript(FIREBASE_SDK[0])
+      .then(function () { return loadScript(FIREBASE_SDK[1]); })
+      .then(function () {
+        firebase.initializeApp(firebaseConfig);
+        return firebase.database().ref('counter').transaction(function (currentValue) {
+          return currentValue === null ? 0 : currentValue + 1;
+        });
+      })
+      .then(function (transactionResult) {
+        if (!transactionResult.committed) throw new Error('Transaction not committed');
+        // Транзакция вернула значение для СЛЕДУЮЩЕГО посетителя.
+        const nextCount = transactionResult.snapshot.val();
+        const currentCount = nextCount > 0 ? nextCount - 1 : 0;
+        return currentCount % numbers.length;
+      });
+  }
+
+  // --- Переход --------------------------------------------------------------
+
+  function performRedirect(index, isReturning) {
+    const url = numbers[index];
+
+    const fallbackLink = document.getElementById('fallback');
+    if (fallbackLink) {
+      fallbackLink.href = url;
+    }
+
+    try {
+      if (typeof ym === 'function') {
+        ym(103848088, 'reachGoal', 'redirect', { to: url, returning: isReturning });
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'redirect', {
+          'redirect_url': url,
+          'returning': isReturning
+        });
+      }
+    } catch (e) {
+      console.error('Analytics error:', e);
+    }
+
+    setTimeout(function () {
+      window.location.href = url;
+    }, 10);
+  }
+
+  const saved = restore();
+
+  if (saved) {
+    // Известный посетитель — Firebase не нужен вообще.
+    performRedirect(saved.i, true);
+  } else {
+    withTimeout(assignFromCounter(), FIREBASE_TIMEOUT_MS)
+      .catch(function (error) {
+        console.error('Falling back to random assignment:', error);
+        // Счетчик недоступен, поэтому чередование здесь невозможно. Случайный
+        // выбор сохраняет баланс между номерами, а сохранение результата ниже
+        // оставляет посетителя закрепленным за тем менеджером, к кому он попал.
+        return Math.floor(Math.random() * numbers.length);
+      })
+      .then(function (index) {
+        save(index);
+        performRedirect(index, false);
+      });
+  }
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="loader"></div>
+  <p>Перенаправляем вас...</p>
+  <p><small>Если ничего не произошло, <a href="https://wa.me/77064299895" id="fallback" rel="nofollow noopener noreferrer">нажмите сюда</a>.</small></p>
+</div>
+
+</body>
+</html>
