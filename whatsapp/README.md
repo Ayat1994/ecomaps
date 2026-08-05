@@ -11,8 +11,8 @@ Two numbers are in rotation, defined in `whatsapp/index.html`:
 
 | Index | Number         |
 |-------|----------------|
-| 0     | `77064299895`  |
-| 1     | `77762979276`  |
+| 0     | `77470187334`  |
+| 1     | `77470187334`  |
 
 **First visit** — the page atomically increments a shared `counter` in Firebase Realtime
 Database and assigns `numbers[counter % 2]`, so consecutive new visitors alternate evenly
