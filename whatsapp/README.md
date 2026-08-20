@@ -12,11 +12,9 @@ Two numbers are in rotation, defined in `whatsapp/index.html`:
 | Index | Number         |
 |-------|----------------|
 | 0     | `77064299895`  |
-| 1     | `77064299895`  |
+| 1     | `77762979276`  |
 
-**First visit** — the page atomically increments a shared `counter` in Firebase Realtime
-Database and assigns `numbers[counter % 2]`, so consecutive new visitors alternate evenly
-between the two managers. The assignment is then saved to the visitor's browser.
+First visit — the page atomically increments a shared counter in Firebase Realtime Database and assigns visitors in a 2:1 ratio: two consecutive new visitors are assigned to numbers[0], and the third to numbers[1]. The pattern repeats as 0, 0, 1, 0, 0, 1.... The assignment is then saved to the visitor's browser.
 
 **Return visit** — the saved assignment is read back and the visitor is sent to the *same*
 number as last time. Firebase is not contacted at all, and the Firebase SDK is not even
