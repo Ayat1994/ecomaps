@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Транзакция вернула значение для СЛЕДУЮЩЕГО посетителя.
         const nextCount = transactionResult.snapshot.val();
         const currentCount = nextCount > 0 ? nextCount - 1 : 0;
-        return currentCount % numbers.length;
+        return currentCount % 3 === 2 ? 1 : 0;
       });
   }
 
