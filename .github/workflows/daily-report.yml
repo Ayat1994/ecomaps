@@ -9,6 +9,10 @@ on:
         description: 'Отправить и отчёт за неделю'
         type: boolean
         default: false
+      meta_debug:
+        description: 'Показать все действия Meta (для проверки)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -30,5 +34,6 @@ jobs:
           META_AD_ACCOUNT: ${{ secrets.META_AD_ACCOUNT }}
           YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
           DIRECT_CLIENT_LOGIN: ${{ secrets.DIRECT_CLIENT_LOGIN }}
+          META_DEBUG: ${{ inputs.meta_debug && '1' || '' }}
           REPORT_WEEK: ${{ inputs.week && '1' || '' }}
         run: python3 .github/reports/daily_report.py

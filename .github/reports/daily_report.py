@@ -141,6 +141,8 @@ def meta():
                 line += f' · переписки {num(msgs)}'
             if leads:
                 line += f' · заявки с сайта {num(leads)}'
+            if env('META_DEBUG'):
+                line += '\n<code>' + esc(', '.join(f'{k}={num(v)}' for k, v in sorted(acts.items()))) + '</code>'
             lines.append(line)
         if lines:
             any_rows = True
