@@ -228,9 +228,18 @@ def main():
 
     chats = [c.strip() for c in (env('TG_CHAT_ID') or '').split(',') if c.strip()]
     hint = False
+    st, _, me = http(f'https://api.telegram.org/bot{tg}/getMe')
+    try:
+        print('Бот:', '@' + json.loads(me)['result']['username'])
+    except Exception:
+        print('Токен бота не принят Telegram (getMe', st, ') — проверьте секрет TG_TOKEN')
+        sys.exit(1)
     if not chats:
         st, _, t = http(f'https://api.telegram.org/bot{tg}/getUpdates')
-        for u in json.loads(t).get('result', []):
+        res = json.loads(t)
+        if not res.get('ok'):
+            print('getUpdates:', st, res.get('description', '')[:120])
+        for u in res.get('result', []):
             m = u.get('message') or u.get('channel_post') or u.get('my_chat_member') or {}
             cid = str((m.get('chat') or {}).get('id', ''))
             if cid and cid not in chats:
