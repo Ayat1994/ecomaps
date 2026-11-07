@@ -197,11 +197,13 @@ def metrika():
     gids = list(goals)[:6]
     metrics = ['ym:s:visits', 'ym:s:users'] + [f'ym:s:goal{g}reaches' for g in gids]
 
-    def get(d1, dims=None, limit=8):
+    def get(d1, dims=None, limit=8, filters=None):
         q = {'ids': YM_COUNTER, 'metrics': ','.join(metrics), 'date1': d1.isoformat(), 'date2': yday.isoformat(),
              'limit': limit, 'accuracy': 'full', 'sort': '-ym:s:visits'}
         if dims:
             q['dimensions'] = dims
+        if filters:
+            q['filters'] = filters
         st, _, t = http('https://api-metrika.yandex.net/stat/v1/data?' + urllib.parse.urlencode(q), headers=h)
         return json.loads(t) if st == 200 else None
 
@@ -215,14 +217,26 @@ def metrika():
         parts = [f'визиты {num(t[0])}', f'посетители {num(t[1])}']
         parts += [f'{esc(goals[g].replace("Сайт: ", ""))} {num(v)}' for g, v in zip(gids, t[2:])]
         out.append(f'{label}: ' + ' · '.join(parts))
-    src = get(yday, 'ym:s:lastsignUTMSource', 6)
-    if src and src.get('data'):
-        out.append('<i>вчера по меткам utm_source:</i>')
-        for row in src['data']:
-            name = row['dimensions'][0].get('name') or 'без метки'
-            m = row['metrics']
-            wa = [num(v) for g, v in zip(gids, m[2:]) if 'WhatsApp' in goals[g]]
-            out.append(f'  • {esc(name)}: визиты {num(m[0])}' + (f', WhatsApp {" / ".join(wa)}' if wa else ''))
+    # Переходы в WhatsApp: цель «Переход в WhatsApp» = открытие ecomaps.kz/whatsapp.
+    # Визит, который НАЧАЛСЯ со страницы /whatsapp, — прямой переход по ссылке (шапка Instagram);
+    # визит, начавшийся на страницах сайта, — человек сначала смотрел сайт.
+    wa_ids = [i for i, g in enumerate(gids) if goals[g] == 'Переход в WhatsApp']
+    if wa_ids:
+        wi = 2 + wa_ids[0]
+        groups = (('📲 Instagram (ссылка в шапке)', "ym:s:startURLPath=~'^/whatsapp/?$'"),
+                  ('🖥 С сайта ecomaps.kz', "ym:s:startURLPath!~'^/whatsapp/?$'"))
+        out.append('\n<b>Переходы в WhatsApp</b> (вчера / 7 дней):')
+        for label, flt in groups:
+            vals = []
+            for d1 in (yday, week0):
+                r = get(d1, filters=flt)
+                vals.append(num(r['totals'][wi]) if r else '?')
+            out.append(f'{label}: {vals[0]} / {vals[1]}')
+            src = get(yday, 'ym:s:lastsignUTMSource', 5, flt)
+            rows = [x for x in (src or {}).get('data', []) if x['metrics'][wi]]
+            if len(rows) > 1 or (rows and rows[0]['dimensions'][0].get('name')):
+                out.append('  вчера по источникам: ' + ', '.join(
+                    f"{esc(x['dimensions'][0].get('name') or 'без метки')} {num(x['metrics'][wi])}" for x in rows))
     return '\n'.join(out)
 
 
