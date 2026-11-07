@@ -211,8 +211,8 @@ def metrika():
 
     # ecomaps.kz/whatsapp — страница-распределитель номеров, на неё ведёт ссылка из шапки Instagram.
     # Визит, НАЧАВШИЙСЯ с /whatsapp, — переход из шапки; остальные визиты — сайт.
-    IG = "ym:s:startURLPath=~'^/whatsapp/?$'"
-    SITE = "ym:s:startURLPath!~'^/whatsapp/?$'"
+    IG = "ym:s:startURLPath=~'^/(whatsapp|wa)/?$'"
+    SITE = "ym:s:startURLPath!~'^/(whatsapp|wa)/?$'"
     wa = [i for i, g in enumerate(gids) if goals[g] == 'Переход в WhatsApp']
     wi = 2 + wa[0] if wa else None
     site_g = [(i, g) for i, g in enumerate(gids) if goals[g].startswith('Сайт:') and 'WhatsApp' not in goals[g]]
