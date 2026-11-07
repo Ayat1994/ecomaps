@@ -19,6 +19,7 @@ today = dt.datetime.now(TZ).date()
 yday = today - dt.timedelta(days=1)
 week0 = today - dt.timedelta(days=7)
 YM_COUNTER = os.environ.get('YM_COUNTER', '103848088')
+DEFAULT_CHAT = '271851854'  # личный чат владельца с ботом @ecomaps_ads_report_bot
 
 
 def env(k):
@@ -36,6 +37,17 @@ def http(url, method='GET', headers=None, data=None, timeout=60):
             return r.status, dict(r.headers), r.read().decode('utf-8', 'replace')
     except urllib.error.HTTPError as e:
         return e.code, dict(e.headers), e.read().decode('utf-8', 'replace')
+
+
+def err(st, txt):
+    try:
+        j = json.loads(txt)
+        m = j.get('error', j)
+        if isinstance(m, dict):
+            m = m.get('message') or m.get('error_detail') or m.get('error_string') or m.get('detail') or json.dumps(m)[:150]
+        return f'ошибка {st}: {esc(str(m)[:150])}'
+    except Exception:
+        return f'ошибка {st}: {esc(txt[:150])}'
 
 
 def num(x):
@@ -68,7 +80,7 @@ def openai_ads():
         st, _, txt = http('https://api.ads.openai.com/v1/ad_account/insights?' + urllib.parse.urlencode(q),
                           headers={'Authorization': f'Bearer {key}', 'Accept': 'application/json'})
         if st != 200:
-            out.append(f'{label}: ошибка API {st}')
+            out.append(f'{label}: {err(st, txt)}')
             continue
         rows = json.loads(txt).get('data') or []
         imp = sum(float(r.get('impressions') or 0) for r in rows)
@@ -156,9 +168,7 @@ def direct():
                 continue
             break
         if st != 200:
-            if 'error' in txt and ('53' in txt or 'нет доступа' in txt.lower()):
-                return '🟡 <b>Яндекс Директ</b>\nнет доступа к Директу с этим токеном'
-            out.append(f'{label}: ошибка API {st}')
+            out.append(f'{label}: {err(st, txt)}')
             continue
         lines = [l for l in txt.strip().split('\n') if l]
         if len(lines) < 2:
@@ -226,7 +236,7 @@ def main():
     text = (f'📊 <b>ECOMAPS — отчёт за {yday.strftime("%d.%m.%Y")}</b>\n\n' + '\n\n'.join(blocks) +
             '\n\n<i>Google Ads: не подключено</i>')
 
-    chats = [c.strip() for c in (env('TG_CHAT_ID') or '').split(',') if c.strip()]
+    chats = [c.strip() for c in (env('TG_CHAT_ID') or DEFAULT_CHAT).split(',') if c.strip()]
     hint = False
     st, _, me = http(f'https://api.telegram.org/bot{tg}/getMe')
     try:
