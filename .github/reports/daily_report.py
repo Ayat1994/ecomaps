@@ -237,8 +237,7 @@ def main():
             blocks.append(f())
         except Exception as e:  # раздел не должен ронять весь отчёт
             blocks.append(f'⚠️ {f.__name__}: ошибка {type(e).__name__}')
-    text = (f'📊 <b>ECOMAPS — отчёт за {yday.strftime("%d.%m.%Y")}</b>\n\n' + '\n\n'.join(blocks) +
-            '\n\n<i>Google Ads: не подключено</i>')
+    text = (f'📊 <b>ECOMAPS — отчёт за {yday.strftime("%d.%m.%Y")}</b>\n\n' + '\n\n'.join(blocks))
 
     chats = [c.strip() for c in (env('TG_CHAT_ID') or DEFAULT_CHAT).split(',') if c.strip()]
     hint = False
