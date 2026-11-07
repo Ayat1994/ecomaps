@@ -57,14 +57,23 @@ def phone(p):
 
 
 def orders(token):
-    since = (dt.datetime.now(MSK) - dt.timedelta(hours=LOOKBACK_HOURS)).strftime('%Y-%m-%d %H:%M:%S')
-    q = urllib.parse.urlencode({'filter': f'created>={since}', 'expand': 'agent', 'limit': 100, 'order': 'created,asc'})
-    st, txt = http(f'https://api.moysklad.ru/api/remap/1.2/entity/customerorder?{q}',
-                   headers={'Authorization': f'Bearer {token}'})
-    if st != 200:
-        print('МойСклад: ошибка', st)
-        sys.exit(1)
-    return json.loads(txt).get('rows', [])
+    since = env('SINCE')  # ГГГГ-ММ-ДД — выгрузить всё начиная с этой даты (разовая выгрузка)
+    since = f'{since} 00:00:00' if since else \
+        (dt.datetime.now(MSK) - dt.timedelta(hours=LOOKBACK_HOURS)).strftime('%Y-%m-%d %H:%M:%S')
+    rows, offset = [], 0
+    while True:
+        q = urllib.parse.urlencode({'filter': f'created>={since}', 'expand': 'agent', 'limit': 100,
+                                    'offset': offset, 'order': 'created,asc'})
+        st, txt = http(f'https://api.moysklad.ru/api/remap/1.2/entity/customerorder?{q}',
+                       headers={'Authorization': f'Bearer {token}'})
+        if st != 200:
+            print('МойСклад: ошибка', st)
+            sys.exit(1)
+        page = json.loads(txt).get('rows', [])
+        rows += page
+        if len(page) < 100:
+            return rows
+        offset += 100
 
 
 def main():
@@ -92,20 +101,22 @@ def main():
     print(f'Заказов к отправке: {len(events)}, пропущено без телефона/суммы: {skipped}')
     if not events:
         return
-    payload = {'data': events}
-    if env('META_TEST_CODE'):
-        payload['test_event_code'] = env('META_TEST_CODE')
-    st, txt = http(f'https://graph.facebook.com/v21.0/{PIXEL}/events?access_token={urllib.parse.quote(capi)}',
-                   'POST', data=payload)
-    try:
-        res = json.loads(txt)
-    except Exception:
-        res = {}
-    if st != 200:
-        print('Meta: ошибка', st, (res.get('error') or {}).get('message', '')[:200])
-        sys.exit(1)
-    print('Meta приняла событий:', res.get('events_received'))
-
+    got = 0
+    for i in range(0, len(events), 500):  # Meta принимает до 1000 событий за раз
+        payload = {'data': events[i:i + 500]}
+        if env('META_TEST_CODE'):
+            payload['test_event_code'] = env('META_TEST_CODE')
+        st, txt = http(f'https://graph.facebook.com/v21.0/{PIXEL}/events?access_token={urllib.parse.quote(capi)}',
+                       'POST', data=payload)
+        try:
+            res = json.loads(txt)
+        except Exception:
+            res = {}
+        if st != 200:
+            print('Meta: ошибка', st, (res.get('error') or {}).get('message', '')[:200])
+            sys.exit(1)
+        got += res.get('events_received') or 0
+    print('Meta приняла событий:', got)
 
 if __name__ == '__main__':
     main()

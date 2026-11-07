@@ -9,6 +9,10 @@ on:
         description: 'Код тестовых событий из Events Manager (для проверки, необязательно)'
         required: false
         default: ''
+      since:
+        description: 'Разовая выгрузка: все заказы начиная с даты ГГГГ-ММ-ДД (необязательно)'
+        required: false
+        default: ''
       hours:
         description: 'За сколько часов взять заказы (по умолчанию 3)'
         required: false
@@ -30,5 +34,6 @@ jobs:
           MOYSKLAD_TOKEN: ${{ secrets.MOYSKLAD_TOKEN }}
           META_CAPI_TOKEN: ${{ secrets.META_CAPI_TOKEN }}
           META_TEST_CODE: ${{ inputs.test_code }}
+          SINCE: ${{ inputs.since }}
           LOOKBACK_HOURS: ${{ inputs.hours }}
         run: python3 .github/reports/meta_sales.py
