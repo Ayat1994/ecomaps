@@ -133,12 +133,17 @@ def meta():
             d = d[0]
             acts = {a['action_type']: float(a['value']) for a in d.get('actions', [])}
             msgs = acts.get('onsite_conversion.messaging_conversation_started_7d', 0)
-            leads = sum(acts.get(k, 0) for k in ('lead', 'offsite_conversion.fb_pixel_lead', 'offsite_conversion.fb_pixel_contact', 'contact'))
+            # лиды внутри Meta: лид-форма в Instagram/Facebook или чат, отмеченный как «лид»
+            meta_leads = acts.get('onsite_conversion.lead_grouped', acts.get('onsite_conversion.lead', 0))
+            # заявки с нашего сайта — события пикселя Meta на ecomaps.kz
+            leads = sum(acts.get(k, 0) for k in ('offsite_conversion.fb_pixel_lead', 'offsite_conversion.fb_pixel_contact'))
             cur = {'KZT': '₸', 'USD': '$', 'RUB': '₽'}.get(d.get('account_currency', 'KZT'), d.get('account_currency', ''))
             line = (f'{label}: показы {num(d.get("impressions", 0))} · охват {num(d.get("reach", 0))} · '
                     f'клики {num(d.get("clicks", 0))} · расход {money(d.get("spend", 0), cur)}')
             if msgs:
                 line += f' · переписки {num(msgs)}'
+            if meta_leads:
+                line += f' · лиды в Meta {num(meta_leads)}'
             if leads:
                 line += f' · заявки с сайта {num(leads)}'
             if env('META_DEBUG'):
