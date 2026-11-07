@@ -172,6 +172,8 @@ def direct():
         if st != 200:
             if 'не подключен к Яндекс.Директу' in txt:
                 return '🟡 <b>Яндекс Директ</b>\nне подключено: у логина Яндекса нет аккаунта Директа'
+            if 'заявку на доступ' in txt:
+                return '🟡 <b>Яндекс Директ</b>\nреклама не запущена · ждём одобрения доступа к статистике'
             out.append(f'{label}: {err(st, txt)}')
             continue
         lines = [l for l in txt.strip().split('\n') if l]
@@ -207,36 +209,38 @@ def metrika():
         st, _, t = http('https://api-metrika.yandex.net/stat/v1/data?' + urllib.parse.urlencode(q), headers=h)
         return json.loads(t) if st == 200 else None
 
-    out = ['🌐 <b>Сайт ecomaps.kz (Метрика)</b>']
+    # ecomaps.kz/whatsapp — страница-распределитель номеров, на неё ведёт ссылка из шапки Instagram.
+    # Визит, НАЧАВШИЙСЯ с /whatsapp, — переход из шапки; остальные визиты — сайт.
+    IG = "ym:s:startURLPath=~'^/whatsapp/?$'"
+    SITE = "ym:s:startURLPath!~'^/whatsapp/?$'"
+    wa = [i for i, g in enumerate(gids) if goals[g] == 'Переход в WhatsApp']
+    wi = 2 + wa[0] if wa else None
+    site_g = [(i, g) for i, g in enumerate(gids) if goals[g].startswith('Сайт:') and 'WhatsApp' not in goals[g]]
+
+    out = ['🌐 <b>Сайт ecomaps.kz</b>']
     for label, d1 in (('вчера', yday), ('7 дней', week0)):
-        tot = get(d1)
-        if not tot:
+        r = get(d1, filters=SITE)
+        if not r:
             out.append(f'{label}: ошибка API')
             continue
-        t = tot['totals']
-        parts = [f'визиты {num(t[0])}', f'посетители {num(t[1])}']
-        parts += [f'{esc(goals[g].replace("Сайт: ", ""))} {num(v)}' for g, v in zip(gids, t[2:])]
+        t = r['totals']
+        parts = [f'визиты {num(t[0])}']
+        if wi is not None:
+            parts.append(f'перешли в WhatsApp {num(t[wi])}')
+        parts += [f'{esc(goals[g].replace("Сайт: ", ""))} {num(t[2 + i])}' for i, g in site_g]
         out.append(f'{label}: ' + ' · '.join(parts))
-    # Переходы в WhatsApp: цель «Переход в WhatsApp» = открытие ecomaps.kz/whatsapp.
-    # Визит, который НАЧАЛСЯ со страницы /whatsapp, — прямой переход по ссылке (шапка Instagram);
-    # визит, начавшийся на страницах сайта, — человек сначала смотрел сайт.
-    wa_ids = [i for i, g in enumerate(gids) if goals[g] == 'Переход в WhatsApp']
-    if wa_ids:
-        wi = 2 + wa_ids[0]
-        groups = (('📲 Instagram (ссылка в шапке)', "ym:s:startURLPath=~'^/whatsapp/?$'"),
-                  ('🖥 С сайта ecomaps.kz', "ym:s:startURLPath!~'^/whatsapp/?$'"))
-        out.append('\n<b>Переходы в WhatsApp</b> (вчера / 7 дней):')
-        for label, flt in groups:
-            vals = []
-            for d1 in (yday, week0):
-                r = get(d1, filters=flt)
-                vals.append(num(r['totals'][wi]) if r else '?')
-            out.append(f'{label}: {vals[0]} / {vals[1]}')
-            src = get(yday, 'ym:s:lastsignUTMSource', 5, flt)
-            rows = [x for x in (src or {}).get('data', []) if x['metrics'][wi]]
-            if len(rows) > 1 or (rows and rows[0]['dimensions'][0].get('name')):
-                out.append('  вчера по источникам: ' + ', '.join(
-                    f"{esc(x['dimensions'][0].get('name') or 'без метки')} {num(x['metrics'][wi])}" for x in rows))
+    src = get(yday, 'ym:s:lastsignUTMSource', 5, SITE)
+    rows = [x for x in (src or {}).get('data', []) if x['metrics'][0]]
+    if rows:
+        out.append('  вчера откуда пришли: ' + ', '.join(
+            f"{esc(x['dimensions'][0].get('name') or 'без метки')} {num(x['metrics'][0])}" for x in rows))
+
+    if wi is not None:
+        vals = []
+        for d1 in (yday, week0):
+            r = get(d1, filters=IG)
+            vals.append(num(r['totals'][wi]) if r else '?')
+        out.append(f'\n📲 <b>Ссылка в шапке Instagram → WhatsApp</b>\nвчера {vals[0]} · 7 дней {vals[1]}')
     return '\n'.join(out)
 
 
