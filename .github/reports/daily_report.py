@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ежедневный отчёт ECOMAPS в Telegram: реклама в ChatGPT, Meta, Яндекс Директ и Яндекс Метрика.
+"""Ежедневный отчёт ECOMAPS (по понедельникам — ещё и отдельный за неделю) в Telegram: реклама в ChatGPT, Meta, Яндекс Директ и Яндекс Метрика.
 
 Ключи берутся из секретов GitHub (Settings → Secrets and variables → Actions):
   TG_TOKEN            — токен бота от @BotFather (обязательно)
@@ -18,6 +18,9 @@ TZ = dt.timezone(dt.timedelta(hours=5))  # Астана / Алматы
 today = dt.datetime.now(TZ).date()
 yday = today - dt.timedelta(days=1)
 week0 = today - dt.timedelta(days=7)
+DAY = [('вчера', yday, 'yesterday', 'YESTERDAY')]
+WEEK = [('за неделю', week0, 'last_7d', 'LAST_7_DAYS')]
+PER = DAY  # текущий период отчёта (меняется в main)
 YM_COUNTER = os.environ.get('YM_COUNTER', '103848088')
 DEFAULT_CHAT = '271851854'  # личный чат владельца с ботом @ecomaps_ads_report_bot
 
@@ -74,7 +77,7 @@ def openai_ads():
     if not key:
         return '🤖 <b>Реклама в ChatGPT</b>\nне подключено (нет OPENAI_ADS_API_KEY)'
     out = ['🤖 <b>Реклама в ChatGPT</b>']
-    for label, since in (('вчера', yday), ('7 дней', week0)):
+    for label, since, _, _ in PER:
         q = [('aggregation_level', 'campaign'), ('time_granularity', 'none'),
              ('time_ranges[]', json.dumps({'type': 'date_range', 'since': since.isoformat(),
                                            'until': yday.isoformat(), 'timezone': 'Asia/Aqtobe'}))]
@@ -113,7 +116,7 @@ def meta():
     any_rows = False
     for acc in accs:
         lines = []
-        for label, preset in (('вчера', 'yesterday'), ('7 дней', 'last_7d')):
+        for label, _, preset, _ in PER:
             q = urllib.parse.urlencode({'date_preset': preset, 'level': 'account', 'access_token': tok,
                                         'fields': 'spend,impressions,reach,clicks,actions,account_currency'})
             st, _, txt = http(f'https://graph.facebook.com/v21.0/act_{acc}/insights?{q}')
@@ -143,7 +146,7 @@ def meta():
             any_rows = True
             out.append(f'<i>{esc(META_ACCOUNTS.get(acc, acc))}</i>\n' + '\n'.join(lines))
     if not any_rows:
-        out.append('за 7 дней показов не было')
+        out.append('показов не было')
     return '\n'.join(out)
 
 
@@ -158,9 +161,9 @@ def direct():
     if env('DIRECT_CLIENT_LOGIN'):
         h['Client-Login'] = env('DIRECT_CLIENT_LOGIN')
     out = ['🟡 <b>Яндекс Директ</b>']
-    for label, rng in (('вчера', 'YESTERDAY'), ('7 дней', 'LAST_7_DAYS')):
+    for label, _, _, rng in PER:
         body = {'params': {'SelectionCriteria': {}, 'FieldNames': ['Impressions', 'Clicks', 'Cost'],
-                           'ReportName': f'tg-{label}-{today.isoformat()}', 'ReportType': 'ACCOUNT_PERFORMANCE_REPORT',
+                           'ReportName': f'tg-{rng}-{today.isoformat()}', 'ReportType': 'ACCOUNT_PERFORMANCE_REPORT',
                            'DateRangeType': rng, 'Format': 'TSV', 'IncludeVAT': 'YES', 'IncludeDiscount': 'NO'}}
         txt, st = '', 0
         for _ in range(12):
@@ -218,7 +221,7 @@ def metrika():
     site_g = [(i, g) for i, g in enumerate(gids) if goals[g].startswith('Сайт:') and 'WhatsApp' not in goals[g]]
 
     out = ['🌐 <b>Сайт ecomaps.kz</b>']
-    for label, d1 in (('вчера', yday), ('7 дней', week0)):
+    for label, d1, _, _ in PER:
         r = get(d1, filters=SITE)
         if not r:
             out.append(f'{label}: ошибка API')
@@ -229,18 +232,18 @@ def metrika():
             parts.append(f'перешли в WhatsApp {num(t[wi])}')
         parts += [f'{esc(goals[g].replace("Сайт: ", ""))} {num(t[2 + i])}' for i, g in site_g]
         out.append(f'{label}: ' + ' · '.join(parts))
-    src = get(yday, 'ym:s:lastsignUTMSource', 5, SITE)
+    src = get(PER[0][1], 'ym:s:lastsignUTMSource', 5, SITE)
     rows = [x for x in (src or {}).get('data', []) if x['metrics'][0]]
     if rows:
-        out.append('  вчера откуда пришли: ' + ', '.join(
+        out.append('  откуда пришли: ' + ', '.join(
             f"{esc(x['dimensions'][0].get('name') or 'без метки')} {num(x['metrics'][0])}" for x in rows))
 
     if wi is not None:
         vals = []
-        for d1 in (yday, week0):
+        for _, d1, _, _ in PER:
             r = get(d1, filters=IG)
             vals.append(num(r['totals'][wi]) if r else '?')
-        out.append(f'\n📲 <b>Ссылка в шапке Instagram → WhatsApp</b>\nвчера {vals[0]} · 7 дней {vals[1]}')
+        out.append(f'\n📲 <b>Ссылка в шапке Instagram → WhatsApp</b>\n{PER[0][0]}: {vals[0]}')
     return '\n'.join(out)
 
 
@@ -249,13 +252,22 @@ def main():
     if not tg:
         print('TG_TOKEN не задан')
         sys.exit(1)
-    blocks = []
-    for f in (openai_ads, meta, direct, metrika):
-        try:
-            blocks.append(f())
-        except Exception as e:  # раздел не должен ронять весь отчёт
-            blocks.append(f'⚠️ {f.__name__}: ошибка {type(e).__name__}')
-    text = (f'📊 <b>ECOMAPS — отчёт за {yday.strftime("%d.%m.%Y")}</b>\n\n' + '\n\n'.join(blocks))
+    global PER
+    texts = []
+    periods = [('day', DAY)]
+    if today.weekday() == 0 or env('REPORT_WEEK'):  # по понедельникам — ещё и отчёт за неделю
+        periods.append(('week', WEEK))
+    for kind, per in periods:
+        PER = per
+        blocks = []
+        for f in (openai_ads, meta, direct, metrika):
+            try:
+                blocks.append(f())
+            except Exception as e:  # раздел не должен ронять весь отчёт
+                blocks.append(f'⚠️ {f.__name__}: ошибка {type(e).__name__}')
+        title = (f'📊 <b>ECOMAPS — отчёт за {yday.strftime("%d.%m.%Y")}</b>' if kind == 'day' else
+                 f'📅 <b>ECOMAPS — отчёт за неделю {week0.strftime("%d.%m")}–{yday.strftime("%d.%m.%Y")}</b>')
+        texts.append(title + '\n\n' + '\n\n'.join(blocks))
 
     chats = [c.strip() for c in (env('TG_CHAT_ID') or DEFAULT_CHAT).split(',') if c.strip()]
     hint = False
@@ -281,11 +293,12 @@ def main():
         sys.exit(1)
     ok = 0
     for cid in chats:
+      for text in texts:
         msg = text + (f'\n\n🔑 chat_id этого чата: <code>{cid}</code> — добавьте его в секрет TG_CHAT_ID' if hint else '')
         st, _, _ = http(f'https://api.telegram.org/bot{tg}/sendMessage', 'POST', {'Content-Type': 'application/json'},
                         {'chat_id': cid, 'text': msg, 'parse_mode': 'HTML', 'disable_web_page_preview': True})
         ok += st == 200
-    print(f'Отправлено в {ok} из {len(chats)} чатов')
+    print(f'Отправлено сообщений: {ok} из {len(chats) * len(texts)}')
     sys.exit(0 if ok else 1)
 
 

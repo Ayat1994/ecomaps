@@ -2,8 +2,13 @@ name: Ежедневный отчёт в Telegram
 
 on:
   schedule:
-    - cron: '17 3 * * *'   # каждый день в 08:17 по Астане
-  workflow_dispatch: {}      # кнопка «Run workflow» для ручного запуска
+    - cron: '17 3 * * *'   # каждый день в 08:17 по Астане (в понедельник — ещё и отчёт за неделю)
+  workflow_dispatch:         # кнопка «Run workflow» для ручного запуска
+    inputs:
+      week:
+        description: 'Отправить и отчёт за неделю'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -25,4 +30,5 @@ jobs:
           META_AD_ACCOUNT: ${{ secrets.META_AD_ACCOUNT }}
           YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
           DIRECT_CLIENT_LOGIN: ${{ secrets.DIRECT_CLIENT_LOGIN }}
+          REPORT_WEEK: ${{ inputs.week && '1' || '' }}
         run: python3 .github/reports/daily_report.py
