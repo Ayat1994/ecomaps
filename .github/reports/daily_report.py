@@ -31,7 +31,9 @@ def http(url, method='GET', headers=None, data=None, timeout=60):
     body = None
     if data is not None:
         body = data if isinstance(data, bytes) else json.dumps(data).encode()
-    req = urllib.request.Request(url, data=body, method=method, headers=headers or {})
+    h = {'User-Agent': 'ecomaps-daily-report/1.0 (+https://ecomaps.kz)', 'Accept': 'application/json'}
+    h.update(headers or {})
+    req = urllib.request.Request(url, data=body, method=method, headers=h)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.status, dict(r.headers), r.read().decode('utf-8', 'replace')
@@ -168,6 +170,8 @@ def direct():
                 continue
             break
         if st != 200:
+            if 'не подключен к Яндекс.Директу' in txt:
+                return '🟡 <b>Яндекс Директ</b>\nне подключено: у логина Яндекса нет аккаунта Директа'
             out.append(f'{label}: {err(st, txt)}')
             continue
         lines = [l for l in txt.strip().split('\n') if l]
