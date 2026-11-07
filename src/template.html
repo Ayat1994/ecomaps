@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="{{htmllang}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{desc}}">
+<meta property="og:title" content="{{og_title}}">
+<meta property="og:description" content="{{desc}}">
+<meta property="og:image" content="https://ecomaps.kz/img/hero-wide.jpg">
+<meta property="og:url" content="https://ecomaps.kz/{{path}}">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ecomaps.kz/{{path}}">
+{{hreflangs}}
+<link rel="icon" type="image/png" href="{{P}}img/favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMT7JD949"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMMT7JD949');</script>
+<script>/* Яндекс Метрика с вебвизором (тот же счётчик, что на /whatsapp) */
+var YM_ID={{ym_id}};(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id='+YM_ID,'ym');
+ym(YM_ID,'init',{webvisor:true,clickmap:true,trackLinks:true,accurateTrackBounce:true});
+/* Meta Pixel (Facebook/Instagram реклама): впишите ID в src/build.py → META_PIXEL_ID */
+var META_PIXEL_ID='{{meta_pixel}}';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',META_PIXEL_ID);fbq('track','PageView');}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{P}}assets/style.css">
+<style>.hero-bg{background-image:url({{P}}img/{{hero_img}})}.final:before{background-image:url({{P}}img/g3.jpg)}</style>
+</head>
+<body data-mode="{{mode}}">
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1.1 4 1.6 6.1 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.3-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.4 9.8 10.2 5 16 5s10.6 4.8 10.6 10.6S21.8 26.2 16 26.2zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></symbol>
+</svg>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="ECOMAPS"><img src="{{P}}img/logo-white.png" alt="ECOMAPS — {{descriptor}}" width="70" height="74"></a>
+    <nav class="menu">
+      <a href="#catalog">{{nav_catalog}}</a>
+      <a href="#services">{{nav_services}}</a>
+      <a href="#calc">{{nav_calc}}</a>
+      <a href="#trust">{{nav_trust}}</a>
+      <a href="#works">{{nav_works}}</a>
+      <a href="#faq">{{nav_faq}}</a>
+    </nav>
+    <div class="hdr-r">
+      <div class="lang">{{langlinks}}</div>
+      <a class="phone js-wa" href="https://ecomaps.kz/whatsapp" data-place="phone" data-choose>+7 776 297 92 76<small>{{phone_sub}}</small></a>
+      <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="header"><svg><use href="#wa"/></svg><span>WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="{{hero_alt}}"></div>
+  <div class="wrap">
+    <span class="badge reveal"><i>{{badge_tag}}</i> {{badge}}</span>
+    <h1 class="reveal">{{h1a}} <em>{{h1b}}</em></h1>
+    <p class="lead reveal">{{hero_lead}}</p>
+    <ul class="checks reveal">
+      <li>{{check1}}</li>
+      <li>{{check2}}</li>
+      <li>{{check3}}</li>
+    </ul>
+    <div class="cta reveal">
+      <a class="btn btn-gold" href="#calc">{{btn_calc}}</a>
+      <a class="btn btn-line js-wa" href="https://ecomaps.kz/whatsapp" data-place="hero"><svg><use href="#wa"/></svg>{{btn_wa}}</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>8+</b><span>{{stat1}}</span></div>
+      <div class="stat"><b>15 000+</b><span>{{stat2}}</span></div>
+      <div class="stat"><b>{{stat3b}}</b><span>{{stat3}}</span></div>
+      <div class="stat"><b>63K</b><span>{{stat4}}</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="logos" id="clients">
+  <div class="lbl">{{trust}}</div>
+  <div class="track" id="track"></div>
+</div>
+
+<section id="catalog">
+  <div class="wrap">
+    <span class="kicker">{{nav_catalog}}</span>
+    <h2>{{cat_h_a}} <span class="t">{{cat_h_b}}</span></h2>
+    <p class="sub">{{cat_sub}}</p>
+    <nav class="modes">
+      <a class="md" data-set="world" href="{{href_world}}#catalog"><img src="{{P}}img/tab-world.jpg" alt=""><span>🌍 {{tab_world}}</span></a>
+      <a class="md" data-set="kz" href="{{href_kz}}#catalog"><img src="{{P}}img/kz/k-phys.jpg" alt=""><span>🇰🇿 {{tab_kz}}</span></a>
+      <a class="md" data-set="biz" href="{{href_biz}}#catalog"><img src="{{P}}img/mirrors/mirrors-cover.jpg" alt=""><span>🏢 {{tab_biz}}</span></a>
+    </nav>
+
+    <div class="pane" data-m="world">
+      <div class="ph"><img src="{{P}}img/hero.jpg" alt="{{world_h}}" loading="lazy"></div>
+      <div class="tx">
+        <h3>{{world_h}}</h3><p>{{world_p}}</p>
+        <ul><li>{{world_l1}}</li><li>{{world_l2}}</li><li>{{world_l3}}</li></ul>
+        <div class="chips"><span>150 × 87 cm</span><span>200 × 115 cm</span><span>250 × 145 cm</span><span>{{own_size}}</span></div>
+        <a class="btn btn-gold" href="#calc">{{btn_calc}}</a>
+      </div>
+    </div>
+    <div class="pane" data-m="kz">
+      <div class="ph"><img src="{{P}}img/kz/k-navy.jpg" alt="{{kz_h}}" loading="lazy"></div>
+      <div class="tx">
+        <h3>{{kz_h}}</h3><p>{{kz_p}}</p>
+        <ul><li>{{kz_l1}}</li><li>{{kz_l2}}</li><li>{{kz_l3}}</li></ul>
+        <a class="btn btn-gold" href="#calc">{{btn_calc}}</a>
+      </div>
+    </div>
+    <div class="pane" data-m="biz">
+      <div class="ph"><img src="{{P}}img/panels/fairies.jpg" alt="{{biz_h}}" loading="lazy"></div>
+      <div class="tx">
+        <h3>{{biz_h}}</h3><p>{{biz_p}}</p>
+        <ul><li>{{biz_l1}}</li><li>{{biz_l2}}</li><li>{{biz_l3}}</li></ul>
+        <div class="chips"><span>{{sv2_h}}</span><span>{{sv4_h}}</span><span>{{sv3_h}}</span><span>{{chip_maps}}</span></div>
+        <a class="btn btn-gold" href="#calc">{{btn_calc}}</a>
+      </div>
+    </div>
+
+    <h3 class="h3s">{{models_h}}</h3>
+    <div class="models" id="models"></div>
+  </div>
+</section>
+
+<section class="relief" id="relief" data-m="kz biz">
+  <div class="wrap">
+    <div class="rl">
+      <div>
+        <span class="kicker" style="color:var(--gold)">{{rel_kicker}}</span>
+        <h2>{{rel_h_a}} <span class="t">{{rel_h_b}}</span></h2>
+        <p class="sub">{{rel_p}}</p>
+        <ul class="rl-l"><li>{{rel_l1}}</li><li>{{rel_l2}}</li><li>{{rel_l3}}</li><li>{{rel_l4}}</li></ul>
+        <a class="btn btn-gold js-wa" href="https://ecomaps.kz/whatsapp" data-place="relief">{{rel_btn}}</a>
+      </div>
+      <div class="rl-g">
+        <img class="big" src="{{P}}img/relief/r3019.jpg" alt="{{rel_h_a}} {{rel_h_b}}" loading="lazy">
+        <img src="{{P}}img/relief/r3021.jpg" alt="{{rel_alt}}" loading="lazy">
+        <img src="{{P}}img/relief/r3022.jpg" alt="{{rel_alt}}" loading="lazy">
+        <img src="{{P}}img/relief/r3020.jpg" alt="{{rel_alt}}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gift-sec" id="gifts" data-m="biz">
+  <div class="wrap">
+    <span class="kicker">{{gift_kicker}}</span>
+    <h2>{{gift_h_a}} <span class="t">{{gift_h_b}}</span></h2>
+    <p class="sub">{{gift_p}}</p>
+    <div class="gal" id="giftGal"></div>
+    <h3 class="h3s">{{indiv_h}}</h3>
+    <div class="gal" id="indivGal"></div>
+  </div>
+</section>
+
+<section class="svc-sec" id="services">
+  <div class="wrap">
+    <span class="kicker" data-m="world kz">{{svc_kicker}}</span><span class="kicker" data-m="biz">{{tab_biz}}</span>
+    <h2 data-m="world kz">{{svc_h_a}} <span class="t">{{svc_h_b}}</span></h2><h2 data-m="biz">{{svcb_h_a}} <span class="t">{{svcb_h_b}}</span></h2>
+    <p class="sub">{{svc_sub}}</p>
+    <div class="svc">
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/mirrors/mirrors-cover.jpg" alt="{{sv4_h}}" loading="lazy"><span class="new">{{new_lbl}}</span></div><div class="bd"><h3>{{sv4_h}}</h3><p>{{sv4_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-mirrors">{{sv_more}} →</a></div></div>
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/services/panels.jpg" alt="{{sv2_h}}" loading="lazy"></div><div class="bd"><h3>{{sv2_h}}</h3><p>{{sv2_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-panels">{{sv_more}} →</a></div></div>
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/services/painting.jpg" alt="{{sv3_h}}" loading="lazy"></div><div class="bd"><h3>{{sv3_h}}</h3><p>{{sv3_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-paintings">{{sv_more}} →</a></div></div>
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/services/interior.jpg" alt="{{sv1_h}}" loading="lazy"></div><div class="bd"><h3>{{sv1_h}}</h3><p>{{sv1_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-interior">{{sv_more}} →</a></div></div>
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/services/neon.jpg" alt="{{sv5_h}}" loading="lazy"></div><div class="bd"><h3>{{sv5_h}}</h3><p>{{sv5_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-neon">{{sv_more}} →</a></div></div>
+      <div class="sv reveal"><div class="im"><img src="{{P}}img/services/clock.jpg" alt="{{sv6_h}}" loading="lazy"></div><div class="bd"><h3>{{sv6_h}}</h3><p>{{sv6_p}}</p><a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="svc-clock">{{sv_more}} →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-sec" id="calc">
+  <div class="wrap">
+    <div class="calc-in">
+      <span class="kicker" style="color:var(--gold)">{{calc_kicker}}</span>
+      <h2>{{calc_h_a}} <span class="t">{{calc_h_b}}</span></h2>
+      <div class="calc2">
+        <div class="row"><span class="lbl">{{q1}}</span><div class="seg" data-k="type">
+          {{calc_types}}
+        </div></div>
+        <div class="row"><span class="lbl">{{q2}}</span><div class="seg" data-k="size">
+          <button>{{s_small}}<small class="cm">150×87</small></button><button class="on">{{s_mid}}<small class="cm">200×115</small></button><button>{{s_big}}<small class="cm">250×145</small></button><button>{{own_size}}</button>
+        </div></div>
+        <div class="row"><span class="lbl">{{q3}}</span><div class="seg" data-k="light">
+          <button class="on">{{l_yes}}</button><button>{{l_no}}</button>
+        </div></div>
+        <div class="go">
+          <p>🎁 {{res_gift}}</p>
+          <a class="btn btn-wa js-wa" id="sendCalc" href="https://ecomaps.kz/whatsapp" data-place="calc"><svg><use href="#wa"/></svg>{{res_btn}}</a>
+        </div>
+      </div>
+      <p class="calc-note">{{calc_note}}</p>
+    </div>
+  </div>
+</section>
+
+<section id="geo">
+  <div class="wrap">
+    <span class="kicker">{{geo_kicker}}</span>
+    <h2>{{geo_h_a}} <span class="t">{{geo_h_b}}</span></h2>
+    <div class="geo" style="margin-top:40px">
+      <div>
+        <p class="sub" style="margin:0 0 24px">{{geo_sub}}</p>
+        <div class="cities" id="cities"></div>
+      </div>
+      <div class="geo-card reveal">
+        <h3>{{geo_card_a}} <span id="cityName">{{geo_default_city}}</span></h3>
+        <ul><li>{{geo_l1}}</li><li>{{geo_l2}}</li><li>{{geo_l3}}</li><li>{{geo_l4}}</li></ul>
+        <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="geo"><svg><use href="#wa"/></svg>{{geo_btn}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works" style="padding-top:0">
+  <div class="wrap">
+    <div class="car-head">
+      <div><span class="kicker">{{nav_works}}</span><h2><span data-m="world">{{works_h_world}}</span><span data-m="kz">{{works_h_kz}}</span><span data-m="biz">{{works_h_biz}}</span> <span class="t">{{works_h_b}}</span></h2></div>
+      <div class="arrows" data-car="carWorks"><button aria-label="←">←</button><button aria-label="→">→</button></div>
+    </div>
+    <div class="car" id="carWorks"></div>
+  </div>
+</section>
+
+<section class="trust-sec" id="trust">
+  <div class="wrap">
+    <span class="kicker">{{why_kicker}}</span>
+    <h2>{{why_h_a}} <span class="t">{{why_h_b}}</span></h2>
+    <div class="why">
+      <div class="wy reveal"><div class="n">8</div><h3>{{why1_h}}</h3><p>{{why1_p}}</p></div>
+      <div class="wy navy reveal"><img class="mik" src="{{P}}img/trust/made-in-kz.png" alt="{{why2_h}}"><h3>{{why2_h}}</h3><p>{{why2_p}}</p></div>
+      <div class="wy dark reveal"><div class="n">®</div><h3>{{why3_h}}</h3><p>{{why3_p}}</p></div>
+      <div class="wy reveal"><div class="n">🏆</div><h3>{{why4_h}}</h3><p>{{why4_p}}</p></div>
+    </div>
+    <div class="docs">
+      <a class="cert reveal" href="{{P}}img/trust/trademark.jpg" target="_blank" rel="noopener" data-track="cert_open">
+        <img src="{{P}}img/trust/trademark.jpg" alt="{{cert_h}}" loading="lazy">
+        <div><b>{{cert_h}}</b><p>{{cert_p}}</p><span>{{cert_open}} →</span></div>
+      </a>
+      <div class="buy reveal">
+        <b>{{buy_h}}</b>
+        <p>{{buy_p}}</p>
+        <a class="btn btn-kaspi" href="https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh" target="_blank" rel="noopener" data-track="outbound" data-to="kaspi">Kaspi {{shop}} →</a>
+        <a class="btn btn-om" href="https://omarket.kz/catalog/ecc_uchebnoe_oborudovanie/ecc_demonstracionnye_materialy/nastennye_karty/dekorativnaia-karta-mira-ecomaps-km-nastennaia-100x70x2-sm.html" target="_blank" rel="noopener" data-track="outbound" data-to="omarket">omarket.kz · {{gz}} →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-sec" id="how">
+  <div class="wrap">
+    <span class="kicker">{{how_kicker}}</span>
+    <h2>{{how_h_a}} <span class="t">{{how_h_b}}</span></h2>
+    <div class="steps">
+      <div class="st reveal"><h3>{{st1_h}}</h3><p>{{st1_p}}</p></div>
+      <div class="st reveal"><h3>{{st2_h}}</h3><p>{{st2_p}}</p></div>
+      <div class="st reveal"><h3>{{st3_h}}</h3><p>{{st3_p}}</p></div>
+      <div class="st reveal"><h3>{{st4_h}}</h3><p>{{st4_p}}</p></div>
+    </div>
+    <div class="pay"><span><b>Kaspi</b> Red · 0-0-12 · 0-0-24</span><a href="https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh" target="_blank" rel="noopener" data-track="outbound" data-to="kaspi">{{pay2}} ↗</a><span>{{pay3}}</span><a href="https://omarket.kz/catalog/ecc_uchebnoe_oborudovanie/ecc_demonstracionnye_materialy/nastennye_karty/dekorativnaia-karta-mira-ecomaps-km-nastennaia-100x70x2-sm.html" target="_blank" rel="noopener" data-track="outbound" data-to="omarket">omarket.kz ↗</a></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="kicker">{{faq_kicker}}</span>
+    <h2>{{faq_h_a}} <span class="t">{{faq_h_b}}</span></h2>
+    <div class="faq">
+      <details><summary>{{f1q}}</summary><p>{{f1a}}</p></details>
+      <details><summary>{{f2q}}</summary><p>{{f2a}}</p></details>
+      <details><summary>{{f3q}}</summary><p>{{f3a}}</p></details>
+      <details><summary>{{f4q}}</summary><p>{{f4a}}</p></details>
+      <details><summary>{{f5q}}</summary><p>{{f5a}}</p></details>
+      <details><summary>{{f6q}}</summary><p>{{f6a}} (<a href="https://2gis.kz/astana/geo/70000001057229459" target="_blank" rel="noopener">2GIS</a>)</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--gold)">{{slogan}}</span>
+    <h2>{{final_h}}</h2>
+    <p>{{final_p}}</p>
+    <div class="cta">
+      <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="final"><svg><use href="#wa"/></svg>{{final_btn}}</a>
+      <a class="btn btn-line" href="https://www.instagram.com/ecomaps.kz/" target="_blank" rel="noopener">Instagram @ecomaps.kz</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#top" style="margin-bottom:14px"><img src="{{P}}img/logo-white.png" alt="ECOMAPS" width="84" height="88"></a>
+      {{foot_tag}}<br>{{foot_addr}} · <a href="https://2gis.kz/astana/geo/70000001057229459" target="_blank" rel="noopener">2GIS</a><br>{{tm_line}}<br>© <span id="y">2026</span> ecomaps.kz<br><img class="mik-f" src="{{P}}img/trust/made-in-kz.png" alt="{{why2_h}}" width="120" loading="lazy">
+    </div>
+    <nav>
+      <a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="phone" data-choose>+7 776 297 92 76</a>
+      <a href="mailto:ecomaps.kz@mail.ru">ecomaps.kz@mail.ru</a>
+      <a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="footer">WhatsApp</a>
+      <a href="https://www.instagram.com/ecomaps.kz/" target="_blank" rel="noopener" data-track="outbound" data-to="instagram">Instagram</a>
+      <a href="https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh" target="_blank" rel="noopener" data-track="outbound" data-to="kaspi">Kaspi {{shop}}</a>
+      <a href="https://omarket.kz/catalog/ecc_uchebnoe_oborudovanie/ecc_demonstracionnye_materialy/nastennye_karty/dekorativnaia-karta-mira-ecomaps-km-nastennaia-100x70x2-sm.html" target="_blank" rel="noopener" data-track="outbound" data-to="omarket">omarket.kz</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-box" role="dialog" aria-label="{{sheet_h}}">
+    <button class="sheet-x" aria-label="×">×</button>
+    <b>{{sheet_h}}</b>
+    <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="phone-wa"><svg><use href="#wa"/></svg>{{sheet_wa}}</a>
+    <p class="hint">{{sheet_hint}}</p>
+    <a class="btn btn-gold" href="tel:+77762979276" data-place="phone-call">📞 {{sheet_call}}</a>
+  </div>
+</div>
+
+<div class="modebar" id="modebar" aria-label="{{nav_catalog}}">
+  <a data-set="world" href="{{href_world}}#catalog">🌍 <span class="l">{{tab_world}}</span><span class="s">{{tab_world_s}}</span></a><a data-set="kz" href="{{href_kz}}#catalog">🇰🇿 <span class="l">{{tab_kz}}</span><span class="s">{{tab_kz_s}}</span></a><a data-set="biz" href="{{href_biz}}#catalog">🏢 <span class="l">{{tab_biz}}</span><span class="s">{{tab_biz_s}}</span></a>
+</div>
+
+<a class="fab js-wa" href="https://ecomaps.kz/whatsapp" data-place="fab" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><use href="#wa"/></svg></a>
+
+<script>
+const P='{{P}}', I18N={{jsdata}};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const LANG=document.documentElement.lang;
+
+/* ---------- аналитика: GA4 + Яндекс Метрика (вебвизор) + Meta Pixel ---------- */
+let MODE='world';
+function track(ev,p){p=Object.assign({lang:LANG,mode:MODE},p||{});
+  try{gtag('event',ev,p)}catch(e){}
+  try{if(window.ym&&YM_ID) ym(YM_ID,'reachGoal',ev,p)}catch(e){}
+  try{if(window.fbq){const std={whatsapp_click:'Contact',phone_call:'Contact',calc_submit:'Lead',outbound:'ViewContent'}[ev]; std?fbq('track',std,p):fbq('trackCustom',ev,p)}}catch(e){}
+}
+
+$('#y').textContent=new Date().getFullYear();
+const hdr=$('header'), mb=$('#modebar'), cat=$('#catalog'), fin=$('.final');
+const onS=()=>{hdr.classList.toggle('solid',scrollY>40);
+  const r=cat.getBoundingClientRect(), f=fin.getBoundingClientRect();
+  mb.classList.toggle('show', r.bottom<120 && f.top>innerHeight*.5);};
+addEventListener('scroll',onS,{passive:true});
+
+const logos=[['kazakhtelecom.svg','Kazakhtelecom'],['pres/ktz-v.png','Қазақстан темір жолы'],['pres/nis.png','Nazarbayev Intellectual Schools'],['pres/bigroup.png','BI Group'],['pres/erg.png','ERG'],['pres/astanamotors.png','Astana Motors'],['pres/scat.png','SCAT Airlines'],['otbasy.svg','Otbasy Bank'],['allur.svg','Allur'],['iek.svg','IEK'],['pres/binom.png','BINOM School'],['pres/rfmsh.png','РФМШ'],['pres/spectrum.png','Spectrum International School'],['pres/svoydom.png','Svoy Dom'],['pres/gybrat.png','Gybrat'],['pres/helios.png','Helios']];
+$('#track').innerHTML=[...logos,...logos].map(([f,n])=>`<img src="${P}img/logos/${f}" alt="${n}" loading="lazy">`).join('');
+
+/* ---------- контент по режимам ---------- */
+const C=I18N.cap;
+const card=(k,cls)=>`<figure class="${cls}"><img src="${P}img/${k}.jpg" alt="${C[k]}" loading="lazy"><figcaption>${C[k]}</figcaption></figure>`;
+const MODELS={
+  world:['g1','physical','kids','g7'],
+  kz:['kazakhstan','kz/k-navy','relief/r3019','irere'],
+  biz:['services/panels','mirrors/m3','services/painting','panels/fairies']};
+const WORKS={
+  world:['hero','g3','g2','g4','g5','g6','g8','light','world','detail','install'],
+  kz:['kz/k-phys','irere','kz/k-navy','gift/la','office','kz/k-dark','kz/k-reception','kazakhstan','relief/r3018','kz/k-phys2'],
+  biz:['panels/school-mural','mirrors/m1','panels/fairies','services/poster','panels/space-corridor','mirrors/m4','panels/kids-robot','gift/autopapa','panels/planets','services/interior2','office','gift/la']};
+$('#giftGal').innerHTML=['irere','gift/la','gift/intant','gift/irere2','gift/clock'].map(k=>card(k,'gi')).join('');
+$('#indivGal').innerHTML=['gift/shezhire','mirrors/m3','gift/autopapa','kz/k-reception','panels/school-mural'].map(k=>card(k,'gi')).join('');
+
+function setMode(m){
+  MODE=m;
+  $$('[data-set]').forEach(b=>b.classList.toggle('on',b.dataset.set===m));
+  $('#models').innerHTML=MODELS[m].map(k=>card(k,'mo')).join('');
+  $('#carWorks').innerHTML=WORKS[m].map(k=>card(k,'wk')).join('');
+}
+$$('[data-set]').forEach(b=>b.addEventListener('click',()=>track('mode_select',{to:b.dataset.set,src:b.closest('#modebar')?'bar':'catalog'})));
+
+$$('.arrows').forEach(a=>{const c=document.getElementById(a.dataset.car); const [p,n]=a.querySelectorAll('button'); p.onclick=()=>c.scrollBy({left:-c.clientWidth*.8}); n.onclick=()=>c.scrollBy({left:c.clientWidth*.8});});
+
+/* ---------- калькулятор ---------- */
+function pick(k,i){const bs=$$(`.seg[data-k="${k}"] button`); bs.forEach((x,j)=>x.classList.toggle('on',j===i));}
+const val=k=>{const b=$(`.seg[data-k="${k}"] button.on`); return b?b.firstChild.textContent.trim():''};
+$$('.seg').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return;
+  g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); track('calc_option',{k:g.dataset.k,v:val(g.dataset.k)});}));
+$('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'),size:val('size'),light:val('light')}));
+
+/* ---------- города ---------- */
+$('#cities').innerHTML=I18N.cities.map((c,i)=>`<button class="${i?'':'on'}">${c}</button>`).join('');
+$('#cities').lastElementChild.dataset.other=1;
+$('#cities').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; $$('#cities button').forEach(x=>x.classList.toggle('on',x===b)); $('#cityName').textContent=b.dataset.other?I18N.anyCity:b.textContent; track('city_select',{city:b.textContent});});
+
+/* ---------- телефон: WhatsApp или звонок ---------- */
+const sheet=$('#sheet');
+$$('[data-choose]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();sheet.hidden=false;track('phone_open');}));
+sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet-x')) sheet.hidden=true;});
+$('[data-place="phone-call"]').addEventListener('click',()=>track('phone_call'));
+
+/* ---------- события ---------- */
+document.addEventListener('click',e=>{
+  const w=e.target.closest('.js-wa'); if(w) track('whatsapp_click',{place:w.dataset.place});
+  const t=e.target.closest('[data-track]'); if(t) track(t.dataset.track,{to:t.dataset.to||''});
+});
+$$('details').forEach((d,i)=>d.addEventListener('toggle',()=>{if(d.open) track('faq_open',{q:i+1})}));
+const seen=new Set();
+const sio='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{const id=e.target.id; if(e.isIntersecting&&id&&!seen.has(id)){seen.add(id);track('section_view',{section:id})}}),{threshold:.35}):null;
+$$('main section[id]').forEach(s=>sio&&sio.observe(s));
+const marks=[25,50,75,100], hit=new Set();
+addEventListener('scroll',()=>{const p=(scrollY+innerHeight)/document.documentElement.scrollHeight*100; marks.forEach(m=>{if(p>=m-1&&!hit.has(m)){hit.add(m);track('scroll_depth',{percent:m})}})},{passive:true});
+
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12}):null;
+$$('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+
+/* старые ссылки вида ?m=kz ведут на нужную страницу */
+try{const q=new URLSearchParams(location.search).get('m'); const h={world:'{{href_world}}',kz:'{{href_kz}}',biz:'{{href_biz}}'}[q]; if(q&&q!==document.body.dataset.mode&&h) location.replace(h);}catch(e){}
+setMode(document.body.dataset.mode); onS();
+</script>
+</body>
+</html>
