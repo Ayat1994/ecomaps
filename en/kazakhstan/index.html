@@ -27,7 +27,7 @@ var META_PIXEL_ID='';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/style.css?v=ddba5dd3">
+<link rel="stylesheet" href="../../assets/style.css?v=df70956a">
 <style>.hero-bg{background-image:url(../../img/hero-kz.jpg?v=f3657209)}.final:before{background-image:url(../../img/g3.jpg?v=f3657209)}</style>
 </head>
 <body data-mode="kz">
@@ -314,6 +314,14 @@ var META_PIXEL_ID='';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;
   </div>
 </div>
 
+<div class="lb" id="lb" hidden>
+  <button class="lb-x" aria-label="×">×</button>
+  <button class="lb-nav lb-prev" aria-label="←">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption><span id="lbCap"></span><a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="lightbox"><svg><use href="#wa"/></svg>I want this</a></figcaption></figure>
+  <button class="lb-nav lb-next" aria-label="→">›</button>
+  <div class="lb-n" id="lbN"></div>
+</div>
+
 <div class="modebar" id="modebar" aria-label="Site sections">
   <span class="mb-l">Site sections:</span>
   <a data-set="world" href="../../en/index.html#catalog">🌍 <span class="l">World map</span><span class="s">World maps</span></a><a data-set="kz" href="../../en/kazakhstan/index.html#catalog">🇰🇿 <span class="l">Kazakhstan map</span><span class="s">KZ maps</span></a><a data-set="biz" href="../../en/business/index.html#catalog">🏢 <span class="l">For business</span><span class="s">Business</span></a>
@@ -380,6 +388,20 @@ const sheet=$('#sheet');
 $$('[data-choose]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();sheet.hidden=false;track('phone_open');}));
 sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet-x')) sheet.hidden=true;});
 $('[data-place="phone-call"]').addEventListener('click',()=>track('phone_call'));
+
+
+/* ---------- просмотр фото на весь экран ---------- */
+const lb=$('#lb'), lbImg=$('#lbImg'), lbCap=$('#lbCap'), lbN=$('#lbN'); let lbList=[], lbI=0;
+const GAL='.mo img,.gi img,.wk img,.rl-g img,.pane .ph img,.sv .im img';
+function lbShow(i){lbI=(i+lbList.length)%lbList.length; const im=lbList[lbI]; lbImg.src=im.currentSrc||im.src; const c=im.closest('figure')?.querySelector('figcaption')?.textContent||im.alt||''; lbCap.textContent=c; lbN.textContent=lbList.length>1?(lbI+1)+' / '+lbList.length:''; lb.classList.toggle('one',lbList.length<2);}
+document.addEventListener('click',e=>{const im=e.target.closest(GAL.split(',').map(s=>s.trim()).join(',')); if(!im||im.tagName!=='IMG') return;
+  const box=im.closest('.models,.gal,.car,.rl-g,.pane,.svc')||document.body; lbList=[...box.querySelectorAll('img')].filter(x=>x.offsetParent!==null);
+  lbShow(lbList.indexOf(im)); lb.hidden=false; document.body.style.overflow='hidden'; track('photo_open',{photo:(im.getAttribute('src')||'').split('?')[0]});});
+const lbClose=()=>{lb.hidden=true; document.body.style.overflow='';};
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.closest('.lb-x')) lbClose(); else if(e.target.closest('.lb-prev')) lbShow(lbI-1); else if(e.target.closest('.lb-next')) lbShow(lbI+1);});
+addEventListener('keydown',e=>{if(lb.hidden) return; if(e.key==='Escape') lbClose(); if(e.key==='ArrowLeft') lbShow(lbI-1); if(e.key==='ArrowRight') lbShow(lbI+1);});
+let tx=0; lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50) lbShow(lbI+(d<0?1:-1));},{passive:true});
 
 /* ---------- события ---------- */
 document.addEventListener('click',e=>{
