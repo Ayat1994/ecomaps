@@ -270,6 +270,8 @@ META_PIXEL_ID = ''
 import hashlib
 VER = hashlib.md5(open(os.path.join(ROOT, 'assets', 'style.css'), 'rb').read()).hexdigest()[:8]
 
+IMGV = hashlib.md5(b''.join(open(os.path.join(dp, f), 'rb').read() for dp, _, fs in sorted(os.walk(os.path.join(ROOT, 'img'))) for f in sorted(fs))).hexdigest()[:8]
+
 LANGS = [('ru', 'ru', ''), ('kk', 'kk', 'kz/'), ('en', 'en', 'en/')]
 LABEL = {'ru': 'RU', 'kk': 'ҚАЗ', 'en': 'EN'}
 PAGES = [('world', ''), ('kz', 'kazakhstan/'), ('biz', 'business/')]
@@ -335,6 +337,9 @@ for mode, pp in PAGES:
             if k not in vals: raise KeyError(k)
             return vals[k] if k in RAW else esc(vals[k])
         out = re.sub(r'\{\{(\w+)\}\}', sub, out)
+        # версия картинок: при замене фото браузер сразу загрузит новое
+        out = re.sub(r'(img/[\w/\-]+\.(?:jpg|png|svg))(?!\?)', lambda m: m.group(1) + '?v=' + IMGV, out)
+        out = out.replace('.jpg" alt="${C[k]}"', '.jpg?v=' + IMGV + '" alt="${C[k]}"')
         dst = os.path.join(ROOT, path, 'index.html')
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         open(dst, 'w', encoding='utf-8').write(out)
