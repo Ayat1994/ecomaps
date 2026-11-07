@@ -266,7 +266,7 @@ JS = {
 # Аналитика: Яндекс Метрика уже есть (тот же счётчик, что на /whatsapp).
 # Meta Pixel: создайте в Meta Events Manager и впишите ID сюда, затем пересоберите.
 YM_ID = '103848088'
-META_PIXEL_ID = ''
+META_PIXEL_ID = '576043711342731'
 
 import hashlib
 VER = hashlib.md5(open(os.path.join(ROOT, 'assets', 'style.css'), 'rb').read()).hexdigest()[:8]
