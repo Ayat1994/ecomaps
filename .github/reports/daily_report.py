@@ -6,7 +6,7 @@
   TG_CHAT_ID          — куда слать (необязательно: если пусто, бот шлёт всем, кто ему писал за сутки, и подсказывает chat_id)
   OPENAI_ADS_API_KEY  — ключ API из ads.openai.com → Настройки → API-ключи
   META_TOKEN          — токен Meta с правом ads_read
-  META_AD_ACCOUNT     — ID рекламного аккаунта Meta, например act_1234567890
+  META_AD_ACCOUNT     — необязательно: ID рекламных аккаунтов через запятую (по умолчанию все 3 аккаунта Ecomaps company)
   YANDEX_TOKEN        — OAuth-токен Яндекса (права metrika:read и direct:api)
   DIRECT_CLIENT_LOGIN — логин клиента Директа (только для агентских аккаунтов)
 Если ключа нет, раздел помечается «не подключено», остальные работают.
@@ -86,37 +86,50 @@ def openai_ads():
 
 
 # ---------------- Meta ----------------
+# Рекламные аккаунты бизнеса «Ecomaps company» (ID не секретные). Можно переопределить секретом META_AD_ACCOUNT через запятую.
+META_ACCOUNTS = {'3415680628696876': 'Ecomaps Ads 2', '273020681867232': 'Ecomaps ads', '335569223558023': 'Ecomaps.kz - Аят'}
+
+
 def meta():
-    tok, acc = env('META_TOKEN'), env('META_AD_ACCOUNT')
-    if not (tok and acc):
-        return '📘 <b>Meta (Instagram/Facebook)</b>\nне подключено (нет META_TOKEN / META_AD_ACCOUNT)'
-    if not acc.startswith('act_'):
-        acc = 'act_' + acc
+    tok = env('META_TOKEN')
+    if not tok:
+        return '📘 <b>Meta (Instagram/Facebook)</b>\nне подключено (нет META_TOKEN)'
+    accs = [a.strip().replace('act_', '') for a in (env('META_AD_ACCOUNT') or ','.join(META_ACCOUNTS)).split(',') if a.strip()]
     out = ['📘 <b>Meta (Instagram/Facebook)</b>']
-    for label, preset in (('вчера', 'yesterday'), ('7 дней', 'last_7d')):
-        q = urllib.parse.urlencode({'date_preset': preset, 'level': 'account', 'access_token': tok,
-                                    'fields': 'spend,impressions,reach,clicks,ctr,actions,account_currency'})
-        st, _, txt = http(f'https://graph.facebook.com/v21.0/{acc}/insights?{q}')
-        if st != 200:
-            try:
-                msg = json.loads(txt)['error']['message'][:120]
-            except Exception:
-                msg = ''
-            out.append(f'{label}: ошибка API {st} {esc(msg)}')
-            continue
-        d = (json.loads(txt).get('data') or [{}])
-        d = d[0] if d else {}
-        acts = {a['action_type']: float(a['value']) for a in d.get('actions', [])}
-        msgs = acts.get('onsite_conversion.messaging_conversation_started_7d', 0)
-        leads = acts.get('lead', 0) + acts.get('offsite_conversion.fb_pixel_lead', 0) + acts.get('offsite_conversion.fb_pixel_contact', 0) + acts.get('contact', 0)
-        cur = {'KZT': '₸', 'USD': '$', 'RUB': '₽'}.get(d.get('account_currency', 'KZT'), d.get('account_currency', ''))
-        line = (f'{label}: показы {num(d.get("impressions", 0))} · охват {num(d.get("reach", 0))} · '
-                f'клики {num(d.get("clicks", 0))} · расход {money(d.get("spend", 0), cur)}')
-        if msgs:
-            line += f' · переписки {num(msgs)}'
-        if leads:
-            line += f' · заявки с сайта {num(leads)}'
-        out.append(line)
+    any_rows = False
+    for acc in accs:
+        lines = []
+        for label, preset in (('вчера', 'yesterday'), ('7 дней', 'last_7d')):
+            q = urllib.parse.urlencode({'date_preset': preset, 'level': 'account', 'access_token': tok,
+                                        'fields': 'spend,impressions,reach,clicks,actions,account_currency'})
+            st, _, txt = http(f'https://graph.facebook.com/v21.0/act_{acc}/insights?{q}')
+            if st != 200:
+                try:
+                    msg = json.loads(txt)['error']['message'][:100]
+                except Exception:
+                    msg = ''
+                lines.append(f'{label}: ошибка API {st} {esc(msg)}')
+                continue
+            d = json.loads(txt).get('data') or []
+            if not d:
+                continue
+            d = d[0]
+            acts = {a['action_type']: float(a['value']) for a in d.get('actions', [])}
+            msgs = acts.get('onsite_conversion.messaging_conversation_started_7d', 0)
+            leads = sum(acts.get(k, 0) for k in ('lead', 'offsite_conversion.fb_pixel_lead', 'offsite_conversion.fb_pixel_contact', 'contact'))
+            cur = {'KZT': '₸', 'USD': '$', 'RUB': '₽'}.get(d.get('account_currency', 'KZT'), d.get('account_currency', ''))
+            line = (f'{label}: показы {num(d.get("impressions", 0))} · охват {num(d.get("reach", 0))} · '
+                    f'клики {num(d.get("clicks", 0))} · расход {money(d.get("spend", 0), cur)}')
+            if msgs:
+                line += f' · переписки {num(msgs)}'
+            if leads:
+                line += f' · заявки с сайта {num(leads)}'
+            lines.append(line)
+        if lines:
+            any_rows = True
+            out.append(f'<i>{esc(META_ACCOUNTS.get(acc, acc))}</i>\n' + '\n'.join(lines))
+    if not any_rows:
+        out.append('за 7 дней показов не было')
     return '\n'.join(out)
 
 
