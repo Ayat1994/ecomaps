@@ -27,7 +27,7 @@ var META_PIXEL_ID='';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=ddba5dd3">
 <style>.hero-bg{background-image:url(../img/hero-kz.jpg)}.final:before{background-image:url(../img/g3.jpg)}</style>
 </head>
 <body data-mode="kz">
@@ -100,7 +100,6 @@ var META_PIXEL_ID='';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;
       <div class="tx">
         <h3>Карта мира из дерева</h3><p>Многоуровневая рельефная карта: главный акцент гостиной, спальни, кабинета или детской. Каждая страна — отдельная деталь.</p>
         <ul><li>13 готовых расцветок или ваша</li><li>Тёплая или холодная подсветка</li><li>Надписи на русском, казахском или английском</li></ul>
-        <div class="chips"><span>150 × 87 cm</span><span>200 × 115 cm</span><span>250 × 145 cm</span><span>Свой размер</span></div>
         <a class="btn btn-gold" href="#calc">Рассчитать стоимость</a>
       </div>
     </div>
@@ -315,8 +314,9 @@ var META_PIXEL_ID='';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;
   </div>
 </div>
 
-<div class="modebar" id="modebar" aria-label="Каталог">
-  <a data-set="world" href="../index.html#catalog">🌍 <span class="l">Карта мира</span><span class="s">Мир</span></a><a data-set="kz" href="../kazakhstan/index.html#catalog">🇰🇿 <span class="l">Карта Казахстана</span><span class="s">Казахстан</span></a><a data-set="biz" href="../business/index.html#catalog">🏢 <span class="l">Для бизнеса</span><span class="s">Бизнес</span></a>
+<div class="modebar" id="modebar" aria-label="Разделы сайта">
+  <span class="mb-l">Разделы сайта:</span>
+  <a data-set="world" href="../index.html#catalog">🌍 <span class="l">Карта мира</span><span class="s">Карты мира</span></a><a data-set="kz" href="../kazakhstan/index.html#catalog">🇰🇿 <span class="l">Карта Казахстана</span><span class="s">Карты РК</span></a><a data-set="biz" href="../business/index.html#catalog">🏢 <span class="l">Для бизнеса</span><span class="s">Для бизнеса</span></a>
 </div>
 
 <a class="fab js-wa" href="https://ecomaps.kz/whatsapp" data-place="fab" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><use href="#wa"/></svg></a>
@@ -337,8 +337,8 @@ function track(ev,p){p=Object.assign({lang:LANG,mode:MODE},p||{});
 $('#y').textContent=new Date().getFullYear();
 const hdr=$('header'), mb=$('#modebar'), cat=$('#catalog'), fin=$('.final');
 const onS=()=>{hdr.classList.toggle('solid',scrollY>40);
-  const r=cat.getBoundingClientRect(), f=fin.getBoundingClientRect();
-  mb.classList.toggle('show', r.bottom<120 && f.top>innerHeight*.5);};
+  const h=$('.hero').getBoundingClientRect();
+  mb.classList.toggle('show', h.bottom<90); hdr.classList.toggle('flat', h.bottom<90);};
 addEventListener('scroll',onS,{passive:true});
 
 const logos=[['kazakhtelecom.svg','Kazakhtelecom'],['pres/ktz-v.png','Қазақстан темір жолы'],['pres/nis.png','Nazarbayev Intellectual Schools'],['pres/bigroup.png','BI Group'],['pres/erg.png','ERG'],['pres/astanamotors.png','Astana Motors'],['pres/scat.png','SCAT Airlines'],['otbasy.svg','Otbasy Bank'],['allur.svg','Allur'],['iek.svg','IEK'],['pres/binom.png','BINOM School'],['pres/rfmsh.png','РФМШ'],['pres/spectrum.png','Spectrum International School'],['pres/svoydom.png','Svoy Dom'],['pres/gybrat.png','Gybrat'],['pres/helios.png','Helios']];

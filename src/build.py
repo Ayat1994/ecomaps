@@ -163,12 +163,13 @@ T = {
  'sheet_wa': ['WhatsApp: чат или звонок', 'WhatsApp: чат немесе қоңырау', 'WhatsApp: chat or call'],
  'sheet_hint': ['Откроется чат с менеджером. Чтобы позвонить, нажмите 📞 вверху чата.', 'Менеджермен чат ашылады. Қоңырау шалу үшін чаттың жоғарғы жағындағы 📞 басыңыз.', 'A chat with our manager will open. To call, tap 📞 at the top of the chat.'],
  'sheet_call': ['Обычный звонок', 'Қарапайым қоңырау', 'Regular phone call'],
- 'tab_world_s': ['Мир', 'Әлем', 'World'],
- 'tab_kz_s': ['Казахстан', 'Қазақстан', 'Kazakhstan'],
- 'tab_biz_s': ['Бизнес', 'Бизнес', 'Business'],
+ 'tab_world_s': ['Карты мира', 'Әлем карталары', 'World maps'],
+ 'tab_kz_s': ['Карты РК', 'ҚР карталары', 'KZ maps'],
+ 'tab_biz_s': ['Для бизнеса', 'Бизнеске', 'Business'],
  'chip_maps': ['Карты с логотипом', 'Логотипі бар карталар', 'Maps with your logo'],
  'svcb_h_a': ['Панели, зеркала', 'Панельдер, айналар', 'Panels, mirrors'],
  'svcb_h_b': ['и картины', 'және суреттер', 'and artwork'],
+ 'mb_label': ['Разделы сайта', 'Сайт бөлімдері', 'Site sections'],
  'nav_trust': ['О нас', 'Біз туралы', 'About us'],
  'cat_sub': ['Три направления, у каждого своя страница с моделями, работами и расчётом цены.', 'Үш бағыт, әрқайсысының модельдері, жұмыстары және баға есебі бар өз беті бар.', 'Three lines, each with its own page of models, projects and pricing.'],
  'models_h': ['Популярные модели', 'Танымал модельдер', 'Popular models'],
@@ -266,6 +267,9 @@ JS = {
 YM_ID = '103848088'
 META_PIXEL_ID = ''
 
+import hashlib
+VER = hashlib.md5(open(os.path.join(ROOT, 'assets', 'style.css'), 'rb').read()).hexdigest()[:8]
+
 LANGS = [('ru', 'ru', ''), ('kk', 'kk', 'kz/'), ('en', 'en', 'en/')]
 LABEL = {'ru': 'RU', 'kk': 'ҚАЗ', 'en': 'EN'}
 PAGES = [('world', ''), ('kz', 'kazakhstan/'), ('biz', 'business/')]
@@ -306,7 +310,7 @@ CALC['kz'] = [['Карта РК', 'ҚР картасы', 'Kazakhstan map'], ['Р
 CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
-RAW = ('langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
+RAW = ('ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
        'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img')
 
 for mode, pp in PAGES:
@@ -321,7 +325,7 @@ for mode, pp in PAGES:
         vals = {k: v[i] for k, v in T.items()}
         vals.update({k: v[i] for k, v in PT.get(mode, {}).items()})
         ct = ''.join(f'<button{" class=\"on\"" if n == CALC_DEF[mode] else ""}>{esc(x[i])}</button>' for n, x in enumerate(CALC[mode]))
-        vals.update(ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
+        vals.update(ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
                     **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
         js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}

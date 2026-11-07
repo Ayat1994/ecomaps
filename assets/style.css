@@ -371,3 +371,13 @@ body[data-mode=biz] #services{order:4}body[data-mode=biz] #gifts{order:5}body[da
 .promo i{font-style:normal;background:var(--tan);color:var(--navy-dd);border-radius:999px;padding:3px 10px;font-weight:900;font-size:12px;text-transform:uppercase}
 .calc2{margin-top:22px}
 @media(max-width:640px){.promo{font-size:13px;border-radius:16px;text-align:left}}
+/* переключатель страниц: аккуратная полоса под шапкой, появляется после первого экрана */
+.modebar,.modebar.show{left:0;right:0;top:92px;bottom:auto;transform:translateY(-8px);border-radius:0;padding:6px 12px;gap:6px;justify-content:center;background:rgba(255,255,255,.97);box-shadow:0 8px 20px -14px rgba(18,21,43,.5);border-bottom:1px solid var(--line)}
+.modebar.show{transform:none}
+.modebar a{flex:0 1 220px;text-align:center;padding:8px 10px;border-radius:10px;font-size:13px}
+.modebar a.on{background:var(--navy);color:#fff}
+header.flat{box-shadow:none}
+@media(max-width:640px){.modebar,.modebar.show{left:0;right:0;bottom:auto;top:92px;padding:6px 8px;gap:4px}.modebar a{flex:1;font-size:12px;padding:8px 4px}}
+.modebar{align-items:center;flex-wrap:wrap}
+.mb-l{font-size:12px;font-weight:700;color:var(--muted);margin-right:6px;text-transform:uppercase;letter-spacing:.06em}
+@media(max-width:640px){.mb-l{flex:0 0 100%;text-align:center;font-size:10px;margin:0 0 2px}.modebar,.modebar.show{padding:5px 8px 6px}}
