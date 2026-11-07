@@ -267,6 +267,7 @@ JS = {
 # Meta Pixel: создайте в Meta Events Manager и впишите ID сюда, затем пересоберите.
 YM_ID = '103848088'
 META_PIXEL_ID = '576043711342731'
+OAI_PIXEL_ID = 'DipQq4rYeV9NBQEsWQdgFW'  # OpenAI Ads (реклама в ChatGPT)
 
 import hashlib
 VER = hashlib.md5(open(os.path.join(ROOT, 'assets', 'style.css'), 'rb').read()).hexdigest()[:8]
@@ -313,7 +314,7 @@ CALC['kz'] = [['Карта РК', 'ҚР картасы', 'Kazakhstan map'], ['Р
 CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
-RAW = ('ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
+RAW = ('oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
        'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img')
 
 for mode, pp in PAGES:
@@ -328,7 +329,7 @@ for mode, pp in PAGES:
         vals = {k: v[i] for k, v in T.items()}
         vals.update({k: v[i] for k, v in PT.get(mode, {}).items()})
         ct = ''.join(f'<button{" class=\"on\"" if n == CALC_DEF[mode] else ""}>{esc(x[i])}</button>' for n, x in enumerate(CALC[mode]))
-        vals.update(ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
+        vals.update(oai_pixel=OAI_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
                     **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
         js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}

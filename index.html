@@ -18,6 +18,8 @@
 <link rel="icon" type="image/png" href="img/favicon.png?v=84018f0f">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMT7JD949"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMMT7JD949');</script>
+<script>/* OpenAI Ads Pixel (конверсии рекламы в ChatGPT) */
+!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"DipQq4rYeV9NBQEsWQdgFW",debug:true});</script>
 <script>/* Яндекс Метрика с вебвизором (тот же счётчик, что на /whatsapp) */
 var YM_ID=103848088;(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id='+YM_ID,'ym');
 ym(YM_ID,'init',{webvisor:true,clickmap:true,trackLinks:true,accurateTrackBounce:true});
@@ -387,7 +389,7 @@ $('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'
 const sheet=$('#sheet');
 $$('[data-choose]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();sheet.hidden=false;track('phone_open');}));
 sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet-x')) sheet.hidden=true;});
-$('[data-place="phone-call"]').addEventListener('click',()=>track('phone_call'));
+$('[data-place="phone-call"]').addEventListener('click',()=>{track('phone_call'); try{oaiq('measure','lead_created',{type:'customer_action'})}catch(_){}});
 
 
 /* ---------- просмотр фото на весь экран ---------- */
@@ -405,7 +407,11 @@ lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Ma
 
 /* ---------- события ---------- */
 document.addEventListener('click',e=>{
-  const w=e.target.closest('.js-wa'); if(w) track('whatsapp_click',{place:w.dataset.place});
+  const w=e.target.closest('.js-wa');
+  if(w){ track('whatsapp_click',{place:w.dataset.place});
+    /* конверсия для рекламы ChatGPT: даём пикселю 0,3 с отправить событие, потом переходим */
+    if(window.oaiq && w.href && !w.target && !e.metaKey && !e.ctrlKey){ try{oaiq('measure','lead_created',{type:'customer_action'})}catch(_){}
+      e.preventDefault(); setTimeout(()=>{location.href=w.href},300); } }
   const t=e.target.closest('[data-track]'); if(t) track(t.dataset.track,{to:t.dataset.to||''});
 });
 $$('details').forEach((d,i)=>d.addEventListener('toggle',()=>{if(d.open) track('faq_open',{q:i+1})}));
