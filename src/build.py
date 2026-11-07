@@ -110,9 +110,9 @@ T = {
  'geo_kicker': ['География', 'География', 'Coverage'],
  'geo_h_a': ['Работаем', 'Бүкіл Қазақстан', 'We work'],
  'geo_h_b': ['по всему Казахстану', 'бойынша жұмыс істейміз', 'all over Kazakhstan'],
- 'geo_sub': ['Доставляем в города, районы и сёла и организуем установку на месте. Выберите свой город:', 'Қалаларға, аудандар мен ауылдарға жеткіземіз және орнында орнатамыз. Қалаңызды таңдаңыз:', 'We deliver to cities, towns and villages and arrange installation on site. Choose your city:'],
- 'geo_card_a': ['Доставка и установка:', 'Жеткізу және орнату:', 'Delivery & installation:'],
- 'geo_default_city': ['Астана', 'Астана', 'Astana'],
+ 'geo_sub': ['Доставляем в любой город, район и село Казахстана и организуем установку на месте: Астана, Алматы, Шымкент, Караганда, Актобе, Атырау и все остальные города.', 'Қазақстанның кез келген қаласына, ауданы мен ауылына жеткіземіз және орнында орнатамыз: Астана, Алматы, Шымкент, Қарағанды, Ақтөбе, Атырау және барлық басқа қалалар.', 'We deliver to any city, town or village in Kazakhstan and arrange installation on site: Astana, Almaty, Shymkent, Karaganda, Aktobe, Atyrau and every other city.'],
+ 'geo_card_a': ['Доставка и установка', 'Жеткізу және орнату', 'Delivery & installation'],
+ 'geo_default_city': ['по всему Казахстану', 'бүкіл Қазақстан бойынша', 'across Kazakhstan'],
  'geo_l1': ['Надёжная упаковка и доставка до двери', 'Сенімді орау және есікке дейін жеткізу', 'Safe packaging and door-to-door delivery'],
  'geo_l2': ['Монтажник установит карту на стену', 'Монтажшы картаны қабырғаға орнатады', 'An installer mounts the map on your wall'],
  'geo_l3': ['Или установка самостоятельно: инструкция и помощь по видеозвонку', 'Немесе өзіңіз орнатасыз: нұсқаулық және бейнеқоңырау арқылы көмек', 'Or DIY: instructions and help over a video call'],
@@ -195,13 +195,14 @@ T = {
  'works_h_world': ['Карты мира', 'Әлем карталары', 'World maps'],
  'works_h_kz': ['Карты Казахстана', 'Қазақстан карталары', 'Kazakhstan maps'],
  'works_h_biz': ['Проекты для бизнеса', 'Бизнеске арналған жобалар', 'Business projects'],
- 'cert_h': ['Свидетельство на товарный знак № 102817', '№ 102817 тауар таңбасына куәлік', 'Trademark certificate No. 102817'],
- 'cert_p': ['ECOMAPS — зарегистрированный товарный знак в Республике Казахстан. Выдано Национальным институтом интеллектуальной собственности, действует до 18.10.2034.', 'ECOMAPS — Қазақстан Республикасында тіркелген тауар таңбасы. Ұлттық зияткерлік меншік институты берген, 18.10.2034 дейін жарамды.', 'ECOMAPS is a registered trademark in the Republic of Kazakhstan, issued by the National Institute of Intellectual Property and valid until 18.10.2034.'],
+ 'cert_h': ['Зарегистрированный товарный знак № 102817', '№ 102817 тіркелген тауар таңбасы', 'Registered trademark No. 102817'],
+ 'cert_p': ['Свидетельство Национального института интеллектуальной собственности РК, действует до 18.10.2034. Покупайте оригинал, а не копию.', 'ҚР Ұлттық зияткерлік меншік институтының куәлігі, 18.10.2034 дейін жарамды. Көшірмені емес, түпнұсқаны алыңыз.', 'Certificate of the National Institute of Intellectual Property of Kazakhstan, valid until 18.10.2034. Buy the original, not a copy.'],
  'cert_open': ['Открыть документ', 'Құжатты ашу', 'Open the document'],
  'buy_h': ['Купить онлайн', 'Онлайн сатып алу', 'Buy online'],
  'buy_p': ['Наши карты есть в Kaspi Магазине (с рассрочкой) и на omarket.kz для госзакупок.', 'Карталарымыз Kaspi Дүкенде (бөліп төлеумен) және мемлекеттік сатып алу үшін omarket.kz-те бар.', 'Our maps are available in the Kaspi Shop (with installments) and on omarket.kz for public procurement.'],
  'shop': ['Магазин', 'Дүкен', 'Shop'],
  'gz': ['госзакупки', 'мемлекеттік сатып алу', 'public procurement'],
+ 'company': ['ТОО «ECOMAPS», БИН 231240016904', '«ECOMAPS» ЖШС, БСН 231240016904', 'ECOMAPS LLP, BIN 231240016904'],
  'tm_line': ['ECOMAPS® — товарный знак № 102817', 'ECOMAPS® — № 102817 тауар таңбасы', 'ECOMAPS® — trademark No. 102817'],
 }
 
@@ -323,7 +324,7 @@ for mode, pp in PAGES:
         vals.update(ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
                     **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
-        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}, 'cities': JS['cities'][i], 'anyCity': JS['anyCity'][i]}
+        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}
         vals['jsdata'] = json.dumps(js, ensure_ascii=False)
         def sub(m):
             k = m.group(1)

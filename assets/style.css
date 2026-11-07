@@ -351,3 +351,23 @@ body[data-mode=biz] main>*{order:10}
 body[data-mode=biz] .hero{order:1}body[data-mode=biz] #clients{order:2}body[data-mode=biz] #catalog{order:3}
 body[data-mode=biz] #services{order:4}body[data-mode=biz] #gifts{order:5}body[data-mode=biz] #calc{order:6}
 .pane .ph{height:auto;min-height:470px}@media(max-width:900px){.pane .ph{min-height:300px}}
+.docs{grid-template-columns:1fr}
+.pay a{display:inline-flex;align-items:center;gap:6px;color:#fff}
+/* единый блок доверия */
+.trust1{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;margin-top:40px;background:var(--tan-ll);border-radius:28px;padding:36px}
+.t-cert{display:block;text-decoration:none;text-align:center}
+.t-cert img{width:100%;border-radius:10px;box-shadow:0 20px 40px -20px rgba(18,21,43,.55);background:#fff}
+.t-cert span{display:inline-block;margin-top:14px;font-weight:800;color:var(--navy)}
+.t-list{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.t-list li{display:flex;gap:16px;align-items:flex-start}
+.t-list .ic{flex:none;width:56px;height:56px;border-radius:14px;background:var(--navy);color:var(--tan);font-style:normal;font-weight:900;font-size:24px;display:grid;place-items:center}
+.t-list .ic.img{background:#fff;padding:4px}
+.t-list .ic.img img{width:100%;height:auto}
+.t-list b{display:block;font-size:17px;font-weight:900;color:var(--navy);text-transform:uppercase;line-height:1.2}
+.t-list p{margin:4px 0 0;color:var(--muted);font-size:15px}
+@media(max-width:800px){.trust1{grid-template-columns:1fr;padding:22px;gap:26px}.t-cert{max-width:230px;margin:0 auto}.t-list .ic{width:46px;height:46px;font-size:20px}}
+@media(max-width:800px){.t-cert{max-width:170px}}
+.promo{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--wine);color:#fff;border:1px solid rgba(255,255,255,.18);padding:12px 18px;border-radius:999px;font-weight:800;font-size:15px}
+.promo i{font-style:normal;background:var(--tan);color:var(--navy-dd);border-radius:999px;padding:3px 10px;font-weight:900;font-size:12px;text-transform:uppercase}
+.calc2{margin-top:22px}
+@media(max-width:640px){.promo{font-size:13px;border-radius:16px;text-align:left}}
