@@ -7,10 +7,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 tpl = open(os.path.join(ROOT, 'src', 'template.html'), encoding='utf-8').read()
 
 T = {
- 'title': ['ECOMAPS — интерьерные карты мира и Казахстана из дерева', 'ECOMAPS — ағаштан жасалған әлем және Қазақстан интерьер карталары', 'ECOMAPS — wooden world and Kazakhstan wall maps'],
- 'desc': ['Деревянные карты мира и Казахстана с подсветкой, панели, картины и оформление интерьера. Изготовление за 8 рабочих дней, доставка и установка по всему Казахстану, рассрочка Kaspi.',
-          'Подсветкасы бар ағаш әлем және Қазақстан карталары, панельдер, суреттер және интерьерді безендіру. 8 жұмыс күнінде дайындаймыз, бүкіл Қазақстан бойынша жеткізу және орнату, Kaspi бөліп төлеу.',
-          'Wooden world and Kazakhstan maps with backlight, wall panels, paintings and interior design. Made in 8 working days, delivery and installation across Kazakhstan, Kaspi installments.'],
+ 'title': ['ECOMAPS — деревянная карта мира с подсветкой', 'ECOMAPS — подсветкасы бар ағаш әлем картасы', 'ECOMAPS — wooden backlit world map'],
+ 'desc': ['Многоуровневые деревянные карты мира с подсветкой: 3 размера или ваш, 13 расцветок, надписи на русском, казахском или английском. Изготовление за 8 рабочих дней, доставка и установка по всему Казахстану, рассрочка Kaspi.', 'Подсветкасы бар көп деңгейлі ағаш әлем карталары: 3 өлшем немесе өзіңіздікі, 13 түс, жазулар орыс, қазақ немесе ағылшын тілінде. 8 жұмыс күнінде дайындаймыз, бүкіл Қазақстан бойынша жеткізу және орнату, Kaspi бөліп төлеу.', 'Multi-layer wooden world maps with backlight: 3 sizes or your own, 13 colour schemes, labels in Russian, Kazakh or English. Made in 8 working days, delivery and installation across Kazakhstan, Kaspi installments.'],
  'og_title': ['ECOMAPS — весь мир перед тобой', 'ECOMAPS — бүкіл әлем алдыңда', 'ECOMAPS — the whole world before you'],
  'descriptor': ['интерьерные карты мира', 'интерьерлік әлем карталары', 'interior world maps'],
  'nav_catalog': ['Каталог', 'Каталог', 'Catalog'],
@@ -25,9 +23,7 @@ T = {
  'badge': ['Логотип компании на карте в подарок', 'Компания логотипі картаға сыйлыққа', 'Your company logo on the map for free'],
  'h1a': ['Весь мир', 'Бүкіл әлем', 'The whole world'],
  'h1b': ['перед тобой', 'алдыңда', 'before you'],
- 'hero_lead': ['Интерьерные карты мира и Казахстана из дерева, панели, картины и оформление интерьеров. Лидер продаж интерьерных карт в Казахстане.',
-               'Ағаштан жасалған әлем және Қазақстан карталары, панельдер, суреттер және интерьерді безендіру. Қазақстандағы интерьер карталары сатылымының көшбасшысы.',
-               'Wooden maps of the world and Kazakhstan, wall panels, paintings and interior design. Kazakhstan’s best-selling interior maps.'],
+ 'hero_lead': ['Многоуровневая деревянная карта мира с подсветкой: главный акцент гостиной, кабинета или детской. Лидер продаж интерьерных карт в Казахстане.', 'Подсветкасы бар көп деңгейлі ағаш әлем картасы: қонақ бөлменің, кабинеттің немесе балалар бөлмесінің басты әшекейі. Қазақстандағы интерьер карталары сатылымының көшбасшысы.', 'A multi-layer wooden world map with backlight, the centrepiece of a living room, study or kids’ room. Kazakhstan’s best-selling interior maps.'],
  'check1': ['Доставка и установка в любом городе Казахстана', 'Қазақстанның кез келген қаласына жеткізу және орнату', 'Delivery and installation in any city of Kazakhstan'],
  'check2': ['Изготовление за 8 рабочих дней', '8 жұмыс күнінде дайындаймыз', 'Made in 8 working days'],
  'check3': ['Рассрочка Kaspi Red, 0-0-12 и 0-0-24', 'Kaspi Red, 0-0-12 және 0-0-24 бөліп төлеу', 'Kaspi Red installments 0-0-12 and 0-0-24'],
@@ -304,8 +300,9 @@ CALC = {
  'world': [['Карта мира', 'Әлем картасы', 'World map'], ['Карта Казахстана', 'Қазақстан картасы', 'Kazakhstan map'], ['Рельефная карта РК', 'ҚР рельефті картасы', 'Relief KZ map'], ['Другое', 'Басқа', 'Other']],
  'biz': [['Декор-панель', 'Декор-панель', 'Wall panel'], ['Instagram-зеркало', 'Instagram-айна', 'Instagram mirror'], ['Картина', 'Сурет', 'Artwork'], ['Карта с логотипом', 'Логотипі бар карта', 'Map with logo']],
 }
-CALC['kz'] = CALC['world']
-CALC_DEF = {'world': 0, 'kz': 1, 'biz': 0}
+CALC['world'] = [['Классическая', 'Классикалық', 'Classic'], ['Физическая', 'Физикалық', 'Physical'], ['С флагами', 'Жалаулармен', 'With flags'], ['Своя расцветка', 'Өз түсіңіз', 'Custom colours']]
+CALC['kz'] = [['Карта РК', 'ҚР картасы', 'Kazakhstan map'], ['Рельефная 3D', 'Рельефті 3D', '3D relief'], ['С логотипом', 'Логотиппен', 'With logo'], ['Другое', 'Басқа', 'Other']]
+CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 RAW = ('langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
