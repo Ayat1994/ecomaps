@@ -7,8 +7,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 tpl = open(os.path.join(ROOT, 'src', 'template.html'), encoding='utf-8').read()
 
 T = {
- 'title': ['Карта мира из дерева на стену с подсветкой — купить в Казахстане | ECOMAPS', 'Қабырғаға арналған подсветкасы бар ағаш әлем картасы — Қазақстанда сатып алу | ECOMAPS', 'Wooden backlit world map for your wall — Kazakhstan | ECOMAPS'],
- 'desc': ['Многоуровневые деревянные карты мира с подсветкой: 3 размера или ваш, 13 расцветок, надписи на русском, казахском или английском. Изготовление за 8 рабочих дней, доставка и установка по всему Казахстану, рассрочка Kaspi.', 'Подсветкасы бар көп деңгейлі ағаш әлем карталары: 3 өлшем немесе өзіңіздікі, 13 түс, жазулар орыс, қазақ немесе ағылшын тілінде. 8 жұмыс күнінде дайындаймыз, бүкіл Қазақстан бойынша жеткізу және орнату, Kaspi бөліп төлеу.', 'Multi-layer wooden world maps with backlight: 3 sizes or your own, 13 colour schemes, labels in Russian, Kazakh or English. Made in 8 working days, delivery and installation across Kazakhstan, Kaspi installments.'],
+ 'title': ['Деревянная карта мира с подсветкой — купить в РК | ECOMAPS', 'Подсветкасы бар ағаш әлем картасы — Қазақстан | ECOMAPS', 'Wooden backlit world map for your wall | ECOMAPS'],
+ 'desc': ['Многоуровневые карты мира из дерева с подсветкой: 13 расцветок, надписи на 3 языках, 8 рабочих дней. Доставка и монтаж по Казахстану, рассрочка Kaspi.', 'Подсветкасы бар көп деңгейлі ағаш әлем карталары: 13 түс, 3 тілде жазу, 8 жұмыс күні. Бүкіл Қазақстан бойынша жеткізу, орнату, Kaspi бөліп төлеу.', 'Multi-layer wooden world maps with backlight: 13 colour schemes, labels in 3 languages, made in 8 working days.'],
  'og_title': ['ECOMAPS — весь мир перед тобой', 'ECOMAPS — бүкіл әлем алдыңда', 'ECOMAPS — the whole world before you'],
  'descriptor': ['интерьерные карты мира', 'интерьерлік әлем карталары', 'interior world maps'],
  'nav_catalog': ['Каталог', 'Каталог', 'Catalog'],
@@ -50,6 +50,7 @@ T = {
  'world_l2': ['Тёплая или холодная подсветка', 'Жылы немесе суық подсветка', 'Warm or cool backlight'],
  'world_l3': ['Надписи на русском, казахском или английском', 'Жазулар орыс, қазақ немесе ағылшын тілінде', 'Labels in Russian, Kazakh or English'],
  'own_size': ['Свой размер', 'Өз өлшеміңіз', 'Custom size'],
+ 'kz_pane_alt': ['Ночная карта Казахстана с подсветкой', 'Подсветкасы бар түнгі Қазақстан картасы', 'Night-style backlit map of Kazakhstan'],
  'kz_h': ['Карта Казахстана', 'Қазақстан картасы', 'Map of Kazakhstan'],
  'kz_p': ['Обновлённая карта РК с новыми границами областей. От минимальной детализации до карты с железными дорогами, Каспийским морем и населёнными пунктами.',
           'Облыстардың жаңа шекаралары бар жаңартылған ҚР картасы. Қарапайым нұсқадан бастап темір жолдар, Каспий теңізі және елді мекендер бар картаға дейін.',
@@ -186,6 +187,9 @@ T = {
  'rel_l3': ['Контурная подсветка', 'Контурлы подсветка', 'Edge backlight'],
  'rel_l4': ['Для кабинета руководителя, госучреждения или в подарок', 'Басшы кабинетіне, мемлекеттік мекемеге немесе сыйлыққа', 'For an executive office, a public institution or as a gift'],
  'rel_btn': ['Узнать цену рельефной карты', 'Рельефті картаның бағасын білу', 'Get a price for the relief map'],
+ 'rel_alt1': ['Рельефная карта РК сбоку: объём гор и контурная подсветка', 'ҚР рельефті картасы бүйірінен: таулардың көлемі және контурлы подсветка', 'Side view of the Kazakhstan relief map: carved mountains and edge backlight'],
+ 'rel_alt2': ['Рельеф Абайской области и Восточного Казахстана с подсветкой', 'Абай облысы мен Шығыс Қазақстанның подсветкасы бар рельефі', 'Backlit relief of the Abai and East Kazakhstan regions'],
+ 'rel_alt3': ['Восточный Казахстан на рельефной карте: Алтай, Өскемен, Зайсан', 'Рельефті картадағы Шығыс Қазақстан: Алтай, Өскемен, Зайсан', 'East Kazakhstan on the relief map: Altai, Oskemen, Zaisan'],
  'rel_alt': ['Рельеф карты Казахстана крупным планом', 'Қазақстан картасының рельефі жақыннан', 'Close-up of the Kazakhstan relief map'],
  'gift_kicker': ['Для бизнеса', 'Бизнес үшін', 'For business'],
  'gift_h_a': ['Логотип компании', 'Компания логотипі', 'Your company logo'],
@@ -212,8 +216,8 @@ T = {
 # ---------- Английская версия — для покупателей из ОАЭ, Катара и других стран ----------
 # (без Kaspi, госзакупок и доставки «по городам Казахстана»)
 EN = {
- 'title': 'Wooden backlit world map for your wall — delivery to the UAE & Qatar | ECOMAPS',
- 'desc': 'Handmade multi-layer wooden world maps with backlight: 3 sizes or custom, 13 colour schemes, labels in English, Russian or Kazakh. Made in 8 working days and shipped worldwide, including the UAE and Qatar. Free mock-up on a photo of your wall.',
+ 'title': 'Wooden backlit world map — UAE & Qatar delivery | ECOMAPS',
+ 'desc': 'Handmade multi-layer wooden world maps with backlight: 13 colours, labels in 3 languages, made in 8 working days. Shipped to the UAE, Qatar and worldwide.',
  'phone_sub': 'WhatsApp · worldwide',
  'hero_lead': 'A multi-layer wooden world map with backlight, the centrepiece of a living room, study, office or majlis. Handmade in Kazakhstan and shipped to the UAE, Qatar and worldwide.',
  'check1': 'Delivery to the UAE, Qatar and worldwide',
@@ -316,7 +320,7 @@ HERO = {'world': 'hero-wide.jpg', 'kz': 'hero-kz.jpg', 'biz': 'hero-biz.jpg'}
 PT = {
  'kz': {
   'title': ['Карта Казахстана из дерева с подсветкой — ECOMAPS', 'Подсветкасы бар ағаш Қазақстан картасы — ECOMAPS', 'Wooden backlit map of Kazakhstan — ECOMAPS'],
-  'desc': ['Деревянные карты Казахстана с новыми областями и рельефная 3D-карта РК — наша разработка. Логотип компании в подарок, доставка и установка по всему Казахстану.', 'Жаңа облыстары бар ағаш Қазақстан карталары және ҚР рельефті 3D картасы — біздің әзірлеме. Компания логотипі сыйлыққа, бүкіл Қазақстан бойынша жеткізу және орнату.', 'Wooden maps of Kazakhstan with the new regions and a 3D relief map we developed ourselves. Free company logo, delivery and installation across Kazakhstan.'],
+  'desc': ['Деревянная карта Казахстана с новыми областями и рельефная 3D-карта РК — наша разработка. Логотип в подарок, доставка и монтаж по всему Казахстану.', 'Жаңа облыстары бар ағаш Қазақстан картасы және ҚР рельефті 3D картасы. Логотип сыйлыққа, бүкіл Қазақстан бойынша жеткізу және орнату.', ''],
   'og_title': ['ECOMAPS — карта Казахстана из дерева', 'ECOMAPS — ағаштан жасалған Қазақстан картасы', 'ECOMAPS — wooden map of Kazakhstan'],
   'h1k': ['', '', ''],
   'h1a': ['Карта Казахстана', 'Қазақстан картасы', 'Map of Kazakhstan'],
@@ -327,8 +331,8 @@ PT = {
   'hero_alt': ['Рельефная карта Казахстана с подсветкой', 'Подсветкасы бар Қазақстанның рельефті картасы', 'Backlit relief map of Kazakhstan'],
  },
  'biz': {
-  'title': ['Декор для бизнеса: панели, Instagram-зеркала, картины — ECOMAPS', 'Бизнеске арналған декор: панельдер, Instagram-айналар, суреттер — ECOMAPS', 'Business décor: wall panels, Instagram mirrors, artwork — ECOMAPS'],
-  'desc': ['Декоративные панели, Instagram-зеркала с подсветкой, брендированные картины и карты с логотипом для офисов, салонов, школ и кафе. Своё производство, монтаж по всему Казахстану.', 'Кеңсе, салон, мектеп және кафеге арналған сәндік панельдер, подсветкасы бар Instagram-айналар, брендтелген суреттер мен логотипі бар карталар. Өз өндірісіміз, бүкіл Қазақстан бойынша орнату.', 'Decorative wall panels, backlit Instagram mirrors, branded artwork and maps with your logo for offices, salons, schools and cafés. Own production, installation across Kazakhstan.'],
+  'title': ['Декор для бизнеса: панели, зеркала, картины — ECOMAPS', 'Бизнеске декор: панельдер, айналар, суреттер — ECOMAPS', 'Business décor: panels, mirrors, artwork — ECOMAPS'],
+  'desc': ['Декор-панели, Instagram-зеркала, брендированные картины и карты с логотипом для офисов, салонов и школ. Своё производство, монтаж по Казахстану.', 'Кеңсе, салон және мектепке декор-панельдер, Instagram-айналар, брендтелген суреттер мен логотипі бар карталар. Өз өндірісіміз, бүкіл ҚР бойынша орнату.', ''],
   'og_title': ['ECOMAPS — декор для бизнеса', 'ECOMAPS — бизнеске арналған декор', 'ECOMAPS — décor for business'],
   'h1k': ['Декор-панели, Instagram-зеркала и картины для бизнеса', 'Бизнеске арналған декор-панельдер, Instagram-айналар және суреттер', 'Wall panels, Instagram mirrors and artwork for business'],
   'h1a': ['Декор, который', 'Сізді есте', 'Décor that makes'],
@@ -340,8 +344,8 @@ PT = {
   'badge': ['Логотип компании в подарок к заказу', 'Тапсырысқа компания логотипі сыйлыққа', 'Your company logo free with your order'],
  },
 }
-PT['kz']['desc'][2] = 'Wooden maps of Kazakhstan with the new regions and a 3D relief map we developed ourselves. Free company logo, delivery to the UAE, Qatar and worldwide.'
-PT['biz']['desc'][2] = 'Decorative wall panels, backlit Instagram mirrors, branded artwork and maps with your logo for offices, salons, schools and cafés. Own production in Kazakhstan, delivery worldwide.'
+PT['kz']['desc'][2] = 'Wooden maps of Kazakhstan with the new regions and a 3D relief map we developed ourselves. Free company logo, shipping to the UAE, Qatar and worldwide.'
+PT['biz']['desc'][2] = 'Wall panels, Instagram mirrors, branded artwork and maps with your logo for offices, salons and schools. Made in Kazakhstan, shipped worldwide.'
 PT['biz']['hero_lead'][2] = 'Wall panels, Instagram mirrors and artwork in your brand style for offices, salons, schools and cafés. Own production in Kazakhstan, delivery to the UAE, Qatar and worldwide.'
 
 # Kaspi и omarket показываем только на русской и казахской версиях
@@ -366,8 +370,110 @@ CALC['kz'] = [['Карта РК', 'ҚР картасы', 'Kazakhstan map'], ['Р
 CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
+
+# ---------- Свои вопросы и текст на каждой странице (чтобы страницы не дублировали друг друга) ----------
+# Пустая строка = вопрос не показываем на этом языке (на EN нет госзакупок и Kaspi).
+FQ = {
+ 'k1q': ['На карте новые области?', 'Картада жаңа облыстар бар ма?', 'Does the map show the new regions?'],
+ 'k1a': ['Да. Карта соответствует актуальному делению РК, включая Абайскую, Жетысускую и Улытаускую области, созданные в 2022 году.', 'Иә. Карта ҚР-дың қазіргі әкімшілік бөлінісіне сай, 2022 жылы құрылған Абай, Жетісу және Ұлытау облыстары да бар.', 'Yes. The map follows the current administrative division of Kazakhstan, including the Abai, Zhetysu and Ulytau regions created in 2022.'],
+ 'k2q': ['Чем рельефная карта отличается от обычной?', 'Рельефті картаның қарапайым картадан айырмашылығы неде?', 'How is the relief map different from the regular one?'],
+ 'k2a': ['Обычная карта собирается из плоских деталей. В рельефной горы, степи и впадины вырезаны фрезой на станке с ЧПУ, поэтому объёмно видны Алтай, Тянь-Шань и низменности Прикаспия.', 'Қарапайым карта жалпақ бөлшектерден құрастырылады. Рельефті картада таулар, далалар мен ойпаттар ЦББ станогында фрезамен ойылады, сондықтан Алтай, Тянь-Шань және Каспий маңы ойпаты көлемді көрінеді.', 'The regular map is assembled from flat pieces. On the relief map, mountains, steppes and lowlands are carved on a CNC router, so the Altai, the Tien Shan and the Caspian lowland stand out in 3D.'],
+ 'k3q': ['На каком языке надписи?', 'Жазулар қай тілде?', 'What language are the labels in?'],
+ 'k3a': ['На казахском, русском или английском — на ваш выбор.', 'Қазақ, орыс немесе ағылшын тілінде — өзіңіз таңдайсыз.', 'Kazakh, Russian or English, whichever you choose.'],
+ 'k4q': ['Можно сделать карту в цветах компании и с логотипом?', 'Картаны компания түстерінде және логотиппен жасауға бола ма?', 'Can the map be made in our brand colours with our logo?'],
+ 'k4a': ['Да. Области окрашиваем разными оттенками или в фирменных цветах, а логотип к заказу карты для офиса делаем в подарок.', 'Иә. Облыстарды әртүрлі реңкке немесе фирмалық түстерге бояймыз, ал кеңсеге карта тапсырыс бергенде логотипті сыйлыққа жасаймыз.', 'Yes. Regions can be painted in different shades or in your brand colours, and we make your logo for free when you order a map for your office.'],
+ 'k5q': ['Работаете ли с госучреждениями и школами?', 'Мемлекеттік мекемелер мен мектептермен жұмыс істейсіздер ме?', ''],
+ 'k5a': ['Да. У нас индустриальный сертификат НПП «Атамекен» и сертификат СТ-KZ, карты есть на omarket.kz. Работаем по безналу и через госзакупки.', 'Иә. Бізде «Атамекен» ҰКП индустриялық сертификаты және СТ-KZ сертификаты бар, карталарымыз omarket.kz-те бар. Қолма-қолсыз және мемлекеттік сатып алу арқылы жұмыс істейміз.', ''],
+ 'b1q': ['Что такое Instagram-зеркало?', 'Instagram-айна деген не?', 'What is an Instagram mirror?'],
+ 'b1a': ['Зеркало в виде поста Instagram с вашим аккаунтом, логотипом, QR-кодом и подсветкой. Его ставят как фотозону в салоне, кофейне, магазине или офисе.', 'Аккаунтыңыз, логотип, QR-код және подсветкасы бар Instagram жазбасы түріндегі айна. Оны салонда, кофеханада, дүкенде немесе кеңседе фотоаймақ ретінде қояды.', 'A mirror styled as an Instagram post with your account, logo, QR code and backlight. It works as a photo zone in a salon, café, shop or office.'],
+ 'b2q': ['Можно заранее увидеть, как декор будет смотреться у нас?', 'Декордың бізде қалай көрінетінін алдын ала көруге бола ма?', 'Can we see how the décor will look in our space?'],
+ 'b2a': ['Да. Пришлите фото помещения в WhatsApp, и мы бесплатно сделаем визуализацию.', 'Иә. Бөлменің фотосын WhatsApp-қа жіберіңіз, біз тегін визуализация жасаймыз.', 'Yes. Send us a photo of the room on WhatsApp and we will make a free mock-up.'],
+ 'b3q': ['Делаете ли по нашему дизайну?', 'Біздің дизайн бойынша жасайсыздар ма?', 'Can you work from our own design?'],
+ 'b3a': ['Да. Есть больше 20 готовых шаблонов панелей, но можем сделать по вашему макету или в фирменном стиле компании.', 'Иә. 20-дан астам дайын панель үлгісі бар, бірақ сіздің макетіңіз бойынша немесе компанияның фирмалық стилінде жасай аламыз.', 'Yes. We have over 20 ready panel templates, and we can also work from your artwork or in your corporate style.'],
+ 'b4q': ['Работаете ли с юрлицами и госзакупками?', 'Заңды тұлғалармен және мемлекеттік сатып алу арқылы жұмыс істейсіздер ме?', 'Do you work with companies?'],
+ 'b4a': ['Да: безнал по счёту, госзакупки и omarket.kz. У нас индустриальный сертификат НПП «Атамекен» и сертификат СТ-KZ.', 'Иә: шот бойынша қолма-қолсыз төлем, мемлекеттік сатып алу және omarket.kz. Бізде «Атамекен» ҰКП индустриялық сертификаты және СТ-KZ сертификаты бар.', 'Yes. We issue invoices for international bank transfer and ship to your country.'],
+}
+FAQ_SET = {'world': ['f1', 'f2', 'f3', 'f4', 'f5', 'f6'],
+           'kz':    ['k1', 'k2', 'k3', 'k4', 'k5', 'f3'],
+           'biz':   ['b1', 'b2', 'b3', 'b4', 'f2', 'f3']}
+
+ABOUT = {
+ 'kz': {
+  'h': ['Деревянная карта Казахстана на стену', 'Қабырғаға арналған ағаш Қазақстан картасы', 'A wooden map of Kazakhstan for your wall'],
+  'p': [
+   ['Карту Казахстана ECOMAPS делаем на своём производстве в Астане. Изображение печатаем, ламинируем, переносим на HDF и вырезаем лазером, поэтому каждая область — отдельная деталь, а границы совпадают с актуальной административной картой.',
+    'Для кабинетов руководителей, акиматов и школ делаем рельефную 3D-карту: горы и впадины фрезеруем на станке с ЧПУ по MDF. Карту можно сделать в фирменных цветах, добавить логотип, подсветку и надписи на казахском, русском или английском языке.',
+    'Доставляем и устанавливаем по всему Казахстану. Для организаций работаем по безналу и через госзакупки.'],
+   ['ECOMAPS Қазақстан картасын Астанадағы өз өндірісімізде жасаймыз. Суретті басып шығарып, ламинациялап, HDF-ке түсіреміз де лазермен кесеміз, сондықтан әр облыс — жеке бөлшек, ал шекаралар қазіргі әкімшілік картаға сай келеді.',
+    'Басшылар кабинеттеріне, әкімдіктер мен мектептерге рельефті 3D карта жасаймыз: таулар мен ойпаттарды MDF-ке ЦББ станогында фрезалаймыз. Картаны фирмалық түстерде жасап, логотип, подсветка және қазақ, орыс немесе ағылшын тіліндегі жазулар қосуға болады.',
+    'Бүкіл Қазақстан бойынша жеткізіп, орнатамыз. Ұйымдармен қолма-қолсыз және мемлекеттік сатып алу арқылы жұмыс істейміз.'],
+   ['We make ECOMAPS maps of Kazakhstan at our own workshop in Astana. The image is printed, laminated, mounted on HDF and laser-cut, so every region is a separate piece and the borders match the current administrative map.',
+    'For executive offices and schools we also make a 3D relief map, with mountains and lowlands carved into MDF on a CNC router. The map can be made in your brand colours, with your logo, backlight and labels in Kazakh, Russian or English.',
+    'We ship to the UAE, Qatar and worldwide, with installation instructions and video-call support.'],
+  ],
+ },
+ 'biz': {
+  'h': ['Декор для офиса, салона и школы', 'Кеңсе, салон және мектепке арналған декор', 'Décor for offices, salons and schools'],
+  'p': [
+   ['ECOMAPS делает интерьерный декор под фирменный стиль: многоуровневые панели из дерева, HDF и MDF, Instagram-зеркала с подсветкой, брендированные картины, карты мира и Казахстана с логотипом компании. Режем, гравируем, печатаем и собираем сами в Астане.',
+    'Среди наших заказчиков — офисы и ресепшены, салоны, автосалоны, школы, детские сады и детские центры. До заказа бесплатно показываем декор на фото вашего помещения.',
+    'Работаем с юрлицами по безналу и через госзакупки, доставляем и монтируем по всему Казахстану. К заказу карты для офиса логотип компании делаем в подарок.'],
+   ['ECOMAPS фирмалық стильге сай интерьер декорын жасайды: ағаш, HDF және MDF-тен көп деңгейлі панельдер, подсветкасы бар Instagram-айналар, брендтелген суреттер, компания логотипі бар әлем және Қазақстан карталары. Астанада өзіміз кесеміз, гравировка жасаймыз, басып шығарамыз және құрастырамыз.',
+    'Тапсырыс берушілеріміздің арасында кеңселер мен ресепшендер, салондар, автосалондар, мектептер, балабақшалар және балалар орталықтары бар. Тапсырысқа дейін декорды бөлмеңіздің фотосында тегін көрсетеміз.',
+    'Заңды тұлғалармен қолма-қолсыз және мемлекеттік сатып алу арқылы жұмыс істейміз, бүкіл Қазақстан бойынша жеткізіп, орнатамыз. Кеңсеге карта тапсырыс берсеңіз, компания логотипін сыйлыққа жасаймыз.'],
+   ['ECOMAPS makes interior décor in your corporate style: multi-layer panels in wood, HDF and MDF, backlit Instagram mirrors, branded artwork, and world and Kazakhstan maps with your company logo. We cut, engrave, print and assemble everything ourselves in Astana.',
+    'Our clients include offices and receptions, salons, car dealerships, schools, kindergartens and kids’ centres. Before you order, we show the décor on a photo of your space for free.',
+    'We work with companies by invoice and ship to the UAE, Qatar and worldwide. When you order a map for your office, we make your company logo for free.'],
+  ],
+ },
+}
+ABOUT_KICKER = ['О продукции', 'Өнім туралы', 'About']
+
+def faq_items(mode, i, v):
+    out = []
+    for q in FAQ_SET[mode]:
+        qq, aa = (FQ[q + 'q'][i], FQ[q + 'a'][i]) if q + 'q' in FQ else (v[q + 'q'], v[q + 'a'])
+        if qq: out.append((q, qq, aa))
+    return out
+
+def faq_html(mode, i, v):
+    rows = []
+    for q, qq, aa in faq_items(mode, i, v):
+        extra = ' (<a href="https://2gis.kz/astana/geo/70000001057229459" target="_blank" rel="noopener">2GIS</a>)' if q == 'f6' else ''
+        rows.append(f'      <details><summary><h3>{esc(qq)}</h3></summary><p>{esc(aa)}{extra}</p></details>')
+    return '\n'.join(rows)
+
+def about_html(mode, i):
+    if mode not in ABOUT: return ''
+    a = ABOUT[mode]
+    ps = ''.join(f'<p>{esc(x)}</p>' for x in a['p'][i])
+    return (f'<section class="about-sec" id="about">\n  <div class="wrap">\n    <span class="kicker">{esc(ABOUT_KICKER[i])}</span>\n'
+            f'    <h2>{esc(a["h"][i])}</h2>\n    <div class="about-tx">{ps}</div>\n  </div>\n</section>\n')
+
+def strip_modes(html, mode):
+    """Убирает из HTML блоки других страниц (data-m без текущего режима), а не прячет их стилями:
+    поисковик видит только текст этой страницы."""
+    pos = 0
+    while True:
+        m = re.compile(r'<(\w+)\b[^>]*\sdata-m="([^"]+)"[^>]*>').search(html, pos)
+        if not m: return html
+        if mode in m.group(2).split():
+            pos = m.end(); continue
+        tag = m.group(1); depth = 1; k = m.end()
+        tok = re.compile(r'<(/?)' + tag + r'\b[^>]*>')
+        while depth:
+            t = tok.search(html, k)
+            depth += -1 if t.group(1) else 1; k = t.end()
+        html = html[:m.start()] + html[k:]
+        pos = m.start()
+
+def h1_html(v):
+    if v.get('h1k'):  # ключевая фраза — в H1, слоган — отдельной строкой
+        return (f'<h1 class="reveal h1-key">{esc(v["h1k"])}</h1>\n'
+                f'    <p class="h1s reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></p>')
+    return f'<h1 class="reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></h1>'
 RAW = ('oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
-       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
+       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'hero_webp', 'h1_html', 'faq_html', 'about_html', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
 
 # ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
 STORE_ID = 'https://ecomaps.kz/#store'
@@ -388,9 +494,8 @@ def jsonld(mode, i, path, v):
     if mode == 'world':  # цена «от 54 000 ₸» — как в рекламе
         prod['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'KZT', 'lowPrice': 54000, 'availability': 'https://schema.org/InStock',
                           'seller': {'@id': STORE_ID}, 'url': url}
-    qs = ['f1', 'f2', 'f3'] + (['f4'] if mode == 'biz' else []) + ['f5', 'f6']
-    faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': v[q + 'q'],
-                                               'acceptedAnswer': {'@type': 'Answer', 'text': v[q + 'a']}} for q in qs]}
+    faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': qq,
+                                               'acceptedAnswer': {'@type': 'Answer', 'text': aa}} for _, qq, aa in faq_items(mode, i, v)]}
     # товар с ценой — только на странице карты мира (без цены Google считает разметку товара ошибкой)
     data = {'@context': 'https://schema.org', '@graph': [store, page] + ([prod] if mode == 'world' else []) + [faq]}
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace('</', '<\\/') + '</script>'
@@ -401,7 +506,7 @@ for mode, pp in PAGES:
         path = lp + pp
         P = '../' * path.count('/')
         out = tpl
-        links = [f'<a href="{P}{l2}{pp}index.html" hreflang="{c2}"{" class=\"on\"" if i == j else ""}>{LABEL[c2]}</a>'
+        links = [f'<a href="/{l2}{pp}" hreflang="{c2}"{" class=\"on\"" if i == j else ""}>{LABEL[c2]}</a>'
                  for j, (c2, _, l2) in enumerate(LANGS)]
         hl = [f'<link rel="alternate" hreflang="{c2}" href="https://ecomaps.kz/{l2}{pp}">' for c2, _, l2 in LANGS]
         hl.append(f'<link rel="alternate" hreflang="x-default" href="https://ecomaps.kz/{pp}">')
@@ -410,8 +515,11 @@ for mode, pp in PAGES:
         ct = ''.join(f'<button{" class=\"on\"" if n == CALC_DEF[mode] else ""}>{esc(x[i])}</button>' for n, x in enumerate(CALC[mode]))
         vals.update(oai_pixel=OAI_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
-                    **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
-        vals['h1k_html'] = f'<span class="h1k">{esc(vals["h1k"])}</span>' if vals.get('h1k') else ''
+                    **{f'href_{m}': f'/{lp}{p}' for m, p in PAGES})
+        vals['h1_html'] = h1_html(vals)
+        vals['hero_webp'] = HERO[mode].replace('.jpg', '.webp')
+        vals['faq_html'] = faq_html(mode, i, vals)
+        vals['about_html'] = about_html(mode, i)
         vals['jsonld'] = jsonld(mode, i, path, vals)
         vals['pay_html'] = pay_html(code, vals)
         vals['shop_links'] = shop_links(code, vals)
@@ -422,9 +530,10 @@ for mode, pp in PAGES:
             if k not in vals: raise KeyError(k)
             return vals[k] if k in RAW else esc(vals[k])
         out = re.sub(r'\{\{(\w+)\}\}', sub, out)
+        out = strip_modes(out, mode)
         # версия картинок: при замене фото браузер сразу загрузит новое
-        out = re.sub(r'(img/[\w/\-]+\.(?:jpg|png|svg))(?!\?)', lambda m: m.group(1) + '?v=' + IMGV, out)
-        out = out.replace('.jpg" alt="${C[k]}"', '.jpg?v=' + IMGV + '" alt="${C[k]}"')
+        out = re.sub(r'(img/[\w/\-]+\.(?:jpg|webp|png|svg))(?!\?)', lambda m: m.group(1) + '?v=' + IMGV, out)
+        out = out.replace('.webp" alt="${C[k]}"', '.webp?v=' + IMGV + '" alt="${C[k]}"')
         # Английская версия (ОАЭ, Катар): все кнопки WhatsApp — сразу на 77064299895,
         # без распределителя /whatsapp, с готовым текстом, чтобы менеджер видел, что клиент с EN-сайта.
         if code == 'en':
