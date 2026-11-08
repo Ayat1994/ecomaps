@@ -397,3 +397,12 @@ header.flat{box-shadow:none}
 @media(max-width:640px){.lb{padding:10px}.lb-nav{top:auto;bottom:18px;transform:none;width:46px;height:46px}.lb img{max-height:calc(100vh - 220px)}.lb figcaption{font-size:14px}}
 
 .hero h1 .h1k{display:block;font-size:clamp(13px,1.35vw,17px);font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;font-style:normal;line-height:1.4}
+/* SEO: в H1 — ключевая фраза (стиль бывшей надписи над заголовком), слоган — отдельной строкой в прежнем крупном стиле */
+.hero h1.h1-key{font-size:clamp(13px,1.35vw,17px);font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;text-transform:uppercase;line-height:1.4;max-width:840px}
+.hero .h1s{margin:0;font-size:clamp(40px,6.6vw,88px);font-weight:900;text-transform:uppercase;max-width:840px;line-height:1.05;letter-spacing:-.02em;color:inherit}
+.hero .h1s em{font-style:normal;color:var(--tan)}
+/* вопросы FAQ — заголовки H3, вид прежний */
+.faq summary h3{display:inline;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit;margin:0}
+/* текст о продукции на страницах Казахстана и бизнеса */
+.about-sec .about-tx{max-width:860px;margin-top:22px}
+.about-sec .about-tx p{font-size:17px;line-height:1.65;margin:0 0 14px;color:var(--ink,#334)}
