@@ -11,6 +11,7 @@
 <meta property="og:url" content="https://ecomaps.kz/{{path}}">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://ecomaps.kz/{{path}}">
+{{jsonld}}
 {{hreflangs}}
 <link rel="icon" type="image/png" href="{{P}}img/favicon.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMT7JD949"></script>
@@ -58,7 +59,7 @@ var META_PIXEL_ID='{{meta_pixel}}';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if
 <section class="hero">
   <div class="hero-bg" role="img" aria-label="{{hero_alt}}"></div>
   <div class="wrap">
-    <h1 class="reveal">{{h1a}} <em>{{h1b}}</em></h1>
+    <h1 class="reveal">{{h1k_html}}{{h1a}} <em>{{h1b}}</em></h1>
     <p class="lead reveal">{{hero_lead}}</p>
     <ul class="checks reveal">
       <li>{{check1}}</li>
@@ -89,9 +90,9 @@ var META_PIXEL_ID='{{meta_pixel}}';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if
     <h2>{{cat_h_a}} <span class="t">{{cat_h_b}}</span></h2>
     <p class="sub">{{cat_sub}}</p>
     <nav class="modes">
-      <a class="md" data-set="world" href="{{href_world}}#catalog"><img src="{{P}}img/tab-world.jpg" alt=""><span>🌍 {{tab_world}}</span></a>
-      <a class="md" data-set="kz" href="{{href_kz}}#catalog"><img src="{{P}}img/kz/k-phys.jpg" alt=""><span>🇰🇿 {{tab_kz}}</span></a>
-      <a class="md" data-set="biz" href="{{href_biz}}#catalog"><img src="{{P}}img/mirrors/mirrors-cover.jpg" alt=""><span>🏢 {{tab_biz}}</span></a>
+      <a class="md" data-set="world" href="{{href_world}}#catalog"><img src="{{P}}img/tab-world.jpg" alt="{{tab_world}}"><span>🌍 {{tab_world}}</span></a>
+      <a class="md" data-set="kz" href="{{href_kz}}#catalog"><img src="{{P}}img/kz/k-phys.jpg" alt="{{tab_kz}}"><span>🇰🇿 {{tab_kz}}</span></a>
+      <a class="md" data-set="biz" href="{{href_biz}}#catalog"><img src="{{P}}img/mirrors/mirrors-cover.jpg" alt="{{tab_biz}}"><span>🏢 {{tab_biz}}</span></a>
     </nav>
 
     <div class="pane" data-m="world">
@@ -236,7 +237,7 @@ var META_PIXEL_ID='{{meta_pixel}}';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){if
       </a>
       <ul class="t-list">
         <li><i class="ic">®</i><div><b>{{cert_h}}</b><p>{{cert_p}}</p></div></li>
-        <li><i class="ic img"><img src="{{P}}img/trust/made-in-kz.png" alt=""></i><div><b>{{why2_h}}</b><p>{{why2_p}}</p></div></li>
+        <li><i class="ic img"><img src="{{P}}img/trust/made-in-kz.png" alt="Made in Kazakhstan"></i><div><b>{{why2_h}}</b><p>{{why2_p}}</p></div></li>
         <li><i class="ic">🏆</i><div><b>{{why4_h}}</b><p>{{why4_p}}</p></div></li>
         <li><i class="ic">8</i><div><b>8 {{why1_h}}</b><p>{{why1_p}}</p></div></li>
       </ul>

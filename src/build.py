@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 tpl = open(os.path.join(ROOT, 'src', 'template.html'), encoding='utf-8').read()
 
 T = {
- 'title': ['ECOMAPS — деревянная карта мира с подсветкой', 'ECOMAPS — подсветкасы бар ағаш әлем картасы', 'ECOMAPS — wooden backlit world map'],
+ 'title': ['Карта мира из дерева на стену с подсветкой — купить в Казахстане | ECOMAPS', 'Қабырғаға арналған подсветкасы бар ағаш әлем картасы — Қазақстанда сатып алу | ECOMAPS', 'Wooden backlit world map for your wall — Kazakhstan | ECOMAPS'],
  'desc': ['Многоуровневые деревянные карты мира с подсветкой: 3 размера или ваш, 13 расцветок, надписи на русском, казахском или английском. Изготовление за 8 рабочих дней, доставка и установка по всему Казахстану, рассрочка Kaspi.', 'Подсветкасы бар көп деңгейлі ағаш әлем карталары: 3 өлшем немесе өзіңіздікі, 13 түс, жазулар орыс, қазақ немесе ағылшын тілінде. 8 жұмыс күнінде дайындаймыз, бүкіл Қазақстан бойынша жеткізу және орнату, Kaspi бөліп төлеу.', 'Multi-layer wooden world maps with backlight: 3 sizes or your own, 13 colour schemes, labels in Russian, Kazakh or English. Made in 8 working days, delivery and installation across Kazakhstan, Kaspi installments.'],
  'og_title': ['ECOMAPS — весь мир перед тобой', 'ECOMAPS — бүкіл әлем алдыңда', 'ECOMAPS — the whole world before you'],
  'descriptor': ['интерьерные карты мира', 'интерьерлік әлем карталары', 'interior world maps'],
@@ -21,6 +21,7 @@ T = {
  'hero_alt': ['Деревянная карта мира с подсветкой на стене', 'Қабырғадағы подсветкасы бар ағаш әлем картасы', 'Backlit wooden world map on a wall'],
  'badge_tag': ['Акция', 'Акция', 'Offer'],
  'badge': ['Логотип компании на карте в подарок', 'Компания логотипі картаға сыйлыққа', 'Your company logo on the map for free'],
+ 'h1k': ['Деревянная карта мира с подсветкой', 'Подсветкасы бар ағаш әлем картасы', 'Wooden backlit world map'],
  'h1a': ['Весь мир', 'Бүкіл әлем', 'The whole world'],
  'h1b': ['перед тобой', 'алдыңда', 'before you'],
  'hero_lead': ['Многоуровневая деревянная карта мира с подсветкой: главный акцент гостиной, кабинета или детской. Лидер продаж интерьерных карт в Казахстане.', 'Подсветкасы бар көп деңгейлі ағаш әлем картасы: қонақ бөлменің, кабинеттің немесе балалар бөлмесінің басты әшекейі. Қазақстандағы интерьер карталары сатылымының көшбасшысы.', 'A multi-layer wooden world map with backlight, the centrepiece of a living room, study or kids’ room. Kazakhstan’s best-selling interior maps.'],
@@ -285,6 +286,7 @@ PT = {
   'title': ['Карта Казахстана из дерева с подсветкой — ECOMAPS', 'Подсветкасы бар ағаш Қазақстан картасы — ECOMAPS', 'Wooden backlit map of Kazakhstan — ECOMAPS'],
   'desc': ['Деревянные карты Казахстана с новыми областями и рельефная 3D-карта РК — наша разработка. Логотип компании в подарок, доставка и установка по всему Казахстану.', 'Жаңа облыстары бар ағаш Қазақстан карталары және ҚР рельефті 3D картасы — біздің әзірлеме. Компания логотипі сыйлыққа, бүкіл Қазақстан бойынша жеткізу және орнату.', 'Wooden maps of Kazakhstan with the new regions and a 3D relief map we developed ourselves. Free company logo, delivery and installation across Kazakhstan.'],
   'og_title': ['ECOMAPS — карта Казахстана из дерева', 'ECOMAPS — ағаштан жасалған Қазақстан картасы', 'ECOMAPS — wooden map of Kazakhstan'],
+  'h1k': ['', '', ''],
   'h1a': ['Карта Казахстана', 'Қазақстан картасы', 'Map of Kazakhstan'],
   'h1b': ['из дерева', 'ағаштан', 'in wood'],
   'hero_lead': ['Новые границы областей, подсветка, логотип компании и рельефная 3D-карта РК, которую в Казахстане делаем только мы.', 'Облыстардың жаңа шекаралары, подсветка, компания логотипі және Қазақстанда тек біз жасайтын ҚР рельефті 3D картасы.', 'New regional borders, backlight, your company logo and a 3D relief map of Kazakhstan that only we make.'],
@@ -296,6 +298,7 @@ PT = {
   'title': ['Декор для бизнеса: панели, Instagram-зеркала, картины — ECOMAPS', 'Бизнеске арналған декор: панельдер, Instagram-айналар, суреттер — ECOMAPS', 'Business décor: wall panels, Instagram mirrors, artwork — ECOMAPS'],
   'desc': ['Декоративные панели, Instagram-зеркала с подсветкой, брендированные картины и карты с логотипом для офисов, салонов, школ и кафе. Своё производство, монтаж по всему Казахстану.', 'Кеңсе, салон, мектеп және кафеге арналған сәндік панельдер, подсветкасы бар Instagram-айналар, брендтелген суреттер мен логотипі бар карталар. Өз өндірісіміз, бүкіл Қазақстан бойынша орнату.', 'Decorative wall panels, backlit Instagram mirrors, branded artwork and maps with your logo for offices, salons, schools and cafés. Own production, installation across Kazakhstan.'],
   'og_title': ['ECOMAPS — декор для бизнеса', 'ECOMAPS — бизнеске арналған декор', 'ECOMAPS — décor for business'],
+  'h1k': ['Декор-панели, Instagram-зеркала и картины для бизнеса', 'Бизнеске арналған декор-панельдер, Instagram-айналар және суреттер', 'Wall panels, Instagram mirrors and artwork for business'],
   'h1a': ['Декор, который', 'Сізді есте', 'Décor that makes'],
   'h1b': ['запоминают', 'қалдыратын декор', 'you memorable'],
   'hero_lead': ['Декор-панели, Instagram-зеркала и картины в фирменном стиле для офисов, салонов, школ и кафе. Своё производство и монтаж по всему Казахстану.', 'Кеңсе, салон, мектеп және кафеге арналған фирмалық стильдегі декор-панельдер, Instagram-айналар және суреттер. Өз өндірісіміз және бүкіл Қазақстан бойынша орнату.', 'Wall panels, Instagram mirrors and artwork in your brand style for offices, salons, schools and cafés. Own production and installation across Kazakhstan.'],
@@ -315,7 +318,34 @@ CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 RAW = ('oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
-       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img')
+       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'jsonld', 'h1k_html')
+
+# ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
+STORE_ID = 'https://ecomaps.kz/#store'
+def jsonld(mode, i, path, v):
+    url = 'https://ecomaps.kz/' + path
+    store = {'@type': ['Store', 'Organization'], '@id': STORE_ID, 'name': 'ECOMAPS', 'legalName': 'ТОО «ECOMAPS»',
+             'url': 'https://ecomaps.kz/', 'logo': 'https://ecomaps.kz/img/ads/logo-square.png', 'image': 'https://ecomaps.kz/img/hero-wide.jpg',
+             'telephone': '+77762979276', 'priceRange': '₸₸',
+             'address': {'@type': 'PostalAddress', 'streetAddress': 'ул. Сарайшык, 7/1', 'addressLocality': 'Астана', 'addressCountry': 'KZ'},
+             'areaServed': {'@type': 'Country', 'name': 'Kazakhstan'},
+             'sameAs': ['https://www.instagram.com/ecomaps.kz/', 'https://2gis.kz/astana/geo/70000001057229459', 'https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh']}
+    page = {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': v['title'], 'description': v['desc'],
+            'inLanguage': LANGS[i][1], 'isPartOf': {'@type': 'WebSite', '@id': 'https://ecomaps.kz/#site', 'url': 'https://ecomaps.kz/', 'name': 'ECOMAPS'},
+            'about': {'@id': STORE_ID}}
+    prod = {'@type': 'Product', 'name': {'world': v['h1k'] or v['title'], 'kz': v['h1a'] + ' ' + v['h1b'], 'biz': v['h1k']}[mode],
+            'description': v['hero_lead'], 'brand': {'@type': 'Brand', 'name': 'ECOMAPS'},
+            'image': 'https://ecomaps.kz/img/' + HERO[mode], 'url': url}
+    if mode == 'world':  # цена «от 54 000 ₸» — как в рекламе
+        prod['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'KZT', 'lowPrice': 54000, 'availability': 'https://schema.org/InStock',
+                          'seller': {'@id': STORE_ID}, 'url': url}
+    qs = ['f1', 'f2', 'f3'] + (['f4'] if mode == 'biz' else []) + ['f5', 'f6']
+    faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': v[q + 'q'],
+                                               'acceptedAnswer': {'@type': 'Answer', 'text': v[q + 'a']}} for q in qs]}
+    # товар с ценой — только на странице карты мира (без цены Google считает разметку товара ошибкой)
+    data = {'@context': 'https://schema.org', '@graph': [store, page] + ([prod] if mode == 'world' else []) + [faq]}
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace('</', '<\\/') + '</script>'
+
 
 for mode, pp in PAGES:
     for i, (code, htmllang, lp) in enumerate(LANGS):
@@ -332,6 +362,8 @@ for mode, pp in PAGES:
         vals.update(oai_pixel=OAI_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
                     **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
+        vals['h1k_html'] = f'<span class="h1k">{esc(vals["h1k"])}</span>' if vals.get('h1k') else ''
+        vals['jsonld'] = jsonld(mode, i, path, vals)
         js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}
         vals['jsdata'] = json.dumps(js, ensure_ascii=False)
         def sub(m):
@@ -346,3 +378,21 @@ for mode, pp in PAGES:
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         open(dst, 'w', encoding='utf-8').write(out)
         print('built', path or '/')
+
+
+# ---------- SEO: robots.txt и sitemap.xml ----------
+today = __import__('datetime').date.today().isoformat()
+urls = []
+for mode, pp in PAGES:
+    alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{c}" href="https://ecomaps.kz/{l}{pp}"/>' for c, _, l in LANGS)
+    alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="https://ecomaps.kz/{pp}"/>'
+    for c, _, l in LANGS:
+        pr = '1.0' if not (l + pp) else '0.8'
+        urls.append(f'<url><loc>https://ecomaps.kz/{l}{pp}</loc><lastmod>{today}</lastmod><priority>{pr}</priority>{alts}</url>')
+open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+    'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(urls) + '\n</urlset>\n')
+open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write(
+    'User-agent: *\nAllow: /\n\n'
+    'Host: https://ecomaps.kz\nSitemap: https://ecomaps.kz/sitemap.xml\n')
+print('built sitemap.xml, robots.txt')
