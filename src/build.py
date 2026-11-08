@@ -238,6 +238,8 @@ EN = {
  'pay3': 'International bank transfer (invoice)',
 }
 for _k, _v in EN.items(): T[_k][2] = _v
+import urllib.parse as _up
+EN_WA = 'https://wa.me/77064299895?text=' + _up.quote("Hello! I'm interested in a wooden world map (from ecomaps.kz/en).")
 
 JS = {
  'cap': {
@@ -423,6 +425,10 @@ for mode, pp in PAGES:
         # версия картинок: при замене фото браузер сразу загрузит новое
         out = re.sub(r'(img/[\w/\-]+\.(?:jpg|png|svg))(?!\?)', lambda m: m.group(1) + '?v=' + IMGV, out)
         out = out.replace('.jpg" alt="${C[k]}"', '.jpg?v=' + IMGV + '" alt="${C[k]}"')
+        # Английская версия (ОАЭ, Катар): все кнопки WhatsApp — сразу на 77064299895,
+        # без распределителя /whatsapp, с готовым текстом, чтобы менеджер видел, что клиент с EN-сайта.
+        if code == 'en':
+            out = out.replace('href="https://ecomaps.kz/whatsapp"', 'href="' + EN_WA + '"')
         dst = os.path.join(ROOT, path, 'index.html')
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         open(dst, 'w', encoding='utf-8').write(out)
