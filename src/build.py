@@ -209,6 +209,36 @@ T = {
  'tm_line': ['ECOMAPS® — товарный знак № 102817', 'ECOMAPS® — № 102817 тауар таңбасы', 'ECOMAPS® — trademark No. 102817'],
 }
 
+# ---------- Английская версия — для покупателей из ОАЭ, Катара и других стран ----------
+# (без Kaspi, госзакупок и доставки «по городам Казахстана»)
+EN = {
+ 'title': 'Wooden backlit world map for your wall — delivery to the UAE & Qatar | ECOMAPS',
+ 'desc': 'Handmade multi-layer wooden world maps with backlight: 3 sizes or custom, 13 colour schemes, labels in English, Russian or Kazakh. Made in 8 working days and shipped worldwide, including the UAE and Qatar. Free mock-up on a photo of your wall.',
+ 'phone_sub': 'WhatsApp · worldwide',
+ 'hero_lead': 'A multi-layer wooden world map with backlight, the centrepiece of a living room, study, office or majlis. Handmade in Kazakhstan and shipped to the UAE, Qatar and worldwide.',
+ 'check1': 'Delivery to the UAE, Qatar and worldwide',
+ 'check3': 'Free mock-up on a photo of your wall',
+ 'stat3b': 'UAE · Qatar', 'stat3': 'and worldwide delivery',
+ 'biz_p': 'Wall panels, Instagram mirrors and artwork in your brand style that clients photograph and remember, plus world maps with your logo. We work with companies and issue invoices.',
+ 'biz_l3': 'Delivery abroad and bank transfer for companies',
+ 'calc_note': 'Your manager will send the price together with the delivery cost to your country.',
+ 'geo_kicker': 'Delivery', 'geo_h_a': 'We ship', 'geo_h_b': 'worldwide',
+ 'geo_sub': 'We deliver to the UAE (Dubai, Abu Dhabi, Sharjah and all the Emirates), Qatar and other countries. Your manager will confirm the delivery cost and timing for your address before you pay.',
+ 'geo_card_a': 'Delivery', 'geo_default_city': 'to the UAE and Qatar',
+ 'geo_l2': 'Step-by-step installation instructions',
+ 'geo_l3': 'Help over a video call if you need it',
+ 'geo_btn': 'Check delivery to my city',
+ 'st4_h': 'Delivery', 'st4_p': 'We ship to the UAE, Qatar and other countries. You install the map with our instructions and video-call support.',
+ 'f3q': 'Do you deliver to the UAE and Qatar?',
+ 'f3a': 'Yes. We ship from our workshop in Kazakhstan to the UAE, Qatar and other countries. Your manager confirms the delivery cost and timing for your address before you pay. Installation is simple: instructions and all fixings are included, and we can help over a video call.',
+ 'f5q': 'How can I pay?',
+ 'f5a': 'By international bank transfer against an invoice, for both companies and private buyers. Your manager will send you the invoice.',
+ 'final_p': 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price, including delivery to your city.',
+ 'foot_tag': 'Handmade wooden maps from Kazakhstan, shipped worldwide',
+ 'pay3': 'International bank transfer (invoice)',
+}
+for _k, _v in EN.items(): T[_k][2] = _v
+
 JS = {
  'cap': {
   'g1': ['Карта мира с подсветкой', 'Подсветкасы бар әлем картасы', 'Backlit world map'],
@@ -308,6 +338,23 @@ PT = {
   'badge': ['Логотип компании в подарок к заказу', 'Тапсырысқа компания логотипі сыйлыққа', 'Your company logo free with your order'],
  },
 }
+PT['kz']['desc'][2] = 'Wooden maps of Kazakhstan with the new regions and a 3D relief map we developed ourselves. Free company logo, delivery to the UAE, Qatar and worldwide.'
+PT['biz']['desc'][2] = 'Decorative wall panels, backlit Instagram mirrors, branded artwork and maps with your logo for offices, salons, schools and cafés. Own production in Kazakhstan, delivery worldwide.'
+PT['biz']['hero_lead'][2] = 'Wall panels, Instagram mirrors and artwork in your brand style for offices, salons, schools and cafés. Own production in Kazakhstan, delivery to the UAE, Qatar and worldwide.'
+
+# Kaspi и omarket показываем только на русской и казахской версиях
+OMARKET = 'https://omarket.kz/catalog/ecc_uchebnoe_oborudovanie/ecc_demonstracionnye_materialy/nastennye_karty/dekorativnaia-karta-mira-ecomaps-km-nastennaia-100x70x2-sm.html'
+KASPI = 'https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh'
+def pay_html(code, v):
+    corp = f'<a class="js-wa" href="https://ecomaps.kz/whatsapp" data-place="pay-corp">{esc(v["pay3"])} ↗</a>'
+    if code == 'en': return f'<div class="pay">{corp}</div>'
+    return (f'<div class="pay"><span><b>Kaspi</b> Red · 0-0-12 · 0-0-24</span><a href="{KASPI}" target="_blank" rel="noopener" data-track="outbound" data-to="kaspi">{esc(v["pay2"])} ↗</a>'
+            f'{corp}<a href="{OMARKET}" target="_blank" rel="noopener" data-track="outbound" data-to="omarket">omarket.kz ↗</a></div>')
+def shop_links(code, v):
+    if code == 'en': return ''
+    return (f'<a href="{KASPI}" target="_blank" rel="noopener" data-track="outbound" data-to="kaspi">Kaspi {esc(v["shop"])}</a>\n'
+            f'      <a href="{OMARKET}" target="_blank" rel="noopener" data-track="outbound" data-to="omarket">omarket.kz</a>')
+
 CALC = {
  'world': [['Карта мира', 'Әлем картасы', 'World map'], ['Карта Казахстана', 'Қазақстан картасы', 'Kazakhstan map'], ['Рельефная карта РК', 'ҚР рельефті картасы', 'Relief KZ map'], ['Другое', 'Басқа', 'Other']],
  'biz': [['Декор-панель', 'Декор-панель', 'Wall panel'], ['Instagram-зеркало', 'Instagram-айна', 'Instagram mirror'], ['Картина', 'Сурет', 'Artwork'], ['Карта с логотипом', 'Логотипі бар карта', 'Map with logo']],
@@ -318,7 +365,7 @@ CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 RAW = ('oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
-       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'jsonld', 'h1k_html')
+       'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
 
 # ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
 STORE_ID = 'https://ecomaps.kz/#store'
@@ -328,7 +375,7 @@ def jsonld(mode, i, path, v):
              'url': 'https://ecomaps.kz/', 'logo': 'https://ecomaps.kz/img/ads/logo-square.png', 'image': 'https://ecomaps.kz/img/hero-wide.jpg',
              'telephone': '+77762979276', 'priceRange': '₸₸',
              'address': {'@type': 'PostalAddress', 'streetAddress': 'ул. Сарайшык, 7/1', 'addressLocality': 'Астана', 'addressCountry': 'KZ'},
-             'areaServed': {'@type': 'Country', 'name': 'Kazakhstan'},
+             'areaServed': ([{'@type': 'Country', 'name': n} for n in ('Kazakhstan', 'United Arab Emirates', 'Qatar')] if LANGS[i][0] == 'en' else {'@type': 'Country', 'name': 'Kazakhstan'}),
              'sameAs': ['https://www.instagram.com/ecomaps.kz/', 'https://2gis.kz/astana/geo/70000001057229459', 'https://l.kaspi.kz/shop/HHgEF6jwWSDbpnh']}
     page = {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': v['title'], 'description': v['desc'],
             'inLanguage': LANGS[i][1], 'isPartOf': {'@type': 'WebSite', '@id': 'https://ecomaps.kz/#site', 'url': 'https://ecomaps.kz/', 'name': 'ECOMAPS'},
@@ -364,6 +411,8 @@ for mode, pp in PAGES:
                     **{f'href_{m}': f'{P}{lp}{p}index.html' for m, p in PAGES})
         vals['h1k_html'] = f'<span class="h1k">{esc(vals["h1k"])}</span>' if vals.get('h1k') else ''
         vals['jsonld'] = jsonld(mode, i, path, vals)
+        vals['pay_html'] = pay_html(code, vals)
+        vals['shop_links'] = shop_links(code, vals)
         js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}
         vals['jsdata'] = json.dumps(js, ensure_ascii=False)
         def sub(m):
