@@ -246,11 +246,20 @@ def metrika():
             f"{esc(x['dimensions'][0].get('name') or 'без метки')} {num(x['metrics'][0])}" for x in rows))
 
     if wi is not None:
-        vals = []
-        for _, d1, _, _ in PER:
-            r = get(d1, filters=IG)
-            vals.append(num(r['totals'][wi]) if r else '?')
-        out.append(f'\n📲 <b>Ссылка в шапке Instagram → WhatsApp</b>\n{PER[0][0]}: {vals[0]}')
+        # прямые ссылки на распределитель: шапка Instagram, Google Карты, 2ГИС и т.д. — различаем по utm_source
+        names = {'': '📲 Шапка Instagram', 'ig': '📲 Шапка Instagram', 'google': '📍 Google Карты',
+                 '2gis': '📍 2ГИС', 'yandex_maps': '📍 Яндекс Карты', 'meta': '📘 Реклама Meta'}
+        r = get(PER[0][1], 'ym:s:lastsignUTMSource', 10, IG)
+        agg = {}
+        for x in (r or {}).get('data', []):
+            src = (x['dimensions'][0].get('name') or '').lower()
+            label = names.get(src, f'🔗 {esc(src)}')
+            agg[label] = agg.get(label, 0) + (x['metrics'][wi] or 0)
+        out.append(f'\n<b>Прямые переходы в WhatsApp</b> ({PER[0][0]}):')
+        if not agg:
+            out.append('нет')
+        for label, n in sorted(agg.items(), key=lambda kv: -kv[1]):
+            out.append(f'{label}: {num(n)}')
     return '\n'.join(out)
 
 
