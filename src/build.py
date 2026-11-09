@@ -20,6 +20,8 @@ T = {
  'phone_sub': ['WhatsApp · по всему Казахстану', 'WhatsApp · бүкіл Қазақстан бойынша', 'WhatsApp · all over Kazakhstan'],
  'hero_alt': ['Деревянная карта мира с подсветкой на стене', 'Қабырғадағы подсветкасы бар ағаш әлем картасы', 'Backlit wooden world map on a wall'],
  'badge_tag': ['Акция', 'Акция', 'Offer'],
+ # Акция 10–12.11.2026 (реклама Meta «Только 3 дня — скидки до 50%»); полоска сама исчезает после 12.11 23:59 по Астане.
+ 'sale_tag': ['Только 3 дня', 'Тек 3 күн', ''], 'sale_txt': ['Скидки до 50% на карты из дерева', 'Ағаш карталарға 50%-ға дейін жеңілдік', ''], 'sale_btn': ['Узнать цену со скидкой', 'Жеңілдікпен бағасын білу', ''],
  'badge': ['Логотип компании на карте в подарок', 'Компания логотипі картаға сыйлыққа', 'Your company logo on the map for free'],
  'h1k': ['Деревянная карта мира с подсветкой', 'Подсветкасы бар ағаш әлем картасы', 'Wooden backlit world map'],
  'h1a': ['Весь мир', 'Бүкіл әлем', 'The whole world'],
@@ -537,6 +539,8 @@ for mode, pp in PAGES:
         # Английская версия (ОАЭ, Катар): все кнопки WhatsApp — сразу на 77064299895,
         # без распределителя /whatsapp, с готовым текстом, чтобы менеджер видел, что клиент с EN-сайта.
         if code == 'en':
+            # акция только для Казахстана — на EN полоску не показываем
+            out = re.sub(r'\n  <div class="sale-bar".*?</script>', '', out, count=1, flags=re.S)
             out = out.replace('href="https://ecomaps.kz/whatsapp"', 'href="' + EN_WA + '"')
         dst = os.path.join(ROOT, path, 'index.html')
         os.makedirs(os.path.dirname(dst), exist_ok=True)
