@@ -1,0 +1,32 @@
+name: 'ССП: заполнить таблицу'
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # каждый день в 06:00 по Астане — за вчера (00:00–24:00 по Астане)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'День ГГГГ-ММ-ДД (пусто = вчера)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/reports
+      - name: Заполнить ССП
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
+          SSP_WEBHOOK: ${{ secrets.SSP_WEBHOOK }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          SSP_DATE: ${{ inputs.date }}
+        run: python3 .github/reports/ssp_fill.py
