@@ -1,0 +1,29 @@
+name: 'Реклама на сайт: отчёт сейчас'
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'День ГГГГ-ММ-ДД (пусто = сегодня по Астане)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/reports
+      - name: Отчёт в Telegram
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          REPORT_DATE: ${{ inputs.date }}
+        run: python3 .github/reports/site_ads_report.py
