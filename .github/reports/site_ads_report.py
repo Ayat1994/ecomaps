@@ -76,7 +76,11 @@ def metrika(day, tok, country='in'):
          'filters': "ym:s:lastsignUTMSource=='meta' AND ym:s:lastsignUTMContent=@'|' AND ym:s:regionCountry" + ("=='Казахстан'" if country == 'in' else "!='Казахстан'")}
     st, txt = http('https://api-metrika.yandex.net/stat/v1/data?' + urllib.parse.urlencode(q), headers=h)
     if st != 200:
-        raise RuntimeError(f'Метрика: ошибка {st}')
+        try:
+            msg = json.loads(txt).get('message', '')[:150]
+        except Exception:
+            msg = ''
+        raise RuntimeError(f'Метрика: ошибка {st} {msg}')
     out = {}
     for x in json.loads(txt).get('data', []):
         m = x['metrics']
