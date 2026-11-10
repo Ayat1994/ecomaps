@@ -30,7 +30,7 @@ var META_PIXEL_ID='576043711342731';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){i
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/style.css?v=369728b9">
+<link rel="stylesheet" href="../../assets/style.css?v=459767e6">
 <style>.hero-bg{background-image:url(../../img/hero-biz.webp?v=f53d175c)}.final:before{background-image:url(../../img/g3.webp?v=f53d175c)}</style>
 </head>
 <body data-mode="biz">
@@ -171,18 +171,19 @@ var META_PIXEL_ID='576043711342731';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){i
       <div class="promo"><i>Offer</i> 🎁 Your company logo free with your order</div>
       <div class="calc2">
         <div class="row"><span class="lbl">What do you need?</span><div class="seg" data-k="type">
-          <button class="on">Wall panel</button><button>Instagram mirror</button><button>Artwork</button><button>Map with logo</button>
+          <button class="on" data-np>Wall panel</button><button data-np>Instagram mirror</button><button data-np>Artwork</button><button data-np>Map with logo</button>
         </div></div>
         <div class="row"><span class="lbl">Size</span><div class="seg" data-k="size">
-          <button>small<small class="cm">150×87</small></button><button class="on">medium<small class="cm">200×115</small></button><button>large<small class="cm">250×145</small></button><button>Custom size</button>
+          <button>small</button><button class="on">medium</button><button>large</button><button>Custom size</button>
         </div></div>
         <div class="row"><span class="lbl">Backlight</span><div class="seg" data-k="light">
-          <button class="on">With backlight</button><button>Without backlight</button>
+          <button class="on">With backlight<small>same price</small></button><button>Without backlight<small>same price</small></button>
         </div></div>
         <div class="go">
-          <p>🎁 We will show the map on a photo of your wall for free</p>
-          <a class="btn btn-wa js-wa" id="sendCalc" href="https://wa.me/77064299895?text=Hello%21%20I%27m%20interested%20in%20a%20wooden%20world%20map%20%28from%20ecomaps.kz/en%29." data-place="calc"><svg><use href="#wa"/></svg>Get the price on WhatsApp</a>
+          <div class="price" id="calcPrice" aria-live="polite"></div>
+          <a class="btn btn-wa js-wa" id="sendCalc" href="https://wa.me/77064299895?text=Hello%21%20I%27m%20interested%20in%20a%20wooden%20world%20map%20%28from%20ecomaps.kz/en%29." data-place="calc"><svg><use href="#wa"/></svg>Order on WhatsApp</a>
         </div>
+        <p class="gift-l">🎁 We will show the map on a photo of your wall for free</p>
       </div>
       <p class="calc-note">Your manager will send the price together with the delivery cost to your country.</p>
     </div>
@@ -327,7 +328,7 @@ var META_PIXEL_ID='576043711342731';if(META_PIXEL_ID){!function(f,b,e,v,n,t,s){i
 <a class="fab js-wa" href="https://wa.me/77064299895?text=Hello%21%20I%27m%20interested%20in%20a%20wooden%20world%20map%20%28from%20ecomaps.kz/en%29." data-place="fab" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><use href="#wa"/></svg></a>
 
 <script>
-const P='../../', I18N={"cap": {"g1": "Backlit world map", "physical": "Physical world map", "kids": "Light map for a kids’ room", "g7": "World map with flags", "hero": "World map in a living room", "g2": "World map in an office", "g3": "Backlight close-up", "g4": "Director’s office", "g5": "Cool backlight", "g6": "Study", "g8": "Light backlit map", "light": "Warm backlight", "world": "World map in an apartment", "detail": "Every country is a separate piece", "install": "Installation", "kazakhstan": "Kazakhstan map with new regions", "kz/k-navy": "Night-style backlit Kazakhstan map", "kz/k-phys": "Physical map of Kazakhstan", "kz/k-phys2": "Backlit physical map of Kazakhstan", "kz/k-dark": "Kazakhstan map in a meeting room", "kz/k-reception": "Kazakhstan map at a reception", "relief/r3019": "3D relief map of Kazakhstan", "relief/r3018": "Relief map of Kazakhstan", "irere": "Kazakhstan map with IRERE education logo", "office": "Kazakhstan map and INTANT logo", "tab-kz": "Kazakhstan map in brand colours", "gift/la": "Logo above a Kazakhstan map in an office", "gift/intant": "INTANT: map and logo at the reception", "gift/irere2": "IRERE education: logo and map", "gift/clock": "Clock with the INTANT logo", "gift/shezhire": "Shezhire family tree", "gift/autopapa": "Branded artwork for AUTO PAPA", "mirrors/m1": "Instagram mirror for a salon", "mirrors/m3": "Backlit Instagram mirror", "services/poster": "Branded artwork for a car dealer", "services/interior2": "Kindergarten interior", "panels/school-mural": "School wall art", "services/panels": "“Robot” wall panel", "services/painting": "Framed artwork for an office", "panels/fairies": "Backlit “Fairies” panel", "panels/space-corridor": "“Space” corridor design", "panels/kids-robot": "Panel for a kids’ centre", "panels/planets": "“Planets” panel", "mirrors/m4": "Instagram mirror for a school"}};
+const P='../../', I18N={"cap": {"g1": "Backlit world map", "physical": "Physical world map", "kids": "Light map for a kids’ room", "g7": "World map with flags", "hero": "World map in a living room", "g2": "World map in an office", "g3": "Backlight close-up", "g4": "Director’s office", "g5": "Cool backlight", "g6": "Study", "g8": "Light backlit map", "light": "Warm backlight", "world": "World map in an apartment", "detail": "Every country is a separate piece", "install": "Installation", "kazakhstan": "Kazakhstan map with new regions", "kz/k-navy": "Night-style backlit Kazakhstan map", "kz/k-phys": "Physical map of Kazakhstan", "kz/k-phys2": "Backlit physical map of Kazakhstan", "kz/k-dark": "Kazakhstan map in a meeting room", "kz/k-reception": "Kazakhstan map at a reception", "relief/r3019": "3D relief map of Kazakhstan", "relief/r3018": "Relief map of Kazakhstan", "irere": "Kazakhstan map with IRERE education logo", "office": "Kazakhstan map and INTANT logo", "tab-kz": "Kazakhstan map in brand colours", "gift/la": "Logo above a Kazakhstan map in an office", "gift/intant": "INTANT: map and logo at the reception", "gift/irere2": "IRERE education: logo and map", "gift/clock": "Clock with the INTANT logo", "gift/shezhire": "Shezhire family tree", "gift/autopapa": "Branded artwork for AUTO PAPA", "mirrors/m1": "Instagram mirror for a salon", "mirrors/m3": "Backlit Instagram mirror", "services/poster": "Branded artwork for a car dealer", "services/interior2": "Kindergarten interior", "panels/school-mural": "School wall art", "services/panels": "“Robot” wall panel", "services/painting": "Framed artwork for an office", "panels/fairies": "Backlit “Fairies” panel", "panels/space-corridor": "“Space” corridor design", "panels/kids-robot": "Panel for a kids’ centre", "panels/planets": "“Planets” panel", "mirrors/m4": "Instagram mirror for a school"}, "calc": {"per": "₸/mo", "inst": "with Kaspi 0-0-12 installments", "free": "Delivery cost to your country is confirmed by the manager", "ask": "Our manager will quote the price on WhatsApp", "or": "or", "disc": "50% off"}};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const LANG=document.documentElement.lang;
 
@@ -379,8 +380,17 @@ $$('.arrows').forEach(a=>{const c=document.getElementById(a.dataset.car); const 
 function pick(k,i){const bs=$$(`.seg[data-k="${k}"] button`); bs.forEach((x,j)=>x.classList.toggle('on',j===i));}
 const val=k=>{const b=$(`.seg[data-k="${k}"] button.on`); return b?b.firstChild.textContent.trim():''};
 $$('.seg').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return;
-  g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); track('calc_option',{k:g.dataset.k,v:val(g.dataset.k)});}));
-$('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'),size:val('size'),light:val('light')}));
+  g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); track('calc_option',{k:g.dataset.k,v:val(g.dataset.k)}); calcPrice();}));
+/* цена: актуальная цена, зачёркнутая ×2 (скидка 50%), рассрочка 0-0-12 */
+const fmt=n=>Math.round(n).toLocaleString('ru-RU').replace(/\u202f|\u00a0/g,' ')+' ₸';
+function calcPrice(){const box=$('#calcPrice'); if(!box) return; const L=I18N.calc;
+  const s=$('.seg[data-k="size"] button.on'), t=$('.seg[data-k="type"] button.on');
+  let p=s&&s.dataset.p?+s.dataset.p:0; if(t&&t.hasAttribute('data-np')) p=0;
+  if(p&&t&&t.dataset.add) p+= +t.dataset.add;
+  box.innerHTML=p?`<span class="tag">${L.disc}</span><s>${fmt(p*2)}</s><b>${fmt(p)}</b><small>${L.or} ${fmt(p/12).replace(' ₸','')} ${L.per} ${L.inst}${L.free?'<br>✓ '+L.free:''}</small>`
+                 :`<b class="ask">${L.ask}</b>${L.free?'<small>✓ '+L.free+'</small>':''}`;}
+calcPrice();
+$('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'),size:val('size'),light:val('light'),price:($('.seg[data-k="size"] button.on')||{}).dataset?.p||''}));
 
 /* ---------- телефон: WhatsApp или звонок ---------- */
 const sheet=$('#sheet');

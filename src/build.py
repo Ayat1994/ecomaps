@@ -27,7 +27,7 @@ T = {
  'h1a': ['Весь мир', 'Бүкіл әлем', 'The whole world'],
  'h1b': ['перед тобой', 'алдыңда', 'before you'],
  'hero_lead': ['Многоуровневая деревянная карта мира с подсветкой: главный акцент гостиной, кабинета или детской. Лидер продаж интерьерных карт в Казахстане.', 'Подсветкасы бар көп деңгейлі ағаш әлем картасы: қонақ бөлменің, кабинеттің немесе балалар бөлмесінің басты әшекейі. Қазақстандағы интерьер карталары сатылымының көшбасшысы.', 'A multi-layer wooden world map with backlight, the centrepiece of a living room, study or kids’ room. Kazakhstan’s best-selling interior maps.'],
- 'check1': ['Доставка и установка в любом городе Казахстана', 'Қазақстанның кез келген қаласына жеткізу және орнату', 'Delivery and installation in any city of Kazakhstan'],
+ 'check1': ['Бесплатная доставка и установка в любом городе Казахстана', 'Қазақстанның кез келген қаласына тегін жеткізу және орнату', 'Delivery and installation in any city of Kazakhstan'],
  'check2': ['Изготовление за 8 рабочих дней', '8 жұмыс күнінде дайындаймыз', 'Made in 8 working days'],
  'check3': ['Рассрочка Kaspi Red, 0-0-12 и 0-0-24', 'Kaspi Red, 0-0-12 және 0-0-24 бөліп төлеу', 'Kaspi Red installments 0-0-12 and 0-0-24'],
  'btn_calc': ['Рассчитать стоимость', 'Бағасын есептеу', 'Get a price'],
@@ -35,7 +35,7 @@ T = {
  'stat1': ['лет на рынке', 'жыл нарықта', 'years on the market'],
  'stat2': ['довольных клиентов', 'риза клиент', 'happy clients'],
  'stat3b': ['Весь РК', 'Бүкіл ҚР', 'All KZ'],
- 'stat3': ['доставка и установка', 'жеткізу және орнату', 'delivery & installation'],
+ 'stat3': ['бесплатная доставка и установка', 'тегін жеткізу және орнату', 'delivery & installation'],
  'stat4': ['подписчиков в Instagram', 'Instagram жазылушысы', 'Instagram followers'],
  'trust': ['Нам доверяют', 'Бізге сенім артады', 'Trusted by'],
  'cat_h_a': ['Выберите', 'Өз картаңызды', 'Choose'],
@@ -104,18 +104,21 @@ T = {
  'q2': ['Размер', 'Өлшемі', 'Size'],
  's_small': ['маленькая', 'кіші', 'small'], 's_mid': ['средняя', 'орташа', 'medium'], 's_big': ['большая', 'үлкен', 'large'], 's_own': ['под стену', 'қабырғаға сай', 'to fit your wall'],
  'q3': ['Подсветка', 'Подсветка', 'Backlight'],
+ 'l_same': ['цена та же', 'баға бірдей', 'same price'],
+ 'q_glass': ['Подложка', 'Төсеніш', 'Backing'],
+ 'g_no': ['Без подложки', 'Төсеніш жоқ', 'No backing'], 'g_yes': ['Оргстекло', 'Оргшыны', 'Acrylic'],
  'l_yes': ['С подсветкой', 'Подсветкамен', 'With backlight'], 'l_no': ['Без подсветки', 'Подсветкасыз', 'Without backlight'], 'l_help': ['Подскажите', 'Кеңес беріңіз', 'Advise me'],
  'q4': ['Оплата', 'Төлем', 'Payment'],
  'p_kaspi': ['Kaspi рассрочка', 'Kaspi бөліп төлеу', 'Kaspi installments'], 'p_now': ['Сразу', 'Бірден', 'In full'], 'p_corp': ['Для юрлица', 'Заңды тұлға', 'Company invoice'],
  'res_h': ['Ваш расчёт', 'Сіздің есебіңіз', 'Your request'],
  'res_gift': ['Бесплатно покажем карту на фото вашей стены', 'Картаны қабырғаңыздың фотосында тегін көрсетеміз', 'We will show the map on a photo of your wall for free'],
- 'res_btn': ['Узнать цену в WhatsApp', 'WhatsApp-та бағасын білу', 'Get the price on WhatsApp'],
+ 'res_btn': ['Заказать со скидкой', 'Жеңілдікпен тапсырыс беру', 'Order on WhatsApp'],
  'res_alt': ['или свяжитесь:', 'немесе хабарласыңыз:', 'or contact us:'],
  'geo_kicker': ['География', 'География', 'Coverage'],
  'geo_h_a': ['Работаем', 'Бүкіл Қазақстан', 'We work'],
  'geo_h_b': ['по всему Казахстану', 'бойынша жұмыс істейміз', 'all over Kazakhstan'],
  'geo_sub': ['Доставляем в любой город, район и село Казахстана и организуем установку на месте: Астана, Алматы, Шымкент, Караганда, Актобе, Атырау и все остальные города.', 'Қазақстанның кез келген қаласына, ауданы мен ауылына жеткіземіз және орнында орнатамыз: Астана, Алматы, Шымкент, Қарағанды, Ақтөбе, Атырау және барлық басқа қалалар.', 'We deliver to any city, town or village in Kazakhstan and arrange installation on site: Astana, Almaty, Shymkent, Karaganda, Aktobe, Atyrau and every other city.'],
- 'geo_card_a': ['Доставка и установка', 'Жеткізу және орнату', 'Delivery & installation'],
+ 'geo_card_a': ['Бесплатная доставка и установка', 'Тегін жеткізу және орнату', 'Delivery & installation'],
  'geo_default_city': ['по всему Казахстану', 'бүкіл Қазақстан бойынша', 'across Kazakhstan'],
  'geo_l1': ['Надёжная упаковка и доставка до двери', 'Сенімді орау және есікке дейін жеткізу', 'Safe packaging and door-to-door delivery'],
  'geo_l2': ['Монтажник установит карту на стену', 'Монтажшы картаны қабырғаға орнатады', 'An installer mounts the map on your wall'],
@@ -146,11 +149,11 @@ T = {
  'faq_h_a': ['Частые', 'Жиі қойылатын', 'Frequently asked'],
  'faq_h_b': ['вопросы', 'сұрақтар', 'questions'],
  'f1q': ['Сколько стоит карта?', 'Карта қанша тұрады?', 'How much does a map cost?'],
- 'f1a': ['Цена зависит от модели, размера, расцветки и подсветки. Заполните расчёт выше или напишите в WhatsApp, и менеджер посчитает стоимость.', 'Баға модельге, өлшемге, түске және подсветкаға байланысты. Жоғарыдағы есепті толтырыңыз немесе WhatsApp-қа жазыңыз, менеджер бағасын есептейді.', 'It depends on the model, size, colours and backlight. Fill in the form above or message us on WhatsApp and we will calculate it.'],
+ 'f1a': ['Карта мира — от 80 000 ₸ (150×100 см) до 260 000 ₸ (500×300 см), карта Казахстана — от 80 000 ₸ (100×55 см) до 210 000 ₸ (300×170 см), рельефная 3D-карта РК — на 40 000 ₸ дороже. Сейчас действует скидка 50%. Цена одинаковая с подсветкой и без неё, доставка и установка по Казахстану бесплатно. Точную цену вашего размера покажет калькулятор выше.', 'Әлем картасы — 80 000 ₸ (150×100 см) бастап 260 000 ₸ (500×300 см) дейін, Қазақстан картасы — 80 000 ₸ (100×55 см) бастап 210 000 ₸ (300×170 см) дейін. Қазір 50% жеңілдік. Подсветкамен және подсветкасыз баға бірдей, Қазақстан бойынша жеткізу және орнату тегін.', 'World map from 80,000 ₸ (150×100 cm) to 260,000 ₸ (500×300 cm); Kazakhstan map from 80,000 ₸ (100×55 cm) to 210,000 ₸ (300×170 cm). 50% off right now. Same price with or without backlight.'],
  'f2q': ['Сколько времени занимает изготовление?', 'Дайындау қанша уақыт алады?', 'How long does production take?'],
  'f2a': ['Около 8 рабочих дней после согласования дизайна. Сроки индивидуальных заказов обговариваем отдельно.', 'Дизайн келісілгеннен кейін шамамен 8 жұмыс күні. Жеке тапсырыстардың мерзімі бөлек келісіледі.', 'About 8 working days after design approval. Custom orders are scheduled individually.'],
  'f3q': ['Есть ли доставка и установка в моём городе?', 'Менің қалама жеткізу және орнату бар ма?', 'Do you deliver and install in my city?'],
- 'f3a': ['Да. Доставляем по всему Казахстану в города, районы и сёла, а также в Россию, ОАЭ и другие страны. Установку организуем на месте или поможем установить самостоятельно по видеозвонку.', 'Иә. Бүкіл Қазақстан бойынша қалаларға, аудандар мен ауылдарға, сондай-ақ Ресейге, БАӘ-ге және басқа елдерге жеткіземіз. Орнатуды орнында ұйымдастырамыз немесе бейнеқоңырау арқылы өзіңіз орнатуға көмектесеміз.', 'Yes. We deliver across Kazakhstan, to cities, towns and villages, as well as to Russia, the UAE and other countries. We arrange installation on site or guide you through DIY installation by video call.'],
+ 'f3a': ['Да, и бесплатно: доставка и установка во всех городах Казахстана включены в цену. Также доставляем в Россию, ОАЭ и другие страны.', 'Иә, тегін: Қазақстанның барлық қалаларына жеткізу және орнату бағаға кіреді. Сондай-ақ Ресейге, БАӘ-ге және басқа елдерге жеткіземіз.', 'Yes. We deliver across Kazakhstan, to cities, towns and villages, as well as to Russia, the UAE and other countries. We arrange installation on site or guide you through DIY installation by video call.'],
  'f4q': ['Делаете ли вы что-то кроме карт?', 'Картадан басқа не жасайсыздар?', 'Do you make anything besides maps?'],
  'f4a': ['Да: панели, картины, зеркала, неоновые вывески, часы с логотипом и оформление интерьеров детских садов, школ и офисов под ключ.', 'Иә: панельдер, суреттер, айналар, неон маңдайшалар, логотипі бар сағаттар және балабақша, мектеп пен кеңселерді толық безендіру.', 'Yes: wall panels, paintings, mirrors, neon signs, branded clocks and turnkey interior design for kindergartens, schools and offices.'],
  'f5q': ['Можно в рассрочку?', 'Бөліп төлеуге бола ма?', 'Can I pay in installments?'],
@@ -159,7 +162,7 @@ T = {
  'f6a': ['В шоуруме в Астане: ул. Сарайшык, 7/1, Есильский район. Перед визитом напишите нам в WhatsApp', 'Астанадағы шоурумда: Сарайшық көшесі, 7/1, Есіл ауданы. Келер алдында WhatsApp-қа жазыңыз', 'At our showroom in Astana: 7/1 Saraishyk St, Yesil district. Please message us on WhatsApp before visiting'],
  'slogan': ['Весь мир перед тобой', 'Бүкіл әлем алдыңда', 'The whole world before you'],
  'final_h': ['Покажем вашу карту на вашей стене. Бесплатно.', 'Картаңызды өз қабырғаңызда тегін көрсетеміз.', 'We will show your map on your wall. For free.'],
- 'final_p': ['Пришлите фото стены в WhatsApp, и мы сделаем визуализацию с ценой. Доставка и установка в любом городе Казахстана.', 'Қабырғаның фотосын WhatsApp-қа жіберіңіз, біз бағасымен бірге визуализация жасаймыз. Қазақстанның кез келген қаласына жеткізу және орнату.', 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price. Delivery and installation anywhere in Kazakhstan.'],
+ 'final_p': ['Пришлите фото стены в WhatsApp, и мы сделаем визуализацию с ценой. Доставка и установка бесплатно в любом городе Казахстана.', 'Қабырғаның фотосын WhatsApp-қа жіберіңіз, біз бағасымен бірге визуализация жасаймыз. Қазақстанның кез келген қаласына тегін жеткізу және орнату.', 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price. Delivery and installation anywhere in Kazakhstan.'],
  'final_btn': ['Получить визуализацию', 'Визуализация алу', 'Get a mock-up'],
  'foot_tag': ['Лидер продаж интерьерных карт в Казахстане', 'Қазақстандағы интерьер карталары сатылымының көшбасшысы', 'Kazakhstan’s best-selling interior maps'],
  'foot_addr': ['Шоурум: Астана, ул. Сарайшык, 7/1', 'Шоурум: Астана, Сарайшық к-сі, 7/1', 'Showroom: 7/1 Saraishyk St, Astana'],
@@ -367,9 +370,30 @@ CALC = {
  'world': [['Карта мира', 'Әлем картасы', 'World map'], ['Карта Казахстана', 'Қазақстан картасы', 'Kazakhstan map'], ['Рельефная карта РК', 'ҚР рельефті картасы', 'Relief KZ map'], ['Другое', 'Басқа', 'Other']],
  'biz': [['Декор-панель', 'Декор-панель', 'Wall panel'], ['Instagram-зеркало', 'Instagram-айна', 'Instagram mirror'], ['Картина', 'Сурет', 'Artwork'], ['Карта с логотипом', 'Логотипі бар карта', 'Map with logo']],
 }
-CALC['world'] = [['Классическая', 'Классикалық', 'Classic'], ['Физическая', 'Физикалық', 'Physical'], ['С флагами', 'Жалаулармен', 'With flags'], ['Своя расцветка', 'Өз түсіңіз', 'Custom colours']]
+CALC['world'] = [['Классическая', 'Классикалық', 'Classic'], ['Физическая', 'Физикалық', 'Physical'], ['С флагами', 'Жалаулармен', 'With flags'], ['Выбрать из каталога', 'Каталогтан таңдау', 'Choose from catalogue']]
 CALC['kz'] = [['Карта РК', 'ҚР картасы', 'Kazakhstan map'], ['Рельефная 3D', 'Рельефті 3D', '3D relief'], ['С логотипом', 'Логотиппен', 'With logo'], ['Другое', 'Басқа', 'Other']]
+CALC_JS = {
+    'per': ['₸/мес', '₸/ай', '₸/mo'],
+    'inst': ['в рассрочку Kaspi 0-0-12', 'Kaspi 0-0-12 бөліп төлеу', 'with Kaspi 0-0-12 installments'],
+    'free': ['Доставка и установка по Казахстану — бесплатно', 'Қазақстан бойынша жеткізу және орнату — тегін', ''],
+    'ask': ['Цену рассчитает менеджер в WhatsApp', 'Бағасын менеджер WhatsApp-та есептейді', 'Our manager will quote the price on WhatsApp'],
+    'or': ['или', 'немесе', 'or'],
+    'disc': ['Скидка 50%', '50% жеңілдік', '50% off'],
+}
 CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
+# типы без цены в калькуляторе (цену считает менеджер)
+CALC_NP = {'world': set(), 'kz': {3}, 'biz': {0, 1, 2, 3}}
+# надбавка к цене по типу (индекс типа → ₸): рельефная 3D-карта РК +40 000
+CALC_ADD = {'kz': {1: 40000}}
+# актуальные цены, ₸ (одна цена с RGB-подсветкой и без). На сайте зачёркнутая цена = ×2, «−50%».
+PRICES = {
+    'world': [('XS', '150×100', 80000), ('S', '200×120', 95000), ('M', '220×140', 120000), ('L', '250×160', 130000),
+              ('XL', '300×185', 160000), ('XXL', '400×220', 210000), ('XXXL', '500×300', 260000)],
+    'kz': [('XS', '100×55', 80000), ('S', '150×90', 100000), ('M', '200×115', 130000), ('L', '250×145', 160000),
+           ('XL', '300×170', 210000)],
+}
+GLASS_ADD = 25000  # подложка из оргстекла (карта Казахстана)
+PRICE_DEF = {'world': 2, 'kz': 2}
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 
@@ -474,7 +498,7 @@ def h1_html(v):
         return (f'<h1 class="reveal h1-key">{esc(v["h1k"])}</h1>\n'
                 f'    <p class="h1s reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></p>')
     return f'<h1 class="reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></h1>'
-RAW = ('oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
+RAW = ('calc_sizes', 'oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
        'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'hero_webp', 'h1_html', 'faq_html', 'about_html', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
 
 # ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
@@ -493,13 +517,14 @@ def jsonld(mode, i, path, v):
     prod = {'@type': 'Product', 'name': {'world': v['h1k'] or v['title'], 'kz': v['h1a'] + ' ' + v['h1b'], 'biz': v['h1k']}[mode],
             'description': v['hero_lead'], 'brand': {'@type': 'Brand', 'name': 'ECOMAPS'},
             'image': 'https://ecomaps.kz/img/' + HERO[mode], 'url': url}
-    if mode == 'world':  # цена «от 54 000 ₸» — как в рекламе
-        prod['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'KZT', 'lowPrice': 54000, 'availability': 'https://schema.org/InStock',
+    if mode in PRICES:  # актуальные цены из калькулятора
+        prod['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'KZT', 'lowPrice': min(p for *_, p in PRICES[mode]),
+                          'highPrice': max(p for *_, p in PRICES[mode]), 'availability': 'https://schema.org/InStock',
                           'seller': {'@id': STORE_ID}, 'url': url}
     faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': qq,
                                                'acceptedAnswer': {'@type': 'Answer', 'text': aa}} for _, qq, aa in faq_items(mode, i, v)]}
     # товар с ценой — только на странице карты мира (без цены Google считает разметку товара ошибкой)
-    data = {'@context': 'https://schema.org', '@graph': [store, page] + ([prod] if mode == 'world' else []) + [faq]}
+    data = {'@context': 'https://schema.org', '@graph': [store, page] + ([prod] if mode in PRICES else []) + [faq]}
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
 
@@ -514,9 +539,15 @@ for mode, pp in PAGES:
         hl.append(f'<link rel="alternate" hreflang="x-default" href="https://ecomaps.kz/{pp}">')
         vals = {k: v[i] for k, v in T.items()}
         vals.update({k: v[i] for k, v in PT.get(mode, {}).items()})
-        ct = ''.join(f'<button{" class=\"on\"" if n == CALC_DEF[mode] else ""}>{esc(x[i])}</button>' for n, x in enumerate(CALC[mode]))
+        ct = ''.join(f'<button{" class=\"on\"" if n == CALC_DEF[mode] else ""}{" data-np" if n in CALC_NP[mode] else ""}{f" data-add=\"{CALC_ADD.get(mode, {}).get(n)}\"" if CALC_ADD.get(mode, {}).get(n) else ""}>{esc(x[i])}</button>' for n, x in enumerate(CALC[mode]))
+        if mode in PRICES:
+            cs = ''.join(f'<button{" class=\"on\"" if n == PRICE_DEF[mode] else ""} data-p="{pr}">{sz}<small class="cm">{cm}</small></button>'
+                         for n, (sz, cm, pr) in enumerate(PRICES[mode]))
+        else:
+            cs = ''.join(f'<button{" class=\"on\"" if n == 1 else ""}>{esc(T[k][i])}</button>' for n, k in enumerate(('s_small', 's_mid', 's_big')))
+        cs += f'<button>{esc(T["own_size"][i])}</button>'
         vals.update(oai_pixel=OAI_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
-                    langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, hero_img=HERO[mode],
+                    langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, calc_sizes=cs, hero_img=HERO[mode],
                     **{f'href_{m}': f'/{lp}{p}' for m, p in PAGES})
         vals['h1_html'] = h1_html(vals)
         vals['hero_webp'] = HERO[mode].replace('.jpg', '.webp')
@@ -525,7 +556,9 @@ for mode, pp in PAGES:
         vals['jsonld'] = jsonld(mode, i, path, vals)
         vals['pay_html'] = pay_html(code, vals)
         vals['shop_links'] = shop_links(code, vals)
-        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}}
+        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}, 'calc': {k: v[i] for k, v in CALC_JS.items()}}
+        if code == 'en':
+            js['calc']['free'] = 'Delivery cost to your country is confirmed by the manager'
         vals['jsdata'] = json.dumps(js, ensure_ascii=False)
         def sub(m):
             k = m.group(1)

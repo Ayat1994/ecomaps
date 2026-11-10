@@ -414,3 +414,13 @@ header.flat{box-shadow:none}
 .sale-bar a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px}
 html.has-sale .hero{padding-top:170px}
 @media(max-width:640px){.sale-bar{font-size:12.5px;padding:6px 0}.sale-bar .wrap{gap:6px 10px}.sale-bar a{display:none}html.has-sale .hero{padding-top:150px}}
+/* калькулятор: цена со скидкой */
+.calc2 .price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;flex:1;min-width:0}
+.calc2 .price .tag{background:#e8412c;color:#fff;font-weight:800;font-size:12px;border-radius:999px;padding:4px 10px;letter-spacing:.02em;align-self:center}
+.calc2 .price s{color:#8a8d99;font-weight:600;font-size:18px;text-decoration-color:#e8412c;text-decoration-thickness:2px}
+.calc2 .price b{font-size:32px;font-weight:900;color:var(--navy);line-height:1.1}
+.calc2 .price b.ask{font-size:18px}
+.calc2 .price small{flex-basis:100%;font-size:13px;color:#5b5f6e;font-weight:600;line-height:1.5}
+.calc2 .gift-l{margin:14px 0 0;font-weight:700;color:var(--wine);font-size:14px}
+body[data-mode=kz] .seg .cm,body[data-mode=world] .seg .cm{display:block}
+@media(max-width:700px){.calc2 .price{justify-content:center;text-align:center}.calc2 .price b{font-size:28px}}
