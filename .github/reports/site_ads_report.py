@@ -144,7 +144,7 @@ def main():
         st, _ = http(f'https://api.telegram.org/bot{tg}/sendMessage',
                      data={'chat_id': env('TG_CHAT_ID') or '271851854', 'text': text, 'parse_mode': 'HTML'})
         print('Telegram:', st)
-    print('объявлений:', len(keys), '| ошибок:', len(notes))
+    print('объявлений:', len(keys), '| ошибок:', len(notes), notes)
 
 
 if __name__ == '__main__':
