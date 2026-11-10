@@ -223,12 +223,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Переход --------------------------------------------------------------
 
+  // Готовый текст сообщения приходит с сайта (?text=...). Номер (url) в аналитике
+  // остаётся без текста, чтобы отчёты по номерам не ломались.
+  const waText = (function () {
+    try { return (new URLSearchParams(window.location.search).get('text') || '').slice(0, 500); }
+    catch (e) { return ''; }
+  })();
+
   function performRedirect(index, isReturning) {
     const url = numbers[index];
+    const target = waText ? url + '?text=' + encodeURIComponent(waText) : url;
 
     const fallbackLink = document.getElementById('fallback');
     if (fallbackLink) {
-      fallbackLink.href = url;
+      fallbackLink.href = target;
     }
 
     try {
@@ -246,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     setTimeout(function () {
-      window.location.href = url;
+      window.location.href = target;
     }, 10);
   }
 

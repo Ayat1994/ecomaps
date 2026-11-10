@@ -366,9 +366,28 @@ addEventListener('keydown',e=>{if(lb.hidden) return; if(e.key==='Escape') lbClos
 let tx=0; lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
 lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50) lbShow(lbI+(d<0?1:-1));},{passive:true});
 
+/* ---------- готовый текст сообщения в WhatsApp (RU/KZ; распределитель подставит его в чат) ---------- */
+function waText(place){
+  const kk=LANG==='kk', sale=!!document.getElementById('saleBar');
+  const what=kk?{world:'ағаш әлем картасының',kz:'Қазақстанның ағаш картасының'}[MODE]:{world:'деревянную карту мира',kz:'деревянную карту Казахстана'}[MODE];
+  const src=kk?'(ecomaps.kz сайтынан)':'(с сайта ecomaps.kz)';
+  if(place==='calc'){
+    const lc=x=>x?x[0].toLowerCase()+x.slice(1):x;
+    const sb=$('.seg[data-k="size"] button.on'), dim=sb&&(sb.textContent.match(/\d+\s*×\s*\d+/)||[])[0];
+    const o=[lc(val('type')), dim?dim.replace(/\s/g,'')+' см':lc(val('size')), lc(val('light'))].filter(Boolean).join(', ');
+    return kk?`Сәлеметсіз бе! ${what?what[0].toUpperCase()+what.slice(1)+' ':''}${sale?'жеңілдікпен ':''}бағасын білгім келеді: ${o}. ${src}`
+             :`Здравствуйте! Хочу узнать цену${sale?' со скидкой':''}${what?' на '+what:''}: ${o}. ${src}`;
+  }
+  if(!what) return kk?`Сәлеметсіз бе! Бизнеске арналған безендіру қызықтырады. ${src}`:`Здравствуйте! Интересует оформление для бизнеса. ${src}`;
+  return kk?`Сәлеметсіз бе! ${what[0].toUpperCase()+what.slice(1)} ${sale?'жеңілдікпен ':''}бағасын білгім келеді. ${src}`
+           :`Здравствуйте! Хочу узнать цену на ${what}${sale?' со скидкой':''}. ${src}`;
+}
+
 /* ---------- события ---------- */
 document.addEventListener('click',e=>{
   const w=e.target.closest('.js-wa');
+  if(w){ const base=w.dataset.base||(w.dataset.base=w.getAttribute('href')||'');
+    if(/\/whatsapp\/?$/.test(base)){ try{w.href=base.replace(/\/?$/,'/')+'?text='+encodeURIComponent(waText(w.dataset.place));}catch(_){}}}
   if(w){ track('whatsapp_click',{place:w.dataset.place});
     /* конверсия для рекламы ChatGPT: даём пикселю 0,3 с отправить событие, потом переходим */
     if(window.oaiq && w.href && !w.target && !e.metaKey && !e.ctrlKey){ try{oaiq('measure','lead_created',{type:'customer_action'})}catch(_){}
