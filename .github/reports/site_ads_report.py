@@ -73,7 +73,7 @@ def metrika(day, tok, country='in'):
     metrics = ['ym:s:visits', 'ym:s:avgVisitDurationSeconds'] + [f'ym:s:goal{g}reaches' for g in (gc, gw) if g]
     q = {'ids': YM, 'date1': day.isoformat(), 'date2': day.isoformat(), 'accuracy': 'full', 'limit': 200,
          'dimensions': 'ym:s:lastsignUTMContent', 'metrics': ','.join(metrics),
-         'filters': "ym:s:lastsignUTMSource=='meta' AND ym:s:lastsignUTMContent=@'|' AND ym:s:regionCountry" + ("=='Казахстан'" if country == 'in' else "!='Казахстан'")}
+         'filters': "ym:s:lastsignUTMSource=='meta' AND ym:s:lastsignUTMContent=@'|' AND ym:s:regionCountry" + ("==159" if country == 'in' else "!=159")}
     st, txt = http('https://api-metrika.yandex.net/stat/v1/data?' + urllib.parse.urlencode(q), headers=h)
     if st != 200:
         try:
