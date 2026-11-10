@@ -5,7 +5,7 @@ Meta: расход и просмотры целевой страницы по к
 (название объявления = «Город | креатив»). Кабинет живёт в Asia/Omsk, поэтому берутся почасовые
 данные и сдвигаются к суткам Астаны.
 Метрика: визиты по utm_content (= название объявления), среднее время, посчитали цену,
-нажали WhatsApp. Данные в лог не печатаются (репозиторий публичный), только в Telegram.
+нажали WhatsApp. Только визиты из Казахстана; прочие страны одной строкой (в Мете часто ночные пачки из Ирландии). Данные в лог не печатаются (репозиторий публичный), только в Telegram.
 Ручной запуск: Actions → «Реклама на сайт: отчёт сейчас» → Run workflow (date — необязательно).
 """
 import json, os, sys, urllib.parse, urllib.request, urllib.error, datetime as dt
@@ -63,7 +63,7 @@ def meta(day, tok):
     return out
 
 
-def metrika(day, tok):
+def metrika(day, tok, country='in'):
     h = {'Authorization': f'OAuth {tok}'}
     st, txt = http(f'https://api-metrika.yandex.net/management/v1/counter/{YM}/goals', headers=h)
     if st != 200:
@@ -73,7 +73,7 @@ def metrika(day, tok):
     metrics = ['ym:s:visits', 'ym:s:avgVisitDurationSeconds'] + [f'ym:s:goal{g}reaches' for g in (gc, gw) if g]
     q = {'ids': YM, 'date1': day.isoformat(), 'date2': day.isoformat(), 'accuracy': 'full', 'limit': 200,
          'dimensions': 'ym:s:lastsignUTMContent', 'metrics': ','.join(metrics),
-         'filters': "ym:s:lastsignUTMSource=='meta' AND ym:s:lastsignUTMContent=@'|'"}
+         'filters': "ym:s:lastsignUTMSource=='meta' AND ym:s:lastsignUTMContent=@'|' AND ym:s:regionCountryIso" + ("=='KZ'" if country == 'in' else "!='KZ'")}
     st, txt = http('https://api-metrika.yandex.net/stat/v1/data?' + urllib.parse.urlencode(q), headers=h)
     if st != 200:
         raise RuntimeError(f'Метрика: ошибка {st}')
@@ -82,7 +82,9 @@ def metrika(day, tok):
         m = x['metrics']
         calc = m[2] if gc else 0
         wa = m[3] if (gc and gw) else (m[2] if gw else 0)
-        out[x['dimensions'][0]['name']] = [int(m[0]), float(m[1]), int(calc), int(wa)]
+        k = urllib.parse.unquote_plus(x['dimensions'][0]['name'])
+        o = out.setdefault(k, [0, 0.0, 0, 0])
+        o[0] += int(m[0]); o[1] = float(m[1]); o[2] += int(calc); o[3] += int(wa)
     return out
 
 
@@ -119,6 +121,11 @@ def main():
         yd = metrika(day, yt) if yt else {}
     except RuntimeError as e:
         yd, _ = {}, notes.append(str(e))
+    try:
+        fd = metrika(day, yt, 'out') if yt else {}
+    except RuntimeError as e:
+        fd, _ = {}, notes.append(str(e))
+    f_vis, f_wa = sum(v[0] for v in fd.values()), sum(v[3] for v in fd.values())
     keys = set(md) | set(yd)
     norm = lambda k: [p.strip() for p in k.split('|')] + ['', '']
     tot = agg(keys, md, yd, lambda k: 'Итого')['Итого'] if keys else [0, 0, 0, 0, 0, 0]
@@ -128,6 +135,8 @@ def main():
            + (f' · ${tot[0] / tot[5]:.2f} за WhatsApp' if tot[5] else ''),
            '', '🎬 <b>Креативы</b>'] + lines(agg(keys, md, yd, lambda k: norm(k)[1])) + \
           ['', '🏙 <b>Города</b>'] + lines(agg(keys, md, yd, lambda k: norm(k)[0]))
+    if f_vis:
+        msg += ['', f'🌍 Вне Казахстана (в таблицы выше не входят): визитов {f_vis}, кликов WhatsApp {f_wa}']
     if notes:
         msg += ['', '⚠️ ' + '; '.join(notes)]
     text = '\n'.join(msg)
