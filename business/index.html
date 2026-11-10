@@ -349,8 +349,9 @@ $('#y').textContent=new Date().getFullYear();
 const hdr=$('header'), mb=$('#modebar'), cat=$('#catalog'), fin=$('.final');
 const onS=()=>{hdr.classList.toggle('solid',scrollY>40);
   const h=$('.hero').getBoundingClientRect();
-  mb.classList.toggle('show', h.bottom<90); hdr.classList.toggle('flat', h.bottom<90);};
-addEventListener('scroll',onS,{passive:true});
+  const hb=hdr.getBoundingClientRect().bottom; mb.style.top=Math.round(hb)+'px'; /* полоска разделов — сразу под шапкой (с акционной полосой шапка выше) */
+  mb.classList.toggle('show', h.bottom<hb); hdr.classList.toggle('flat', h.bottom<hb);};
+addEventListener('scroll',onS,{passive:true}); addEventListener('resize',onS); onS();
 
 const logos=[['kazakhtelecom.svg','Kazakhtelecom'],['pres/ktz-v.png','Қазақстан темір жолы'],['pres/nis.png','Nazarbayev Intellectual Schools'],['pres/bigroup.png','BI Group'],['pres/erg.png','ERG'],['pres/astanamotors.png','Astana Motors'],['pres/scat.png','SCAT Airlines'],['otbasy.svg','Otbasy Bank'],['allur.svg','Allur'],['iek.svg','IEK'],['pres/binom.png','BINOM School'],['pres/rfmsh.png','РФМШ'],['pres/spectrum.png','Spectrum International School'],['pres/svoydom.png','Svoy Dom'],['pres/gybrat.png','Gybrat'],['pres/helios.png','Helios']];
 $('#track').innerHTML=[...logos,...logos].map(([f,n])=>`<img src="${P}img/logos/${f}" alt="${n}" loading="lazy">`).join('');
