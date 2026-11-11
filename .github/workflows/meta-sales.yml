@@ -1,4 +1,4 @@
-name: Продажи МойСклад → Meta
+name: Продажи МойСклад → Meta и TikTok
 
 on:
   schedule:
@@ -7,6 +7,10 @@ on:
     inputs:
       test_code:
         description: 'Код тестовых событий из Events Manager (для проверки, необязательно)'
+        required: false
+        default: ''
+      tiktok_test_code:
+        description: 'Код тестовых событий TikTok Events Manager (необязательно)'
         required: false
         default: ''
       since:
@@ -37,3 +41,12 @@ jobs:
           SINCE: ${{ inputs.since }}
           LOOKBACK_HOURS: ${{ inputs.hours }}
         run: python3 .github/reports/meta_sales.py
+      - name: Отправить продажи в TikTok
+        if: always()
+        env:
+          MOYSKLAD_TOKEN: ${{ secrets.MOYSKLAD_TOKEN }}
+          TIKTOK_EVENTS_TOKEN: ${{ secrets.TIKTOK_EVENTS_TOKEN }}
+          TIKTOK_TEST_CODE: ${{ inputs.tiktok_test_code }}
+          SINCE: ${{ inputs.since }}
+          LOOKBACK_HOURS: ${{ inputs.hours }}
+        run: python3 .github/reports/tiktok_sales.py
