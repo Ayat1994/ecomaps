@@ -520,7 +520,8 @@ def jsonld(mode, i, path, v):
             'image': 'https://ecomaps.kz/img/' + HERO[mode], 'url': url}
     if mode in PRICES:  # актуальные цены из калькулятора
         prod['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'KZT', 'lowPrice': min(p for *_, p in PRICES[mode]),
-                          'highPrice': max(p for *_, p in PRICES[mode]), 'availability': 'https://schema.org/InStock',
+                          'highPrice': max(p for *_, p in PRICES[mode]) + max(CALC_ADD.get(mode, {0: 0}).values()),
+                          'offerCount': len(PRICES[mode]) * (1 + len(CALC_ADD.get(mode, {}))), 'availability': 'https://schema.org/InStock',
                           'seller': {'@id': STORE_ID}, 'url': url}
     faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': qq,
                                                'acceptedAnswer': {'@type': 'Answer', 'text': aa}} for _, qq, aa in faq_items(mode, i, v)]}
