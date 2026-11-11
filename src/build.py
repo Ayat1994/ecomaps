@@ -310,6 +310,7 @@ JS = {
 YM_ID = '103848088'
 META_PIXEL_ID = '576043711342731'
 OAI_PIXEL_ID = 'DipQq4rYeV9NBQEsWQdgFW'  # OpenAI Ads (реклама в ChatGPT)
+TT_PIXEL_ID = 'DBQ1JJJC77UBQ4PDTHPG'  # TikTok Pixel (реклама в TikTok, 11.11.2026)
 
 import hashlib
 VER = hashlib.md5(open(os.path.join(ROOT, 'assets', 'style.css'), 'rb').read()).hexdigest()[:8]
@@ -498,7 +499,7 @@ def h1_html(v):
         return (f'<h1 class="reveal h1-key">{esc(v["h1k"])}</h1>\n'
                 f'    <p class="h1s reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></p>')
     return f'<h1 class="reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></h1>'
-RAW = ('calc_sizes', 'oai_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
+RAW = ('calc_sizes', 'oai_pixel', 'tt_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
        'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'hero_webp', 'h1_html', 'faq_html', 'about_html', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
 
 # ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
@@ -546,7 +547,7 @@ for mode, pp in PAGES:
         else:
             cs = ''.join(f'<button{" class=\"on\"" if n == 1 else ""}>{esc(T[k][i])}</button>' for n, k in enumerate(('s_small', 's_mid', 's_big')))
         cs += f'<button>{esc(T["own_size"][i])}</button>'
-        vals.update(oai_pixel=OAI_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
+        vals.update(oai_pixel=OAI_PIXEL_ID, tt_pixel=TT_PIXEL_ID, ver=VER, ym_id=YM_ID, meta_pixel=META_PIXEL_ID, htmllang=htmllang, path=path, P=P, mode=mode,
                     langlinks=''.join(links), hreflangs='\n'.join(hl), calc_types=ct, calc_sizes=cs, hero_img=HERO[mode],
                     **{f'href_{m}': f'/{lp}{p}' for m, p in PAGES})
         vals['h1_html'] = h1_html(vals)
