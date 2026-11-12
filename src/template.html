@@ -78,9 +78,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <li>{{check3}}</li>
     </ul>
     <div class="cta reveal">
-      <a class="btn btn-gold" href="#calc">{{btn_calc}}</a>
-      <a class="btn btn-line js-wa" href="https://ecomaps.kz/whatsapp" data-place="hero"><svg><use href="#wa"/></svg>{{btn_wa}}</a>
+      <a class="btn btn-wa btn-2l js-wa" href="https://ecomaps.kz/whatsapp" data-place="hero"><svg><use href="#wa"/></svg><span>{{hero_wa_a}}<small>{{hero_wa_b}}</small></span></a>
+      <a class="btn btn-line" href="#calc">{{btn_calc}}</a>
     </div>
+    {{hero_price}}
     <div class="stats reveal">
       <div class="stat"><b>8+</b><span>{{stat1}}</span></div>
       <div class="stat"><b>15 000+</b><span>{{stat2}}</span></div>
@@ -204,6 +205,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <div class="price" id="calcPrice" aria-live="polite"></div>
           <a class="btn btn-wa js-wa" id="sendCalc" href="https://ecomaps.kz/whatsapp" data-place="calc"><svg><use href="#wa"/></svg>{{res_btn}}</a>
         </div>
+        <p class="cb-link"><a href="#" data-cb="calc">{{cb_or}}</a></p>
         <p class="gift-l">🎁 {{res_gift}}</p>
       </div>
       <p class="calc-note">{{calc_note}}</p>
@@ -235,6 +237,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <div class="arrows" data-car="carWorks"><button aria-label="←">←</button><button aria-label="→">→</button></div>
     </div>
     <div class="car" id="carWorks"></div>
+  </div>
+</section>
+
+<section class="rv-sec" id="reviews">
+  <div class="wrap">
+    <div class="car-head">
+      <div><span class="kicker">{{rv_kicker}}</span><h2>{{rv_h_a}} <span class="t">{{rv_h_b}}</span></h2></div>
+      <a class="rv-score" href="{{rv_2gis}}" target="_blank" rel="noopener" data-track="outbound" data-to="2gis-reviews"><b>4,9</b><span class="rv-st">★★★★★</span><small>{{rv_cnt}}</small></a>
+    </div>
+    <div class="rvs">{{reviews_html}}</div>
+    <div class="rv-more">
+      <a class="btn btn-line-d" href="{{rv_2gis}}" target="_blank" rel="noopener" data-track="outbound" data-to="2gis-reviews">{{rv_all}} ↗</a>
+      <a class="btn btn-line-d" href="{{rv_igurl}}" target="_blank" rel="noopener" data-track="outbound" data-to="instagram-reviews">▶ {{rv_ig}} ↗</a>
+    </div>
   </div>
 </section>
 
@@ -291,6 +307,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="final"><svg><use href="#wa"/></svg>{{final_btn}}</a>
       <a class="btn btn-line" href="https://www.instagram.com/ecomaps.kz/" target="_blank" rel="noopener">Instagram @ecomaps.kz</a>
     </div>
+    <div class="cb-box">
+      <b>{{cb_h}}</b><p>{{cb_p}}</p>
+    <form class="cbf" novalidate data-place="final">
+      <input type="text" name="name" placeholder="{{cb_name}}" autocomplete="given-name" maxlength="60">
+      <input type="tel" name="phone" placeholder="+7 7__ ___ __ __" autocomplete="tel" inputmode="tel" required maxlength="20">
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-gold" type="submit">📞 {{cb_btn}}</button>
+      <small class="cb-note">{{cb_note}}</small>
+      <p class="cb-msg" role="status"></p>
+    </form>
+    </div>
   </div>
 </section>
 </main>
@@ -315,9 +342,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="sheet-box" role="dialog" aria-label="{{sheet_h}}">
     <button class="sheet-x" aria-label="×">×</button>
     <b>{{sheet_h}}</b>
-    <a class="btn btn-wa js-wa" href="https://ecomaps.kz/whatsapp" data-place="phone-wa"><svg><use href="#wa"/></svg>{{sheet_wa}}</a>
+    <a class="btn btn-wa js-wa" id="sheetWa" href="https://ecomaps.kz/whatsapp" data-place="phone-wa"><svg><use href="#wa"/></svg><span class="m-only">{{sheet_wa}}</span><span class="d-only">{{sheet_wa_d}}</span></a>
     <p class="hint">{{sheet_hint}}</p>
+    <p class="hint hint-d">{{sheet_desk}}</p>
     <a class="btn btn-gold" href="tel:+77762979276" data-place="phone-call">📞 {{sheet_call}}</a>
+    <div class="sheet-cb"><p class="or">{{cb_or}}</p>
+    <form class="cbf" novalidate data-place="sheet">
+      <input type="text" name="name" placeholder="{{cb_name}}" autocomplete="given-name" maxlength="60">
+      <input type="tel" name="phone" placeholder="+7 7__ ___ __ __" autocomplete="tel" inputmode="tel" required maxlength="20">
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-gold" type="submit">📞 {{cb_btn}}</button>
+      <small class="cb-note">{{cb_note}}</small>
+      <p class="cb-msg" role="status"></p>
+    </form>
+    </div>
   </div>
 </div>
 
@@ -350,7 +388,7 @@ function track(ev,p){p=Object.assign({lang:LANG,mode:MODE},p||{});
   try{if(window.ym&&YM_ID) ym(YM_ID,'reachGoal',ev,p)}catch(e){}
   /* TikTok: клик WhatsApp/звонок = Contact, расчёт цены = SubmitForm */
   try{if(window.ttq){const tts={whatsapp_click:'Contact',phone_call:'Contact',calc_submit:'SubmitForm'}[ev]; if(tts) ttq.track(tts,{content_name:ev+(p.place?':'+p.place:'')})}}catch(e){}
-  try{if(window.fbq){const std={whatsapp_click:'Contact',phone_call:'Contact',calc_submit:'Lead',outbound:'ViewContent'}[ev]; std?fbq('track',std,p):fbq('trackCustom',ev,p)}}catch(e){}
+  try{if(window.fbq){const std={whatsapp_click:'Contact',phone_call:'Contact',calc_submit:'Lead',callback_lead:'Lead',outbound:'ViewContent'}[ev]; std?fbq('track',std,p):fbq('trackCustom',ev,p)}}catch(e){}
 }
 
 $('#y').textContent=new Date().getFullYear();
@@ -358,7 +396,13 @@ const hdr=$('header'), mb=$('#modebar'), cat=$('#catalog'), fin=$('.final');
 const onS=()=>{hdr.classList.toggle('solid',scrollY>40);
   const h=$('.hero').getBoundingClientRect();
   const hb=hdr.getBoundingClientRect().bottom; mb.style.top=Math.round(hb)+'px'; /* полоска разделов — сразу под шапкой (с акционной полосой шапка выше) */
-  mb.classList.toggle('show', h.bottom<hb); hdr.classList.toggle('flat', h.bottom<hb);};
+  const dn=scrollY>(window._ly||0)+4, up=scrollY<(window._ly||0)-4; if(dn||up) window._ly=scrollY;
+  const past=h.bottom<hb; if(!past) mb._h=false; else if(dn&&innerWidth<=640) mb._h=true; else if(up) mb._h=false;
+  mb.classList.toggle('show', past&&!mb._h); hdr.classList.toggle('flat', past);};
+/* круглая кнопка WhatsApp прячется, когда на экране и так есть зелёная кнопка — чтобы не закрывать текст */
+const fab=$('.fab');
+if('IntersectionObserver' in window&&fab){const vis=new Set(); const io=new IntersectionObserver(es=>{es.forEach(x=>x.isIntersecting?vis.add(x.target):vis.delete(x.target)); fab.classList.toggle('hide',vis.size>0);});
+  $$('.hero .cta,#sendCalc,.final .cta,.cb-box,footer').forEach(x=>io.observe(x));}
 addEventListener('scroll',onS,{passive:true}); addEventListener('resize',onS); onS();
 
 const logos=[['kazakhtelecom.svg','Kazakhtelecom'],['pres/ktz-v.png','Қазақстан темір жолы'],['pres/nis.png','Nazarbayev Intellectual Schools'],['pres/bigroup.png','BI Group'],['pres/erg.png','ERG'],['pres/astanamotors.png','Astana Motors'],['pres/scat.png','SCAT Airlines'],['otbasy.svg','Otbasy Bank'],['allur.svg','Allur'],['iek.svg','IEK'],['pres/binom.png','BINOM School'],['pres/rfmsh.png','РФМШ'],['pres/spectrum.png','Spectrum International School'],['pres/svoydom.png','Svoy Dom'],['pres/gybrat.png','Gybrat'],['pres/helios.png','Helios']];
@@ -399,7 +443,7 @@ function calcPrice(){const box=$('#calcPrice'); if(!box) return; const L=I18N.ca
   const s=$('.seg[data-k="size"] button.on'), t=$('.seg[data-k="type"] button.on');
   let p=s&&s.dataset.p?+s.dataset.p:0; if(t&&t.hasAttribute('data-np')) p=0;
   if(p&&t&&t.dataset.add) p+= +t.dataset.add;
-  box.innerHTML=p?`<span class="tag">${L.disc}</span><s>${fmt(p*2)}</s><b>${fmt(p)}</b><small>${L.or} ${fmt(p/12).replace(' ₸','')} ${L.per} ${L.inst}${L.free?'<br>✓ '+L.free:''}</small>`
+  box.innerHTML=p?`${L.disc?`<span class="tag">${L.disc}</span><s>${fmt(p*2)}</s>`:''}<b>${fmt(p)}</b><small>${L.or} ${fmt(p/12).replace(' ₸','')} ${L.per} ${L.inst}${L.free?'<br>✓ '+L.free:''}</small>`
                  :`<b class="ask">${L.ask}</b>${L.free?'<small>✓ '+L.free+'</small>':''}`;}
 calcPrice();
 $('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'),size:val('size'),light:val('light'),price:($('.seg[data-k="size"] button.on')||{}).dataset?.p||''}));
@@ -407,7 +451,30 @@ $('#sendCalc').addEventListener('click',()=>track('calc_submit',{type:val('type'
 /* ---------- телефон: WhatsApp или звонок ---------- */
 const sheet=$('#sheet');
 $$('[data-choose]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();sheet.hidden=false;track('phone_open');}));
-sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet-x')) sheet.hidden=true;});
+sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.closest('.sheet-x')){sheet.hidden=true;sheet.classList.remove('desk','cbonly');}});
+/* компьютер: вместо перехода на страницу wa.me показываем выбор — WhatsApp в новой вкладке, номер или «перезвоните мне» */
+const DESK=matchMedia('(hover:hover) and (pointer:fine)').matches && !/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
+const sWa=$('#sheetWa');
+if(DESK){ sWa.target='_blank'; sWa.rel='noopener';
+  document.addEventListener('click',e=>{const w=e.target.closest('.js-wa'); if(!w||w===sWa||e.metaKey||e.ctrlKey) return;
+    e.preventDefault(); e.stopImmediatePropagation(); sWa.dataset.place=w.dataset.place||'desk'; sheet.classList.add('desk'); sheet.hidden=false; track('desk_choice',{place:w.dataset.place||''});},true); }
+$$('[data-cb]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); sWa.dataset.place=a.dataset.cb; sheet.classList.add('cbonly'); sheet.hidden=false; const f=$('.sheet-cb input[name=phone]'); f&&setTimeout(()=>f.focus(),50); track('cb_open',{place:a.dataset.cb});}));
+
+/* ---------- форма «Перезвоните мне» → /api/lead (Cloudflare Worker → Telegram) ---------- */
+const CBT=I18N.cb;
+$$('.cbf').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();
+  const msg=f.querySelector('.cb-msg'), btn=f.querySelector('button'), ph=f.phone.value, d=ph.replace(/\D/g,'');
+  if(d.length<10||d.length>13){msg.textContent=CBT.bad; msg.className='cb-msg err'; f.phone.focus(); return;}
+  const place=f.dataset.place==='sheet'?(sWa.dataset.place||'sheet'):f.dataset.place;
+  let note=''; try{note=waText(place).replace(/^[^!]*!\s*/,'').replace(/\s*\((с сайта|ecomaps)[^)]*\)\s*$/,'');}catch(_){}
+  const utm=new URLSearchParams(location.search); const src=['utm_source','utm_medium','utm_campaign'].map(k=>utm.get(k)).filter(Boolean).join(' / ')||document.referrer.replace(/^https?:\/\//,'').split('/')[0]||'прямой заход';
+  btn.disabled=true;
+  try{const r=await fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:f.name.value.trim(),phone:ph,website:f.website.value,page:location.pathname,place,note,utm:src})});
+    const j=await r.json().catch(()=>({})); if(!r.ok||!j.ok) throw 0;
+    f.reset(); f.classList.add('done'); msg.textContent=CBT.ok; msg.className='cb-msg ok'; track('callback_lead',{place});
+    try{oaiq('measure','lead_created',{type:'customer_action'})}catch(_){}
+  }catch(_){msg.textContent=CBT.err; msg.className='cb-msg err';}
+  btn.disabled=false;}));
 $('[data-place="phone-call"]').addEventListener('click',()=>{track('phone_call'); try{oaiq('measure','lead_created',{type:'customer_action'})}catch(_){}});
 
 

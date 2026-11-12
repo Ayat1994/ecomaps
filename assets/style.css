@@ -448,3 +448,68 @@ body[data-mode=kz] .seg .cm,body[data-mode=world] .seg .cm{display:block}
 @keyframes saleMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:640px){.sale-bar .fire{font-size:15px}.sale-bar .mq{flex-basis:100%;width:100%;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.sale-bar .mq em{animation:none}}
+/* ===== 13.11: первый экран, отзывы, «перезвоните мне», мобильная шапка ===== */
+.btn-2l{flex-direction:row;gap:12px;text-align:left;line-height:1.15}
+.btn-2l span{display:flex;flex-direction:column}
+.btn-2l small{font-size:11.5px;font-weight:600;text-transform:none;letter-spacing:0;opacity:.92;margin-top:3px}
+.hprice{margin:16px 0 0;color:#fff;font-size:15px;font-weight:600;opacity:.95}
+.hprice b{font-size:22px;font-weight:900;color:var(--gold)}
+@media(max-width:640px){.hprice{font-size:13.5px;text-align:center}.hprice b{font-size:20px}.btn-2l{justify-content:center}}
+/* отзывы */
+.rv-sec{padding-top:0}
+.rv-score{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;color:var(--navy);line-height:1.1}
+.rv-score b{font-size:40px;font-weight:900}
+.rv-score .rv-st{color:#F5A623;font-size:18px;letter-spacing:2px}
+.rv-score small{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
+.rvs{columns:3 300px;column-gap:18px;margin-top:26px}
+.rv{break-inside:avoid;margin:0 0 18px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 20px 16px;box-shadow:0 14px 30px -24px rgba(18,21,43,.35)}
+.rv-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rv .ava{flex:none;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px}
+.rv figcaption b{display:block;color:var(--navy);font-size:15px}
+.rv figcaption small{color:#F5A623;font-size:13px;font-weight:700}
+.rv blockquote{margin:0;color:#3b3f4e;font-size:14.5px;line-height:1.55}
+.rv-src{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none}
+.rv-more{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.btn-line-d{border:2px solid var(--navy);color:var(--navy);background:transparent}
+.btn-line-d:hover{background:var(--navy);color:#fff}
+@media(max-width:640px){
+  .rv-score{align-items:flex-start;flex-direction:row;gap:8px;align-items:baseline;margin-top:8px}.rv-score b{font-size:28px}
+  .rvs{columns:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:20px -22px 0;padding:0 22px 8px;scrollbar-width:none}
+  .rvs::-webkit-scrollbar{display:none}
+  .rv{flex:0 0 84%;scroll-snap-align:center;margin:0}
+  .rv-more .btn{width:100%}
+}
+/* форма «Перезвоните мне» */
+.cbf{display:grid;gap:10px;text-align:left}
+.cbf input{font:inherit;font-size:16px;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--navy);width:100%;box-sizing:border-box}
+.cbf input:focus{outline:none;border-color:var(--gold)}
+.cbf .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cbf .btn{width:100%}
+.cbf .btn:disabled{opacity:.6}
+.cb-note{font-size:11px;color:var(--muted);line-height:1.4}
+.cb-msg{margin:0;font-size:14px;font-weight:700}
+.cb-msg:empty{display:none}
+.cb-msg.ok{color:#1d8a4b}.cb-msg.err{color:#c0392b}
+.cbf.done input,.cbf.done .btn,.cbf.done .cb-note{display:none}
+.cb-box{max-width:460px;margin:34px auto 0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:22px}
+.cb-box>b{display:block;font-size:18px;font-weight:900;text-transform:uppercase}
+.cb-box>p{font-size:14px;opacity:.85;margin:6px 0 14px}
+.cb-box .cb-note{color:rgba(255,255,255,.65)}
+.cb-box .cb-msg.ok{color:#7be3a4}.cb-box .cb-msg.err{color:#ffb4a8}
+.cb-link{margin:12px 0 0;text-align:center}
+.cb-link a{color:var(--navy);font-weight:700;font-size:14px;text-underline-offset:3px}
+.sheet-box{max-height:calc(100vh - 40px);overflow:auto}
+.sheet-cb .or{margin:6px 0 10px;font-size:13px;font-weight:700;color:var(--muted)}
+.sheet .d-only,.sheet .hint-d{display:none}
+.sheet.desk .d-only,.sheet.desk .hint-d{display:inline}
+.sheet.desk .hint-d{display:block}
+.sheet.desk .m-only,.sheet.desk .hint:not(.hint-d),.sheet.desk [data-place="phone-call"]{display:none}
+.sheet.cbonly .sheet-box>.btn,.sheet.cbonly .hint{display:none}
+/* мобильная шапка компактнее */
+.fab{transition:opacity .25s,transform .25s}
+.fab.hide{opacity:0;transform:scale(.6);pointer-events:none}
+@media(max-width:640px){
+  .fab{width:54px;height:54px;right:14px;bottom:14px}.fab svg{width:28px;height:28px}
+  .mb-l{display:none}
+  .modebar,.modebar.show{padding:5px 8px}
+}

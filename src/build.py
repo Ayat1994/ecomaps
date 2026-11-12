@@ -20,6 +20,7 @@ T = {
  'phone_sub': ['WhatsApp · по всему Казахстану', 'WhatsApp · бүкіл Қазақстан бойынша', 'WhatsApp · all over Kazakhstan'],
  'hero_alt': ['Деревянная карта мира с подсветкой на стене', 'Қабырғадағы подсветкасы бар ағаш әлем картасы', 'Backlit wooden world map on a wall'],
  'badge_tag': ['Акция', 'Акция', 'Offer'],
+ # SALE (ниже): True — показывать акционную полосу, зачёркнутую цену ×2 и «Скидка 50%». Акция 10–12.11.2026 завершена 13.11.
  # Акция 10–12.11.2026 (реклама Meta «Только 3 дня — скидки до 50%»); полоску убираем вручную по команде владельца (sale_* + блок .sale-bar в template.html).
  'sale_tag': ['Только 3 дня', 'Тек 3 күн', ''], 'sale_txt': ['Скидки до 50% на карты из дерева', 'Ағаш карталарға 50%-ға дейін жеңілдік', ''], 'sale_btn': ['Узнать цену со скидкой', 'Жеңілдікпен бағасын білу', ''],
  'badge': ['Логотип компании на карте в подарок', 'Компания логотипі картаға сыйлыққа', 'Your company logo on the map for free'],
@@ -30,6 +31,32 @@ T = {
  'check1': ['Бесплатная доставка и установка в любом городе Казахстана', 'Қазақстанның кез келген қаласына тегін жеткізу және орнату', 'Delivery and installation in any city of Kazakhstan'],
  'check2': ['Изготовление за 8 рабочих дней', '8 жұмыс күнінде дайындаймыз', 'Made in 8 working days'],
  'check3': ['Рассрочка Kaspi Red, 0-0-12 и 0-0-24', 'Kaspi Red, 0-0-12 және 0-0-24 бөліп төлеу', 'Kaspi Red installments 0-0-12 and 0-0-24'],
+
+ # первый экран: главная кнопка «Напишите нам» + цена «от …»
+ 'hero_wa_a': ['Напишите нам', 'Бізге жазыңыз', 'Message us'],
+ 'hero_wa_b': ['бесплатно покажем карту на вашей стене', 'картаны қабырғаңызда тегін көрсетеміз', 'free mock-up of the map on your wall'],
+ 'hp_from': ['от', 'бастап', 'from'],
+ 'hp_inst': ['или от {m} ₸/мес в рассрочку Kaspi', 'немесе Kaspi бөліп төлеу айына {m} ₸ бастап', ''],
+ # отзывы
+ 'rv_kicker': ['Отзывы', 'Пікірлер', 'Reviews'],
+ 'rv_h_a': ['Что говорят', 'Клиенттер', 'What clients'],
+ 'rv_h_b': ['клиенты', 'не дейді', 'say'],
+ 'rv_cnt': ['287 оценок в 2ГИС', '2ГИС-те 287 баға', '287 ratings on 2GIS'],
+ 'rv_all': ['Все отзывы в 2ГИС', '2ГИС-тегі барлық пікірлер', 'All reviews on 2GIS'],
+ 'rv_ig': ['Видео-отзывы в Instagram', 'Instagram-дағы видео-пікірлер', 'Video reviews on Instagram'],
+ 'rv_src': ['отзыв в 2ГИС', '2ГИС-тегі пікір', 'review on 2GIS'],
+ # форма «Перезвоните мне»
+ 'cb_h': ['Не хотите переписываться?', 'Жазысқыңыз келмей ме?', 'Prefer a call?'],
+ 'cb_or': ['или оставьте номер — перезвоним', 'немесе нөміріңізді қалдырыңыз — қоңырау шаламыз', 'or leave your number — we will call back'],
+ 'cb_p': ['Оставьте номер — менеджер перезвонит в рабочее время (пн–пт, 10:00–18:00) и сразу назовёт цену.', 'Нөміріңізді қалдырыңыз — менеджер жұмыс уақытында (дс–жм, 10:00–18:00) қоңырау шалып, бағасын айтады.', 'Leave your number and our manager will call you back during working hours (Mon–Fri, 10:00–18:00, GMT+5).'],
+ 'cb_name': ['Имя', 'Атыңыз', 'Name'],
+ 'cb_btn': ['Перезвоните мне', 'Маған қоңырау шалыңыз', 'Call me back'],
+ 'cb_ok': ['Спасибо! Менеджер перезвонит вам в рабочее время.', 'Рахмет! Менеджер жұмыс уақытында хабарласады.', 'Thank you! We will call you during working hours.'],
+ 'cb_bad': ['Проверьте номер телефона', 'Телефон нөмірін тексеріңіз', 'Please check the phone number'],
+ 'cb_err': ['Не получилось отправить. Напишите нам в WhatsApp или позвоните +7 776 297 92 76.', 'Жіберу мүмкін болмады. WhatsApp-қа жазыңыз немесе +7 776 297 92 76 нөміріне қоңырау шалыңыз.', 'Could not send. Please message us on WhatsApp.'],
+ 'cb_note': ['Нажимая кнопку, вы соглашаетесь на обработку ваших данных для связи с вами.', 'Батырманы басу арқылы сізбен байланысу үшін деректеріңізді өңдеуге келісесіз.', 'By submitting you agree to the processing of your data to contact you.'],
+ 'sheet_desk': ['Откроется WhatsApp на компьютере (приложение или WhatsApp Web). С телефона удобнее? Наш номер: +7 776 297 92 76', 'Компьютерде WhatsApp ашылады (қосымша немесе WhatsApp Web). Телефоннан ыңғайлы ма? Нөміріміз: +7 776 297 92 76', 'WhatsApp will open on your computer (app or WhatsApp Web). Our number: +7 776 297 92 76'],
+ 'sheet_wa_d': ['Открыть WhatsApp', 'WhatsApp ашу', 'Open WhatsApp'],
  'btn_calc': ['Рассчитать стоимость', 'Бағасын есептеу', 'Get a price'],
  'btn_wa': ['Написать в WhatsApp', 'WhatsApp-қа жазу', 'Message on WhatsApp'],
  'stat1': ['лет на рынке', 'жыл нарықта', 'years on the market'],
@@ -112,7 +139,7 @@ T = {
  'p_kaspi': ['Kaspi рассрочка', 'Kaspi бөліп төлеу', 'Kaspi installments'], 'p_now': ['Сразу', 'Бірден', 'In full'], 'p_corp': ['Для юрлица', 'Заңды тұлға', 'Company invoice'],
  'res_h': ['Ваш расчёт', 'Сіздің есебіңіз', 'Your request'],
  'res_gift': ['Бесплатно покажем карту на фото вашей стены', 'Картаны қабырғаңыздың фотосында тегін көрсетеміз', 'We will show the map on a photo of your wall for free'],
- 'res_btn': ['Заказать со скидкой', 'Жеңілдікпен тапсырыс беру', 'Order on WhatsApp'],
+ 'res_btn': ['Заказать в WhatsApp', 'WhatsApp арқылы тапсырыс беру', 'Order on WhatsApp'],
  'res_alt': ['или свяжитесь:', 'немесе хабарласыңыз:', 'or contact us:'],
  'geo_kicker': ['География', 'География', 'Coverage'],
  'geo_h_a': ['Работаем', 'Бүкіл Қазақстан', 'We work'],
@@ -149,7 +176,7 @@ T = {
  'faq_h_a': ['Частые', 'Жиі қойылатын', 'Frequently asked'],
  'faq_h_b': ['вопросы', 'сұрақтар', 'questions'],
  'f1q': ['Сколько стоит карта?', 'Карта қанша тұрады?', 'How much does a map cost?'],
- 'f1a': ['Карта мира — от 80 000 ₸ (150×100 см) до 260 000 ₸ (500×300 см), карта Казахстана — от 80 000 ₸ (100×55 см) до 210 000 ₸ (300×170 см), рельефная 3D-карта РК — на 40 000 ₸ дороже. Сейчас действует скидка 50%. Цена одинаковая с подсветкой и без неё, доставка и установка по Казахстану бесплатно. Точную цену вашего размера покажет калькулятор выше.', 'Әлем картасы — 80 000 ₸ (150×100 см) бастап 260 000 ₸ (500×300 см) дейін, Қазақстан картасы — 80 000 ₸ (100×55 см) бастап 210 000 ₸ (300×170 см) дейін. Қазір 50% жеңілдік. Подсветкамен және подсветкасыз баға бірдей, Қазақстан бойынша жеткізу және орнату тегін.', 'World map from 80,000 ₸ (150×100 cm) to 260,000 ₸ (500×300 cm); Kazakhstan map from 80,000 ₸ (100×55 cm) to 210,000 ₸ (300×170 cm). 50% off right now. Same price with or without backlight.'],
+ 'f1a': ['Карта мира — от 80 000 ₸ (150×100 см) до 260 000 ₸ (500×300 см), карта Казахстана — от 80 000 ₸ (100×55 см) до 210 000 ₸ (300×170 см), рельефная 3D-карта РК — на 40 000 ₸ дороже. Цена одинаковая с подсветкой и без неё, доставка и установка по Казахстану бесплатно. Точную цену вашего размера покажет калькулятор выше.', 'Әлем картасы — 80 000 ₸ (150×100 см) бастап 260 000 ₸ (500×300 см) дейін, Қазақстан картасы — 80 000 ₸ (100×55 см) бастап 210 000 ₸ (300×170 см) дейін. Подсветкамен және подсветкасыз баға бірдей, Қазақстан бойынша жеткізу және орнату тегін.', 'World map from 80,000 ₸ (150×100 cm) to 260,000 ₸ (500×300 cm); Kazakhstan map from 80,000 ₸ (100×55 cm) to 210,000 ₸ (300×170 cm). Same price with or without backlight.'],
  'f2q': ['Сколько времени занимает изготовление?', 'Дайындау қанша уақыт алады?', 'How long does production take?'],
  'f2a': ['Около 8 рабочих дней после согласования дизайна. Сроки индивидуальных заказов обговариваем отдельно.', 'Дизайн келісілгеннен кейін шамамен 8 жұмыс күні. Жеке тапсырыстардың мерзімі бөлек келісіледі.', 'About 8 working days after design approval. Custom orders are scheduled individually.'],
  'f3q': ['Есть ли доставка и установка в моём городе?', 'Менің қалама жеткізу және орнату бар ма?', 'Do you deliver and install in my city?'],
@@ -162,7 +189,7 @@ T = {
  'f6a': ['В шоуруме в Астане: ул. Сарайшык, 7/1, Есильский район. Перед визитом напишите нам в WhatsApp', 'Астанадағы шоурумда: Сарайшық көшесі, 7/1, Есіл ауданы. Келер алдында WhatsApp-қа жазыңыз', 'At our showroom in Astana: 7/1 Saraishyk St, Yesil district. Please message us on WhatsApp before visiting'],
  'slogan': ['Весь мир перед тобой', 'Бүкіл әлем алдыңда', 'The whole world before you'],
  'final_h': ['Покажем вашу карту на вашей стене. Бесплатно.', 'Картаңызды өз қабырғаңызда тегін көрсетеміз.', 'We will show your map on your wall. For free.'],
- 'final_p': ['Пришлите фото стены в WhatsApp, и мы сделаем визуализацию с ценой. Доставка и установка бесплатно в любом городе Казахстана.', 'Қабырғаның фотосын WhatsApp-қа жіберіңіз, біз бағасымен бірге визуализация жасаймыз. Қазақстанның кез келген қаласына тегін жеткізу және орнату.', 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price. Delivery and installation anywhere in Kazakhstan.'],
+ 'final_p': ['Напишите нам в WhatsApp — сделаем визуализацию вашей карты с ценой. Доставка и установка бесплатно в любом городе Казахстана.', 'Бізге WhatsApp-қа жазыңыз — картаңыздың визуализациясын бағасымен жасаймыз. Қазақстанның кез келген қаласына тегін жеткізу және орнату.', 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price. Delivery and installation anywhere in Kazakhstan.'],
  'final_btn': ['Получить визуализацию', 'Визуализация алу', 'Get a mock-up'],
  'foot_tag': ['Лидер продаж интерьерных карт в Казахстане', 'Қазақстандағы интерьер карталары сатылымының көшбасшысы', 'Kazakhstan’s best-selling interior maps'],
  'foot_addr': ['Шоурум: Астана, ул. Сарайшык, 7/1', 'Шоурум: Астана, Сарайшық к-сі, 7/1', 'Showroom: 7/1 Saraishyk St, Astana'],
@@ -242,7 +269,7 @@ EN = {
  'f3a': 'Yes. We ship from our workshop in Kazakhstan to the UAE, Qatar and other countries. Your manager confirms the delivery cost and timing for your address before you pay. Installation is simple: instructions and all fixings are included, and we can help over a video call.',
  'f5q': 'How can I pay?',
  'f5a': 'By international bank transfer against an invoice, for both companies and private buyers. Your manager will send you the invoice.',
- 'final_p': 'Send a photo of your wall on WhatsApp and we will make a mock-up with the price, including delivery to your city.',
+ 'final_p': 'Message us on WhatsApp and we will make a mock-up with the price, including delivery to your city.',
  'foot_tag': 'Handmade wooden maps from Kazakhstan, shipped worldwide',
  'pay3': 'International bank transfer (invoice)',
 }
@@ -381,6 +408,8 @@ CALC_JS = {
     'or': ['или', 'немесе', 'or'],
     'disc': ['Скидка 50%', '50% жеңілдік', '50% off'],
 }
+SALE = False  # акция «скидка 50%» выключена 13.11.2026
+if not SALE: CALC_JS['disc'] = ['', '', '']
 CALC_DEF = {'world': 0, 'kz': 0, 'biz': 0}
 # типы без цены в калькуляторе (цену считает менеджер)
 CALC_NP = {'world': set(), 'kz': {3}, 'biz': {0, 1, 2, 3}}
@@ -395,6 +424,42 @@ PRICES = {
 }
 GLASS_ADD = 25000  # подложка из оргстекла (карта Казахстана)
 PRICE_DEF = {'world': 2, 'kz': 2}
+
+# Отзывы клиентов из 2ГИС (публичные). Показываем текстом со ссылкой на источник; в schema.org НЕ размечаем.
+REVIEWS = [
+    ('Аселя Ахметова', '', 'Вчера установили карту у сына в комнате. Отличное качество, смотрится замечательно! Ребята очень внимательные — предлагали много вариантов, пока мы не нашли свой. Отдельная благодарность менеджеру Адилю 🙏🏼', 'w'),
+    ('Zh Ai', 'Шымкент', 'Изготовили и доставили в Шымкент за 1 неделю по нашей просьбе. Не подвели. Всегда Бахтияр был на связи. Заказывали для подарка партнёру, получатель в восторге. И кстати, цена ниже и сроки меньше, чем у других.', 'wb'),
+    ('Сергей Дроздецкий', 'Усть-Каменогорск', 'Благодарю за оригинальное исполнение, качественное изготовление и монтаж, быструю доставку в Усть-Каменогорск карт Мира и Республики Казахстан. Получилось красиво и оригинально: карты отлично вписались в интерьер по цветовой гамме и габаритам.', 'wk'),
+    ('Ольга Шер', '', 'Менеджер Айым всё подробно объяснила и даже включила видеосвязь — благодаря этому мы и определились с выбором компании. Мастер Азамат приехал вовремя, работу выполнил аккуратно. Карта закреплена надёжно, проводка спрятана грамотно.', 'wb'),
+    ('Азат Оспанов', '', '«Ecomaps» компаниясына үлкен алғыс! Заказым айтқан уақытында келді, сапасы жоғары, өте ризамын. Өз істерінің мамандары! Істеріңізге береке берсін!', 'wk'),
+    ('марсель', 'Шахтинск', 'Шикарно ❤️ Я в восторге. Доставили в Шахтинск, установили, всё на высшем уровне! Мои знакомые и друзья приходят ко мне, видят карту и тоже заказывают!', 'wk'),
+    ('Дмитрий Казанцев', '', 'Для нашей туркомпании в офис сделали такую красоту. Всё сделали в срок, как и обговаривали. Очень понравилось, что написал в 21:00 со своим запросом и мне ответили, несмотря на нерабочее время.', 'b'),
+    ('Наталья Смирнягина', '', 'Как же было приятно и комфортно делать заказ: всё вовремя, никакой воды, чётко по делу! Карта превзошла все мои ожидания. Кто заинтересовался — заказывайте не раздумывая, разочарований не будет!', 'w'),
+    ('Гулдарига К', '', 'Ұлымның туған күніне тапсырыс беріп едік. Дер кезінде келді картамыз. Дамирға үлкен рахмет: келіп өлшеп кетіп, дайын болғанда әкеп құрып беріп кетті. Ұлыма қатты ұнады.', 'k'),
+    ('Олеся Дубовицкая', 'Актобе', 'Заказывала карту для туристического офиса в России. Изготовили в оттенках, как мы просили, доставили бесплатно до Актобе. Очень красиво смотрится 😍 Менеджер Адиль был всегда на связи.', 'b'),
+    ('Кайрат', 'Астана', 'Выполнили наш заказ по изготовлению 3-х карт-схем города Астаны. Очень ответственно подошли к делу, на всех этапах согласовывали материалы и макет. Приехали, сами установили. Делают качественно и ответственно.', 'b'),
+]
+R2GIS = 'https://2gis.kz/astana/firm/70000001057229459/tab/reviews'
+RIG = 'https://www.instagram.com/stories/highlights/17927520688482894/'
+
+def reviews_html(mode, i, v):
+    tag = {'world': 'w', 'kz': 'k', 'biz': 'b'}[mode]
+    lst = sorted(REVIEWS, key=lambda r: (tag not in r[3], (i == 1) != (r[3] in ('k', 'wk') and any(c in r[2] for c in 'әғқңөұүһі'))))
+    cards = []
+    for name, city, text, _ in lst[:9]:
+        sub = (esc(city) + ' · ' if city else '') + '★★★★★'
+        cards.append(f'<figure class="rv"><div class="rv-top"><span class="ava">{esc(name[0].upper())}</span><figcaption><b>{esc(name)}</b><small>{sub}</small></figcaption></div>'
+                     f'<blockquote>{esc(text)}</blockquote><a class="rv-src" href="{R2GIS}" target="_blank" rel="noopener" data-track="outbound" data-to="2gis-reviews">{esc(v["rv_src"])} ↗</a></figure>')
+    return ''.join(cards)
+
+def hero_price(mode, i, v):
+    if mode not in PRICES: return ''
+    lo = min(p for *_, p in PRICES[mode])
+    f = lambda n: f'{round(n):,}'.replace(',', ' ' if i != 2 else ',')
+    if i == 1: main = f'<b>{f(lo)} ₸</b> {v["hp_from"]}'
+    else: main = f'{v["hp_from"]} <b>{f(lo)} ₸</b>'
+    inst = v['hp_inst'].replace('{m}', f(lo / 12))
+    return f'<p class="hprice reveal">{main}{" · " + inst if inst else ""}</p>'
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 
@@ -499,7 +564,7 @@ def h1_html(v):
         return (f'<h1 class="reveal h1-key">{esc(v["h1k"])}</h1>\n'
                 f'    <p class="h1s reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></p>')
     return f'<h1 class="reveal">{esc(v["h1a"])} <em>{esc(v["h1b"])}</em></h1>'
-RAW = ('calc_sizes', 'oai_pixel', 'tt_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
+RAW = ('reviews_html', 'hero_price', 'calc_sizes', 'oai_pixel', 'tt_pixel', 'ver', 'langlinks', 'jsdata', 'P', 'path', 'htmllang', 'ym_id', 'meta_pixel', 'hreflangs', 'calc_types',
        'href_world', 'href_kz', 'href_biz', 'mode', 'hero_img', 'hero_webp', 'h1_html', 'faq_html', 'about_html', 'jsonld', 'h1k_html', 'pay_html', 'shop_links')
 
 # ---------- SEO: разметка schema.org (компания, товар, вопросы) ----------
@@ -554,11 +619,14 @@ for mode, pp in PAGES:
         vals['h1_html'] = h1_html(vals)
         vals['hero_webp'] = HERO[mode].replace('.jpg', '.webp')
         vals['faq_html'] = faq_html(mode, i, vals)
+        vals['reviews_html'] = reviews_html(mode, i, vals)
+        vals['hero_price'] = hero_price(mode, i, vals)
+        vals['rv_2gis'] = R2GIS; vals['rv_igurl'] = RIG
         vals['about_html'] = about_html(mode, i)
         vals['jsonld'] = jsonld(mode, i, path, vals)
         vals['pay_html'] = pay_html(code, vals)
         vals['shop_links'] = shop_links(code, vals)
-        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}, 'calc': {k: v[i] for k, v in CALC_JS.items()}}
+        js = {'cap': {k: v[i] for k, v in JS['cap'].items()}, 'calc': {k: v[i] for k, v in CALC_JS.items()}, 'cb': {k: T['cb_' + k][i] for k in ('ok', 'bad', 'err')}}
         if code == 'en':
             js['calc']['free'] = 'Delivery cost to your country is confirmed by the manager'
         vals['jsdata'] = json.dumps(js, ensure_ascii=False)
@@ -573,6 +641,8 @@ for mode, pp in PAGES:
         out = out.replace('.webp" alt="${C[k]}"', '.webp?v=' + IMGV + '" alt="${C[k]}"')
         # Английская версия (ОАЭ, Катар): все кнопки WhatsApp — сразу на 77064299895,
         # без распределителя /whatsapp, с готовым текстом, чтобы менеджер видел, что клиент с EN-сайта.
+        if code == 'en' or not SALE:
+            out = re.sub(r'\n  <div class="sale-bar".*?</script>', '', out, count=1, flags=re.S)
         if code == 'en':
             # акция только для Казахстана — на EN полоску не показываем
             out = re.sub(r'\n  <div class="sale-bar".*?</script>', '', out, count=1, flags=re.S)
