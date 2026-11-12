@@ -3,3 +3,7 @@ main = "lead.js"
 compatibility_date = "2026-11-01"
 workers_dev = false
 routes = [{ pattern = "ecomaps.kz/api/*", zone_name = "ecomaps.kz" }]
+
+[vars]
+# куда слать заявки: личный чат владельца с ботом @ecomaps_ads_report_bot (несколько — через запятую)
+TG_CHAT_ID = "271851854"

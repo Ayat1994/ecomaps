@@ -16,7 +16,5 @@ jobs:
           workingDirectory: worker
           secrets: |
             TG_TOKEN
-            TG_CHAT_ID
         env:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}

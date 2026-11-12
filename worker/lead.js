@@ -30,11 +30,15 @@ export default {
       city ? `Город по IP: ${esc(city)}` : '',
       `WhatsApp: https://wa.me/${digits}`,
     ].filter(Boolean);
-    const r = await fetch(`https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`, {
-      method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
-    });
-    if (!r.ok) return json({ ok: false, error: 'telegram' }, 502);
+    let sent = 0;
+    for (const chat of String(env.TG_CHAT_ID).split(',').map(s => s.trim()).filter(Boolean)) {
+      const r = await fetch(`https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ chat_id: chat, text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
+      });
+      if (r.ok) sent++;
+    }
+    if (!sent) return json({ ok: false, error: 'telegram' }, 502);
     return json({ ok: true });
   },
 };
