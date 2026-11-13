@@ -1,5 +1,5 @@
 import os, json, urllib.request, urllib.parse, urllib.error
-TOK = os.environ['META_TOKEN']; TG = os.environ['TG_TOKEN']; CHAT = os.environ['TG_CHAT_ID']
+TOK = os.environ['META_TOKEN']; TG = os.environ['TG_TOKEN']; CHAT = os.environ.get('TG_CHAT_ID') or '271851854'
 NUM = '77066000735'
 ACCTS = ['act_335569223558023', 'act_273020681867232']
 G = 'https://graph.facebook.com/v21.0/'
