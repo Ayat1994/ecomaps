@@ -41,5 +41,10 @@ for a in ACCTS:
     notes.append('%s: групп %d, объявлений %d' % (a, len(adsets), len(ads)))
 
 msg = 'Поиск номера +7 706 600 0735 в рекламе Meta (весь год)\n' + ('\n'.join(lines[:40]) if lines else 'Не найден ни в группах объявлений, ни в креативах') + '\n\n' + '\n'.join(notes) + '\nНомеров в группах: ' + ', '.join(sorted(set(phone_ids.values()))) 
-urllib.request.urlopen(urllib.request.Request('https://api.telegram.org/bot%s/sendMessage' % TG, data=urllib.parse.urlencode({'chat_id': CHAT, 'text': msg[:4000]}).encode()), timeout=30)
+chunks = [msg[i:i+3500] for i in range(0, len(msg), 3500)] or ['пусто']
+for c in chunks:
+    try:
+        urllib.request.urlopen(urllib.request.Request('https://api.telegram.org/bot%s/sendMessage' % TG, data=urllib.parse.urlencode({'chat_id': CHAT, 'text': c}).encode()), timeout=30)
+    except urllib.error.HTTPError as e:
+        print('telegram error:', e.code, e.read().decode()[:200])
 print('готово, совпадений:', len(lines), '| ошибок:', len(notes))
