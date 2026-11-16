@@ -1,0 +1,51 @@
+name: "ChatGPT Ads: пауза / включение"
+
+# Ручной запуск: Actions → «ChatGPT Ads: пауза / включение» → Run workflow.
+# action = pause (поставить на паузу) или activate (включить); campaign = ID кампании или all (все).
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "pause или activate"
+        required: true
+        default: "pause"
+      campaign:
+        description: "ID кампании (cmpn_...) или all"
+        required: true
+        default: "all"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Change campaign status
+        env:
+          KEY: ${{ secrets.OPENAI_ADS_API_KEY }}
+          ACTION: ${{ inputs.action }}
+          CAMPAIGN: ${{ inputs.campaign }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request
+          key, action, target = os.environ['KEY'], os.environ['ACTION'], os.environ['CAMPAIGN']
+          if action not in ('pause', 'activate'):
+              sys.exit('action должен быть pause или activate')
+          base = 'https://api.ads.openai.com/v1'
+          def call(method, path):
+              req = urllib.request.Request(base + path, method=method,
+                                           headers={'Authorization': 'Bearer ' + key,
+                                                    'Content-Type': 'application/json'},
+                                           data=b'{}' if method == 'POST' else None)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read() or b'{}')
+          camps = call('GET', '/campaigns?limit=100').get('data', [])
+          print('Кампании до изменения:')
+          for c in camps:
+              print(' ', c.get('id'), '|', c.get('name'), '|', c.get('status'))
+          ids = [c['id'] for c in camps] if target == 'all' else [target]
+          for cid in ids:
+              res = call('POST', f'/campaigns/{cid}/{action}')
+              print(f'{action}: {cid} ->', res.get('status', res))
+          print('Кампании после изменения:')
+          for c in call('GET', '/campaigns?limit=100').get('data', []):
+              print(' ', c.get('id'), '|', c.get('name'), '|', c.get('status'))
+          PY
