@@ -25,7 +25,7 @@ jobs:
           CAMPAIGN: ${{ inputs.campaign }}
         run: |
           python3 - <<'PY'
-          import json, os, sys, urllib.request
+          import json, os, sys, urllib.request, urllib.error
           key, action, target = os.environ['KEY'], os.environ['ACTION'], os.environ['CAMPAIGN']
           if action not in ('pause', 'activate'):
               sys.exit('action должен быть pause или activate')
@@ -33,10 +33,16 @@ jobs:
           def call(method, path):
               req = urllib.request.Request(base + path, method=method,
                                            headers={'Authorization': 'Bearer ' + key,
-                                                    'Content-Type': 'application/json'},
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json',
+                                                    'User-Agent': 'ecomaps-ads-control/1.0 (+https://ecomaps.kz)'},
                                            data=b'{}' if method == 'POST' else None)
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  return json.loads(r.read() or b'{}')
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      return json.loads(r.read() or b'{}')
+              except urllib.error.HTTPError as e:
+                  print('ОШИБКА', e.code, method, path, e.read().decode('utf-8', 'replace')[:500])
+                  sys.exit(1)
           camps = call('GET', '/campaigns?limit=100').get('data', [])
           print('Кампании до изменения:')
           for c in camps:
